@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Especialidade | Dr. Joaquim Lopes | Cirurgia do Joelho</title>
+  <meta name="description" content="Conheça as especialidades do Dr. Joaquim Lopes: Exames, Procedimentos e Cirurgias com foco em Ortopedia e Cirurgia do Joelho." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="assets/images/logo/flaticon.png" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    .spec-section { margin-bottom: 80px; }
+    .spec-section:last-child { margin-bottom: 0; }
+
+    .spec-block {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;
+    }
+    .spec-block.reverse { direction: rtl; }
+    .spec-block.reverse > * { direction: ltr; }
+
+    .spec-visual {
+      border-radius: var(--r); overflow: hidden; height: 400px;
+      background: linear-gradient(135deg, var(--p-muted), var(--p-light));
+      box-shadow: var(--shadow-h);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .spec-visual img { width:100%; height:100%; object-fit:cover; }
+    .spec-visual svg { width:80px; height:80px; stroke:var(--p); fill:none; stroke-width:.8; opacity:.35; }
+
+    .spec-number {
+      font-size: 13px; font-weight: 700; color: var(--p-light);
+      text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; display: block;
+    }
+    .spec-title { font-size: 34px; font-weight: 800; color: var(--dark); letter-spacing: -1.2px; margin-bottom: 20px; }
+    .spec-title em { font-style: normal; color: var(--p); }
+    .spec-body { font-size: 16px; color: var(--muted); line-height: 1.85; margin-bottom: 28px; }
+
+    .procedure-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+    .procedure-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--text); }
+    .procedure-list li::before {
+      content: '';  width: 20px; height: 20px; min-width: 20px; border-radius: 50%;
+      background: var(--p-muted); border: 2px solid var(--p-light);
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 2px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2356697a' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: center; background-size: 12px;
+    }
+
+    .divider-section { border:none; border-top:1px solid var(--border); margin:80px 0; }
+
+    @media (max-width: 1024px) {
+      .spec-block { gap:40px; }
+      .spec-visual { height:320px; }
+    }
+    @media (max-width: 768px) {
+      .spec-block { grid-template-columns:1fr; }
+      .spec-block.reverse { direction:ltr; }
+      .spec-visual { height:240px; }
+      .spec-title { font-size:28px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo"><img src="assets/images/logo/logo.png" alt="Dr. Joaquim Lopes" /></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Início</a></li>
+    <li><a href="sobre.html">Sobre</a></li>
+    <li><a href="especialidade.html">Especialidade</a></li>
+    <li><a href="pre-agendamento.html" class="btn-nav">Agendar Consulta</a></li>
+  </ul>
+  <div class="nav-icons">
+    <a href="https://instagram.com/drjoaquimlopes" target="_blank" aria-label="Instagram">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/>
+      </svg>
+    </a>
+    <a href="https://www.facebook.com/people/Dr-Joaquim-Lopes/61555823398320/" target="_blank" aria-label="Facebook">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+      </svg>
+    </a>
+  </div>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Início</a><span>/</span> Especialidade</div>
+    <h1>Do diagnóstico à <em>recuperação</em></h1>
+    <p>Atendimento completo com foco em Cirurgia do Joelho, incluindo exames, procedimentos e cirurgias de alta complexidade.</p>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<section style="background:var(--bg);">
+  <div class="wrap">
+
+    <!-- EXAMES -->
+    <div class="spec-section">
+      <div class="spec-block">
+        <div class="spec-visual reveal">
+          <img src="assets/images/dr/1.jpg" alt="Exames ortopédicos" />
+        </div>
+        <div>
+          <span class="spec-number reveal">01. Exames</span>
+          <h2 class="spec-title reveal">Diagnóstico <em>preciso</em> para o tratamento certo</h2>
+          <p class="spec-body reveal">
+            O diagnóstico correto é o ponto de partida de qualquer tratamento bem-sucedido. O Dr. Joaquim
+            realiza uma avaliação clínica completa, aliada a exames de imagem e funcionais, para identificar
+            com precisão a origem do problema e traçar o melhor caminho terapêutico.
+          </p>
+          <ul class="procedure-list reveal">
+            <li>Avaliação clínica ortopédica completa</li>
+            <li>Interpretação de exames de imagem (Raio-X, RM, TC)</li>
+            <li>Avaliação funcional do joelho e membro inferior</li>
+            <li>Diagnóstico de lesões ligamentares e meniscais</li>
+            <li>Avaliação de desgaste articular e cartilagem</li>
+          </ul>
+          <a href="pre-agendamento.html" class="btn btn-primary reveal btn-sm">Agendar avaliação</a>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider-section" />
+
+    <!-- PROCEDIMENTOS -->
+    <div class="spec-section">
+      <div class="spec-block reverse">
+        <div class="spec-visual reveal">
+          <img src="assets/images/dr/2.jpg" alt="Procedimentos ortopédicos" />
+        </div>
+        <div>
+          <span class="spec-number reveal">02. Procedimentos</span>
+          <h2 class="spec-title reveal">Tratamentos <em>personalizados</em> para cada paciente</h2>
+          <p class="spec-body reveal">
+            Nem toda condição ortopédica exige cirurgia. O Dr. Joaquim oferece uma ampla gama de
+            procedimentos minimamente invasivos e tratamentos conservadores, com o objetivo de
+            proporcionar alívio da dor e recuperação funcional com máxima segurança.
+          </p>
+          <ul class="procedure-list reveal">
+            <li>Infiltrações e bloqueios articulares</li>
+            <li>Viscossuplementação (ácido hialurônico)</li>
+            <li>PRP (Plasma Rico em Plaquetas)</li>
+            <li>Tratamento conservador de lesões ligamentares</li>
+            <li>Reabilitação pós-operatória orientada</li>
+            <li>Imobilizações e órteses personalizadas</li>
+          </ul>
+          <a href="pre-agendamento.html" class="btn btn-primary reveal btn-sm">Consultar tratamentos</a>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider-section" />
+
+    <!-- CIRURGIAS -->
+    <div class="spec-section">
+      <div class="spec-block">
+        <div class="spec-visual reveal">
+          <img src="assets/images/dr/3.jpg" alt="Cirurgias do joelho" />
+        </div>
+        <div>
+          <span class="spec-number reveal">03. Cirurgias</span>
+          <h2 class="spec-title reveal">Cirurgia do Joelho com <em>alta precisão</em></h2>
+          <p class="spec-body reveal">
+            Com residência específica em Cirurgia do Joelho pela Santa Casa de São Paulo e título de
+            especialista pela SBCJ, o Dr. Joaquim realiza as principais intervenções cirúrgicas do
+            joelho, incluindo técnicas artroscópicas e procedimentos de alta complexidade.
+          </p>
+          <ul class="procedure-list reveal">
+            <li>Reconstrução do Ligamento Cruzado Anterior (LCA)</li>
+            <li>Reconstrução do Ligamento Cruzado Posterior (LCP)</li>
+            <li>Sutura e transplante de menisco</li>
+            <li>Artroplastia total e parcial do joelho</li>
+            <li>Tratamento cirúrgico da condromalácia e desgaste de cartilagem</li>
+            <li>Osteotomia corretiva (valgo/varo)</li>
+            <li>Cirurgia artroscópica diagnóstica e terapêutica</li>
+            <li>Tratamento de lesões em atletas de alta performance</li>
+          </ul>
+          <a href="pre-agendamento.html" class="btn btn-primary reveal btn-sm">Agendar consulta</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-strip">
+  <h2 class="reveal">Tem alguma dúvida sobre seu caso?</h2>
+  <p class="reveal">Agende uma consulta e receba uma avaliação personalizada.</p>
+  <a href="pre-agendamento.html" class="btn btn-white reveal">Agendar agora</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="footer-logo"><img src="assets/images/logo/logo.png" alt="Dr. Joaquim Lopes" /></a>
+        <p class="footer-desc">Ortopedista e Traumatologista especializado em Cirurgia do Joelho. Atendimento humanizado com excelência técnica para sua recuperação completa.</p>
+        <p class="footer-crm">CRM-SP 171205 / RQE 113362</p>
+      </div>
+      <div>
+        <div class="footer-col-h">Navegação</div>
+        <ul class="footer-nav">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="especialidade.html">Especialidade</a></li>
+          <li><a href="pre-agendamento.html">Agendar consulta</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-h">Contato</div>
+        <div class="footer-contact-line"><a href="https://wa.me/5511925538077" target="_blank">(11) 92553-8077</a></div>
+        <div class="footer-contact-line"><a href="mailto:atendimento@drjoaquimlopes.com.br">atendimento@drjoaquimlopes.com.br</a></div>
+        <div class="footer-contact-line">CAORT - Clínica Avançada de Ortopedia e Traumatologia<br>Rua Helena, 260, Vila Olímpia<br>São Paulo - SP, CEP 04552-040</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2024 Dr. Joaquim Lopes. Todos os direitos reservados.</p>
+      <div class="footer-social">
+        <a href="https://instagram.com/drjoaquimlopes" target="_blank" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+        <a href="https://www.facebook.com/people/Dr-Joaquim-Lopes/61555823398320/" target="_blank" aria-label="Facebook">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

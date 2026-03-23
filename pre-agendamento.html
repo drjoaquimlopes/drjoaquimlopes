@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agendamento | Dr. Joaquim Lopes</title>
+  <meta name="description" content="Agende sua consulta com o Dr. Joaquim Lopes, ortopedista especialista em Cirurgia do Joelho em São Paulo." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="assets/images/logo/flaticon.png" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    .sched-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+
+    .info-lead { font-size: 16px; color: var(--muted); line-height: 1.85; margin-bottom: 40px; }
+
+    .contact-list { margin-bottom: 40px; }
+
+    /* Map placeholder */
+    .map-card {
+      border-radius: var(--r); overflow: hidden; margin-top: 40px;
+      border: 1px solid var(--border); height: 200px;
+      background: linear-gradient(135deg, var(--p-muted), var(--p-light));
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 10px; text-decoration: none;
+      transition: all .2s;
+    }
+    .map-card:hover { box-shadow: var(--shadow); }
+    .map-card svg { width:36px; height:36px; stroke:var(--p); fill:none; stroke-width:1.5; opacity:.7; }
+    .map-card span { font-size:14px; font-weight:600; color:var(--p); }
+
+    .form-full .form-card { background: var(--bg-alt); }
+
+    .wa-btn {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      background: #25d366; color: #fff;
+      padding: 14px 24px; border-radius: 50px; font-size: 15px; font-weight: 600;
+      text-decoration: none; margin-top: 16px; transition: all .3s;
+    }
+    .wa-btn:hover { background: #1da851; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(37,211,102,.3); }
+    .wa-btn svg { width:20px; height:20px; fill:white; }
+
+    .contact-actions { display: flex; flex-direction: column; gap: 16px; margin-top: 24px; }
+    .contact-action {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 18px 20px; border: 1px solid var(--border);
+      border-radius: var(--r-sm); background: var(--white);
+      text-decoration: none; transition: all .2s ease;
+    }
+    .contact-action:hover { border-color: var(--p-light); box-shadow: var(--shadow); transform: translateY(-1px); }
+    .contact-action svg {
+      width: 20px; height: 20px; min-width: 20px;
+      stroke: var(--p); fill: none; stroke-width: 1.8;
+      stroke-linecap: round; stroke-linejoin: round; margin-top: 2px;
+    }
+    .contact-action strong { display: block; font-size: 14px; color: var(--dark); margin-bottom: 4px; }
+    .contact-action span { display: block; font-size: 14px; color: var(--muted); line-height: 1.6; }
+    .contact-note {
+      margin-top: 24px; padding: 18px 20px;
+      border-radius: var(--r-sm); background: var(--white);
+      border: 1px solid var(--border); font-size: 14px;
+      color: var(--muted); line-height: 1.7;
+    }
+    .contact-note strong { color: var(--dark); }
+
+    @media (max-width: 1024px) { .sched-layout { gap: 48px; } }
+    @media (max-width: 768px) { .sched-layout { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo"><img src="assets/images/logo/logo.png" alt="Dr. Joaquim Lopes" /></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Início</a></li>
+    <li><a href="sobre.html">Sobre</a></li>
+    <li><a href="especialidade.html">Especialidade</a></li>
+    <li><a href="pre-agendamento.html" class="btn-nav">Agendar Consulta</a></li>
+  </ul>
+  <div class="nav-icons">
+    <a href="https://instagram.com/drjoaquimlopes" target="_blank" aria-label="Instagram">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/>
+      </svg>
+    </a>
+    <a href="https://www.facebook.com/people/Dr-Joaquim-Lopes/61555823398320/" target="_blank" aria-label="Facebook">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+      </svg>
+    </a>
+  </div>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Início</a><span>/</span> Pré-agendamento</div>
+    <h1>Dê o primeiro <em>passo</em></h1>
+    <p>Entre em contato diretamente com nossa equipe pelo WhatsApp, telefone ou e-mail. Confirmamos sua consulta o mais breve possível.</p>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<section style="background:var(--bg);">
+  <div class="wrap">
+    <div class="sched-layout">
+
+      <!-- INFO -->
+      <div class="info-side">
+        <span class="eyebrow reveal">Informações de contato</span>
+        <h2 class="section-title reveal" style="font-size:32px;">Estamos aqui para <em>ajudar</em></h2>
+        <p class="info-lead reveal">
+          Nossa equipe está pronta para orientar seu agendamento e confirmar sua consulta.
+          Escolha o canal mais conveniente e fale conosco diretamente.
+        </p>
+
+        <div class="contact-list">
+          <div class="ci reveal">
+            <div class="ci-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.87a16 16 0 0 0 6.22 6.22l1.77-1.79a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2z"/></svg>
+            </div>
+            <div>
+              <div class="ci-label">Telefone / WhatsApp</div>
+              <a href="https://wa.me/5511925538077" class="ci-val" target="_blank">(11) 92553-8077</a>
+            </div>
+          </div>
+
+          <div class="ci reveal">
+            <div class="ci-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="ci-label">E-mail</div>
+              <a href="mailto:atendimento@drjoaquimlopes.com.br" class="ci-val">atendimento@drjoaquimlopes.com.br</a>
+            </div>
+          </div>
+
+          <div class="ci reveal">
+            <div class="ci-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="ci-label">Localização</div>
+              <span class="ci-val" style="cursor:default">CAORT - Clínica Avançada de Ortopedia e Traumatologia<br>Rua Helena, 260, Vila Olímpia<br>São Paulo - SP, CEP 04552-040</span>
+            </div>
+          </div>
+
+          <div class="ci reveal">
+            <div class="ci-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="ci-label">Outros locais de atendimento</div>
+              <span class="ci-val" style="cursor:default">Instituto Vita<br>Hospital 9 de Julho - Ambulatório<br>Hospital São Luiz, Rede D'Or - Ambulatório</span>
+            </div>
+          </div>
+
+          <div class="ci reveal">
+            <div class="ci-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <div class="ci-label">Horário de atendimento</div>
+              <span class="ci-val" style="cursor:default">Segunda a Sexta<br>08h às 18h</span>
+            </div>
+          </div>
+
+          <div class="ci reveal">
+            <div class="ci-icon">
+              <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <div>
+              <div class="ci-label">Registro profissional</div>
+              <span class="ci-val" style="cursor:default">CRM-SP 171205 / RQE 113362</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Map placeholder -->
+        <a href="https://maps.app.goo.gl/fMbGfiiQo5oQbBRe7" target="_blank" class="map-card reveal">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Ver no Google Maps</span>
+          <span style="font-size:12px; color:var(--muted); font-weight:400">CAORT, Vila Olímpia, São Paulo</span>
+        </a>
+      </div>
+
+      <!-- CONTACT CARD -->
+      <div class="form-full reveal">
+        <div class="form-card">
+          <h3>Fale com nossa equipe</h3>
+          <p>Por enquanto, o agendamento está sendo feito diretamente pelos canais abaixo.</p>
+
+          <a href="https://wa.me/5511925538077?text=Olá,%20gostaria%20de%20agendar%20uma%20consulta." target="_blank" class="wa-btn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+            Agendar pelo WhatsApp
+          </a>
+
+          <div class="contact-actions">
+            <a href="tel:+5563992947961" class="contact-action">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.87a16 16 0 0 0 6.22 6.22l1.77-1.79a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2z"/></svg>
+              <div>
+                <strong>Ligue para a clínica</strong>
+                <span>(11) 92553-8077</span>
+              </div>
+            </a>
+            <a href="mailto:atendimento@drjoaquimlopes.com.br" class="contact-action">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <div>
+                <strong>Envie um e-mail</strong>
+                <span>atendimento@drjoaquimlopes.com.br</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="contact-note">
+            <strong>Atendimento em horário comercial.</strong> Assim que recebermos seu contato, retornamos com orientações e disponibilidade para confirmar a consulta.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="footer-logo"><img src="assets/images/logo/logo.png" alt="Dr. Joaquim Lopes" /></a>
+        <p class="footer-desc">Ortopedista e Traumatologista especializado em Cirurgia do Joelho. Atendimento humanizado com excelência técnica para sua recuperação completa.</p>
+        <p class="footer-crm">CRM-SP 171205 / RQE 113362</p>
+      </div>
+      <div>
+        <div class="footer-col-h">Navegação</div>
+        <ul class="footer-nav">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="especialidade.html">Especialidade</a></li>
+          <li><a href="pre-agendamento.html">Agendar consulta</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-h">Contato</div>
+        <div class="footer-contact-line"><a href="https://wa.me/5511925538077" target="_blank">(11) 92553-8077</a></div>
+        <div class="footer-contact-line"><a href="mailto:atendimento@drjoaquimlopes.com.br">atendimento@drjoaquimlopes.com.br</a></div>
+        <div class="footer-contact-line">CAORT - Clínica Avançada de Ortopedia e Traumatologia<br>Rua Helena, 260, Vila Olímpia<br>São Paulo - SP, CEP 04552-040</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2024 Dr. Joaquim Lopes. Todos os direitos reservados.</p>
+      <div class="footer-social">
+        <a href="https://instagram.com/drjoaquimlopes" target="_blank" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+        <a href="https://www.facebook.com/people/Dr-Joaquim-Lopes/61555823398320/" target="_blank" aria-label="Facebook">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Joaquim Lopes | Ortopedista e Traumatologista em São Paulo</title>
+  <meta name="description" content="Dr. Joaquim Lopes, especialista em Ortopedia, Traumatologia e Cirurgia do Joelho. Atendimento em São Paulo na CAORT." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="assets/images/logo/flaticon.png" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding-top: var(--nav-h); position: relative; overflow: hidden;
+      padding-left: 48px; padding-right: 48px;
+    }
+    .hero-blob {
+      position: absolute; top: 0; right: 0; bottom: 0; width: 52%;
+      clip-path: polygon(12% 0,100% 0,100% 100%,0 100%);
+      background: linear-gradient(145deg, var(--p-muted) 0%, #dce4ea 100%);
+    }
+    .hero-inner {
+      position: relative; z-index: 2;
+      width: 100%; display: grid;
+      grid-template-columns: 1fr 1fr; align-items: center; gap: 60px;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--p-muted); color: var(--p);
+      padding: 8px 18px; border-radius: 50px;
+      font-size: 13px; font-weight: 600; letter-spacing: .3px;
+      margin-bottom: 28px;
+      animation: fadeUp .6s .05s ease both;
+    }
+    .hero-badge::before { content:''; width:8px; height:8px; background:var(--p); border-radius:50%; }
+    h1.hero-h1 {
+      font-size: 60px; font-weight: 800; color: var(--dark);
+      letter-spacing: -2px; line-height: 1.04; margin-bottom: 24px;
+      animation: fadeUp .6s .15s ease both;
+    }
+    h1.hero-h1 em { font-style: normal; color: var(--p); }
+    .hero-p {
+      font-size: 18px; color: var(--muted); line-height: 1.75;
+      max-width: 480px; margin-bottom: 40px;
+      animation: fadeUp .6s .25s ease both;
+    }
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; animation: fadeUp .6s .35s ease both; }
+    .hero-stats { display: flex; gap: 40px; margin-top: 52px; animation: fadeUp .6s .45s ease both; }
+    .stat-n { font-size: 26px; font-weight: 800; color: var(--p-dark); letter-spacing: -1px; display: block; }
+    .stat-l { font-size: 12px; color: var(--muted); font-weight: 500; }
+    .hero-photo { display: flex; justify-content: center; align-items: center; animation: fadeUp .7s .2s ease both; }
+    .photo-card {
+      width: 420px; height: 520px; border-radius: 32px; overflow: hidden;
+      background: linear-gradient(160deg, var(--p-light) 0%, var(--p) 100%);
+      box-shadow: 0 28px 72px rgba(86,105,122,.28);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .photo-card img { width:100%; height:100%; object-fit:cover; object-position:top; }
+    .photo-placeholder { display:flex; align-items:center; justify-content:center; flex-direction:column; gap:12px; color:rgba(255,255,255,.5); font-size:13px; font-weight:500; }
+    .photo-placeholder svg { opacity:.35; }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
+
+    /* ── SOBRE TEASER ── */
+    #sobre-teaser { background: var(--bg-alt); }
+    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+    .about-img {
+      border-radius: var(--r); overflow:hidden; height:480px;
+      background:linear-gradient(135deg,var(--p-muted),var(--p-light));
+      box-shadow: var(--shadow-h); display:flex; align-items:center; justify-content:center;
+    }
+    .about-img img { width:100%; height:100%; object-fit:cover; object-position:top; }
+    .about-body { font-size:16px; color:var(--muted); line-height:1.85; margin-bottom:28px; }
+
+    /* ── ESPECIALIDADES ── */
+    #especialidades { background: var(--bg); }
+    .spec-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+    .spec-card {
+      background:var(--bg-alt); border:1px solid var(--border);
+      border-radius:var(--r); padding:44px 32px; text-align:center;
+      transition:all .3s ease; text-decoration:none;
+    }
+    .spec-card:hover { border-color:var(--p-light); box-shadow:var(--shadow-h); transform:translateY(-6px); }
+    .spec-icon { width:72px; height:72px; border-radius:20px; background:var(--p); margin:0 auto 28px; display:flex; align-items:center; justify-content:center; }
+    .spec-icon svg { width:34px; height:34px; stroke:#fff; fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; }
+    .spec-name { font-size:22px; font-weight:700; color:var(--dark); margin-bottom:12px; }
+    .spec-desc { font-size:15px; color:var(--muted); line-height:1.7; }
+
+    /* RESPONSIVE extras */
+    @media (max-width: 1024px) {
+      #hero { padding-left: 24px; padding-right: 24px; }
+      .photo-card { width:340px; height:420px; }
+      h1.hero-h1 { font-size:46px; }
+    }
+    @media (max-width: 768px) {
+      #hero { padding-left:20px; padding-right:20px; }
+      .hero-inner { grid-template-columns:1fr; }
+      .hero-photo { display:none; }
+      .hero-blob { display:none; }
+      h1.hero-h1 { font-size:40px; letter-spacing:-1.5px; }
+      .hero-p { font-size:16px; }
+      .hero-stats { gap:28px; }
+      .about-grid { grid-template-columns:1fr; gap:40px; }
+      .about-img { height:280px; }
+      .spec-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="assets/images/logo/logo.png" alt="Dr. Joaquim Lopes" />
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Início</a></li>
+    <li><a href="sobre.html">Sobre</a></li>
+    <li><a href="especialidade.html">Especialidade</a></li>
+    <li><a href="pre-agendamento.html" class="btn-nav">Agendar Consulta</a></li>
+  </ul>
+  <div class="nav-icons">
+    <a href="https://instagram.com/drjoaquimlopes" target="_blank" aria-label="Instagram">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/>
+      </svg>
+    </a>
+    <a href="https://www.facebook.com/people/Dr-Joaquim-Lopes/61555823398320/" target="_blank" aria-label="Facebook">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+      </svg>
+    </a>
+  </div>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-blob"></div>
+  <div class="hero-inner wrap">
+    <div>
+      <div class="hero-badge">Ortopedista &amp; Traumatologista em São Paulo - SP</div>
+      <h1 class="hero-h1">Reconquiste sua <em>liberdade</em><br>de movimento</h1>
+      <p class="hero-p">
+        Dê passos firmes em direção a uma vida sem limitações. Com um especialista em
+        Cirurgia do Joelho, você está no caminho certo para uma recuperação completa.
+      </p>
+      <div class="hero-ctas">
+        <a href="pre-agendamento.html" class="btn btn-primary">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+          Agendar Consulta
+        </a>
+        <a href="sobre.html" class="btn btn-outline">
+          Conheça o Dr. Joaquim
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div><span class="stat-n">+5</span><span class="stat-l">Anos de experiência</span></div>
+        <div><span class="stat-n">SBOT</span><span class="stat-l">Membro certificado</span></div>
+        <div><span class="stat-n">SBCJ</span><span class="stat-l">Especialista em Joelho</span></div>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="photo-card">
+        <img src="assets/images/dr/Home 1.jpg" alt="Dr. Joaquim Lopes" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE TEASER -->
+<section id="sobre-teaser">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-img reveal">
+        <img src="assets/images/dr/Home 2.jpg" alt="Dr. Joaquim Lopes" />
+      </div>
+      <div>
+        <span class="eyebrow reveal">Sobre o médico</span>
+        <h2 class="section-title reveal">Cuidado especializado com <em>empatia</em></h2>
+        <p class="about-body reveal">
+          Dr. Joaquim Lopes é especialista em Ortopedia, Traumatologia e Medicina do Esporte,
+          com residência em Cirurgia do Joelho pela Santa Casa de São Paulo. Membro da SBCJ e da SBOT.
+        </p>
+        <p class="about-body reveal">
+          Seu atendimento é marcado pela escuta ativa, empatia e foco na recuperação
+          completa do paciente, unindo técnica de excelência a um cuidado verdadeiramente humanizado.
+        </p>
+        <a href="sobre.html" class="btn btn-primary reveal">
+          Conhecer a trajetória
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESPECIALIDADES -->
+<section id="especialidades">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow reveal">Especialidade</span>
+      <h2 class="section-title reveal">Do diagnóstico à <em>recuperação</em></h2>
+      <p class="section-sub reveal">Atendimento completo com foco em Cirurgia do Joelho, com diagnóstico, tratamento e cirurgias de alta complexidade.</p>
+    </div>
+    <div class="spec-grid">
+      <a href="especialidade.html" class="spec-card reveal d1">
+        <div class="spec-icon">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h3 class="spec-name">Exames</h3>
+        <p class="spec-desc">Avaliação clínica completa e diagnóstico preciso para identificar a melhor conduta para cada paciente.</p>
+      </a>
+      <a href="especialidade.html" class="spec-card reveal d2">
+        <div class="spec-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h3 class="spec-name">Procedimentos</h3>
+        <p class="spec-desc">Tratamentos personalizados e procedimentos minimamente invasivos para sua recuperação com segurança.</p>
+      </a>
+      <a href="especialidade.html" class="spec-card reveal d3">
+        <div class="spec-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 class="spec-name">Cirurgias</h3>
+        <p class="spec-desc">Especializado em Cirurgia do Joelho, incluindo LCA, artroplastia, menisco e outras intervenções de alta complexidade.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<div class="cta-strip">
+  <h2 class="reveal">Pronto para dar o primeiro passo?</h2>
+  <p class="reveal">Agende sua consulta e reconquiste sua qualidade de vida.</p>
+  <a href="pre-agendamento.html" class="btn btn-white reveal">Agendar agora</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="footer-logo"><img src="assets/images/logo/logo.png" alt="Dr. Joaquim Lopes" /></a>
+        <p class="footer-desc">Ortopedista e Traumatologista especializado em Cirurgia do Joelho. Atendimento humanizado com excelência técnica para sua recuperação completa.</p>
+        <p class="footer-crm">CRM-SP 171205 / RQE 113362</p>
+      </div>
+      <div>
+        <div class="footer-col-h">Navegação</div>
+        <ul class="footer-nav">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="especialidade.html">Especialidade</a></li>
+          <li><a href="pre-agendamento.html">Agendar consulta</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-h">Contato</div>
+        <div class="footer-contact-line"><a href="https://wa.me/5511925538077" target="_blank">(11) 92553-8077</a></div>
+        <div class="footer-contact-line"><a href="mailto:atendimento@drjoaquimlopes.com.br">atendimento@drjoaquimlopes.com.br</a></div>
+        <div class="footer-contact-line">CAORT - Clínica Avançada de Ortopedia e Traumatologia<br>Rua Helena, 260, Vila Olímpia<br>São Paulo - SP, CEP 04552-040</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2024 Dr. Joaquim Lopes. Todos os direitos reservados.</p>
+      <div class="footer-social">
+        <a href="https://instagram.com/drjoaquimlopes" target="_blank" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+        <a href="https://www.facebook.com/people/Dr-Joaquim-Lopes/61555823398320/" target="_blank" aria-label="Facebook">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

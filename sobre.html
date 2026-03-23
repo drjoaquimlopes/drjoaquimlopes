@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sobre | Dr. Joaquim Lopes | Ortopedista e Traumatologista</title>
+  <meta name="description" content="Conheça a trajetória, formação e valores do Dr. Joaquim Lopes, especialista em Ortopedia, Traumatologia e Cirurgia do Joelho." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="assets/images/logo/flaticon.png" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    .about-layout { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
+    .about-photo {
+      border-radius:var(--r); overflow:hidden; height:560px;
+      background:linear-gradient(135deg,var(--p-muted),var(--p-light));
+      box-shadow:var(--shadow-h); position:sticky; top:88px;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .about-photo img { width:100%; height:100%; object-fit:cover; object-position:top; }
+    .about-body { font-size:16px; color:var(--muted); line-height:1.9; margin-bottom:28px; }
+
+    .credential-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:40px; }
+    .credential-card {
+      background:var(--bg-alt); border:1px solid var(--border); border-radius:var(--r-sm);
+      padding:20px; display:flex; align-items:flex-start; gap:14px;
+    }
+    .credential-icon { width:40px; height:40px; min-width:40px; border-radius:10px; background:var(--p-muted); display:flex; align-items:center; justify-content:center; }
+    .credential-icon svg { width:20px; height:20px; stroke:var(--p); fill:none; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
+    .credential-label { font-size:11px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.8px; margin-bottom:3px; }
+    .credential-val { font-size:14px; font-weight:600; color:var(--dark); line-height:1.4; }
+
+    .values-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:8px; }
+    .value-card {
+      background:var(--bg-alt); border:1px solid var(--border); border-radius:var(--r-sm);
+      padding:24px; text-align:center;
+    }
+    .value-icon { width:48px; height:48px; min-width:48px; border-radius:12px; background:var(--p-muted); display:flex; align-items:center; justify-content:center; margin:0 auto 12px; }
+    .value-icon svg { width:24px; height:24px; stroke:var(--p); fill:none; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
+    .value-title { font-size:15px; font-weight:700; color:var(--dark); margin-bottom:6px; }
+    .value-desc { font-size:13px; color:var(--muted); line-height:1.6; }
+
+    .divider { border:none; border-top:1px solid var(--border); margin:36px 0; }
+
+    @media (max-width: 1024px) {
+      .about-layout { gap:48px; }
+      .about-photo { position:static; height:420px; }
+    }
+    @media (max-width: 768px) {
+      .about-layout { grid-template-columns:1fr; }
+      .about-photo { height:280px; position:static; }
+      .credential-grid { grid-template-columns:1fr; }
+      .values-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo"><img src="assets/images/logo/logo.png" alt="Dr. Joaquim Lopes" /></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Início</a></li>
+    <li><a href="sobre.html">Sobre</a></li>
+    <li><a href="especialidade.html">Especialidade</a></li>
+    <li><a href="pre-agendamento.html" class="btn-nav">Agendar Consulta</a></li>
+  </ul>
+  <div class="nav-icons">
+    <a href="https://instagram.com/drjoaquimlopes" target="_blank" aria-label="Instagram">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/>
+      </svg>
+    </a>
+    <a href="https://www.facebook.com/people/Dr-Joaquim-Lopes/61555823398320/" target="_blank" aria-label="Facebook">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+      </svg>
+    </a>
+  </div>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Início</a><span>/</span> Sobre</div>
+    <h1>Sobre o <em>Dr. Joaquim</em></h1>
+    <p>Conheça a trajetória, formação e os valores que guiam cada atendimento.</p>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<section style="background:var(--bg);">
+  <div class="wrap">
+    <div class="about-layout">
+
+      <!-- FOTO -->
+      <div class="about-photo reveal">
+        <img src="assets/images/dr/Sobre 1.jpg" alt="Dr. Joaquim Lopes" />
+      </div>
+
+      <!-- TEXTO -->
+      <div>
+        <span class="eyebrow reveal">Trajetória</span>
+        <h2 class="section-title reveal">Cuidado especializado com <em>empatia</em></h2>
+
+        <p class="about-body reveal">
+          Dr. Joaquim Lopes é médico especialista em Ortopedia, Traumatologia e Medicina do Esporte,
+          com formação sólida e contínua voltada ao cuidado completo do sistema músculo-esquelético.
+          Seu diferencial está no atendimento humanizado: cada paciente é ouvido com atenção e tratado
+          com respeito, independentemente do caso.
+        </p>
+        <p class="about-body reveal">
+          Com residência em Cirurgia do Joelho pela renomada Santa Casa de São Paulo, o Dr. Joaquim
+          está preparado para tratar desde lesões esportivas até condições degenerativas complexas,
+          sempre buscando a recuperação completa e o retorno à qualidade de vida do paciente.
+        </p>
+        <p class="about-body reveal">
+          É membro ativo da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT) e da Sociedade
+          Brasileira de Cirurgia do Joelho (SBCJ), estando constantemente atualizado com as mais
+          modernas técnicas e protocolos da medicina ortopédica.
+        </p>
+
+        <hr class="divider" />
+
+        <!-- CREDENCIAIS -->
+        <p class="reveal" style="font-size:17px; font-weight:700; color:var(--dark); margin-bottom:20px;">Registro profissional</p>
+        <div class="credential-grid">
+          <div class="credential-card reveal d1">
+            <div class="credential-icon">
+              <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <div>
+              <div class="credential-label">CRM</div>
+              <div class="credential-val">CRM-SP 171205</div>
+            </div>
+          </div>
+          <div class="credential-card reveal d2">
+            <div class="credential-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <div class="credential-label">RQE</div>
+              <div class="credential-val">RQE 113362</div>
+            </div>
+          </div>
+          <div class="credential-card reveal d1">
+            <div class="credential-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+            </div>
+            <div>
+              <div class="credential-label">Associação</div>
+              <div class="credential-val">Membro SBOT</div>
+            </div>
+          </div>
+          <div class="credential-card reveal d2">
+            <div class="credential-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+            </div>
+            <div>
+              <div class="credential-label">Associação</div>
+              <div class="credential-val">Membro SBCJ</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tags reveal">
+          <span class="tag">Ortopedia</span>
+          <span class="tag">Traumatologia</span>
+          <span class="tag">Cirurgia do Joelho</span>
+          <span class="tag">Medicina do Esporte</span>
+        </div>
+
+        <hr class="divider" />
+
+        <!-- FORMAÇÃO -->
+        <p class="reveal" style="font-size:17px; font-weight:700; color:var(--dark); margin-bottom:24px;">Formação profissional</p>
+        <div class="timeline reveal">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div>
+              <div class="tl-year">2019 – 2022</div>
+              <div class="tl-text">Residência em Ortopedia e Traumatologia no HMCC</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div>
+              <div class="tl-year">2022</div>
+              <div class="tl-text">Título de especialista em Ortopedia e Traumatologia pela SBOT</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div>
+              <div class="tl-year">2022 – 2023</div>
+              <div class="tl-text">Residência em Cirurgia do Joelho na Santa Casa de São Paulo</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div>
+              <div class="tl-year">2023</div>
+              <div class="tl-text">Título de especialista em Cirurgia do Joelho pela SBCJ</div>
+            </div>
+          </div>
+          <div class="tl-item tl-highlight">
+            <div class="tl-dot"></div>
+            <div>
+              <div class="tl-year">Fellow Avançado</div>
+              <div class="tl-text">Medicina Esportiva - Myongji Hospital, Seul · Coreia do Sul</div>
+              <div class="tl-badge"><svg style="width:13px;height:13px;stroke:var(--p);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;vertical-align:-1.5px;margin-right:4px" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/></svg>Formação Internacional</div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="divider" />
+
+        <!-- VALORES -->
+        <p class="reveal" style="font-size:17px; font-weight:700; color:var(--dark); margin-bottom:20px;">Valores do atendimento</p>
+        <div class="values-grid">
+          <div class="value-card reveal d1">
+            <div class="value-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+            <div class="value-title">Humanização</div>
+            <div class="value-desc">Cada paciente é único. O atendimento começa pela escuta.</div>
+          </div>
+          <div class="value-card reveal d2">
+            <div class="value-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+            <div class="value-title">Precisão</div>
+            <div class="value-desc">Diagnóstico correto é o primeiro passo para um bom tratamento.</div>
+          </div>
+          <div class="value-card reveal d1">
+            <div class="value-icon"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M5 8H4a4 4 0 0 0 0 8h1"/><line x1="6" y1="12" x2="18" y2="12"/><line x1="12" y1="6" x2="12" y2="18"/></svg></div>
+            <div class="value-title">Recuperação total</div>
+            <div class="value-desc">O objetivo é sempre o retorno pleno à qualidade de vida.</div>
+          </div>
+          <div class="value-card reveal d2">
+            <div class="value-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+            <div class="value-title">Atualização contínua</div>
+            <div class="value-desc">Sempre alinhado às técnicas mais modernas da ortopedia.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-strip">
+  <h2 class="reveal">Quer agendar uma consulta?</h2>
+  <p class="reveal">Entre em contato e dê o primeiro passo para sua recuperação.</p>
+  <a href="pre-agendamento.html" class="btn btn-white reveal">Agendar consulta</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="footer-logo"><img src="assets/images/logo/logo.png" alt="Dr. Joaquim Lopes" /></a>
+        <p class="footer-desc">Ortopedista e Traumatologista especializado em Cirurgia do Joelho. Atendimento humanizado com excelência técnica para sua recuperação completa.</p>
+        <p class="footer-crm">CRM-SP 171205 / RQE 113362</p>
+      </div>
+      <div>
+        <div class="footer-col-h">Navegação</div>
+        <ul class="footer-nav">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="especialidade.html">Especialidade</a></li>
+          <li><a href="pre-agendamento.html">Agendar consulta</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-h">Contato</div>
+        <div class="footer-contact-line"><a href="https://wa.me/5511925538077" target="_blank">(11) 92553-8077</a></div>
+        <div class="footer-contact-line"><a href="mailto:atendimento@drjoaquimlopes.com.br">atendimento@drjoaquimlopes.com.br</a></div>
+        <div class="footer-contact-line">CAORT - Clínica Avançada de Ortopedia e Traumatologia<br>Rua Helena, 260, Vila Olímpia<br>São Paulo - SP, CEP 04552-040</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2024 Dr. Joaquim Lopes. Todos os direitos reservados.</p>
+      <div class="footer-social">
+        <a href="https://instagram.com/drjoaquimlopes" target="_blank" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+        <a href="https://www.facebook.com/people/Dr-Joaquim-Lopes/61555823398320/" target="_blank" aria-label="Facebook">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
