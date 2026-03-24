@@ -81,15 +81,9 @@
     /* Map placeholder */
     .map-card {
       border-radius: var(--r); overflow: hidden; margin-top: 40px;
-      border: 1px solid var(--border); height: 200px;
-      background: linear-gradient(135deg, var(--p-muted), var(--p-light));
-      display: flex; align-items: center; justify-content: center;
-      flex-direction: column; gap: 10px; text-decoration: none;
-      transition: all .2s;
+      border: 1px solid var(--border); height: 250px;
     }
-    .map-card:hover { box-shadow: var(--shadow); }
-    .map-card svg { width:36px; height:36px; stroke:var(--p); fill:none; stroke-width:1.5; opacity:.7; }
-    .map-card span { font-size:14px; font-weight:600; color:var(--p); }
+    .map-card iframe { display:block; }
 
     .form-full .form-card { background: var(--bg-alt); }
 
@@ -125,8 +119,19 @@
     }
     .contact-note strong { color: var(--dark); }
 
-    @media (max-width: 1024px) { .sched-layout { gap: 48px; } }
-    @media (max-width: 768px) { .sched-layout { grid-template-columns: 1fr; } }
+    @media (max-width: 1024px) {
+      .sched-layout { gap: 48px; }
+    }
+    @media (max-width: 768px) {
+      .sched-layout { grid-template-columns: 1fr; gap: 40px; }
+      .info-lead { font-size: 15px; margin-bottom: 28px; }
+      .contact-action { padding: 14px 16px; }
+      .contact-action strong { font-size: 13px; }
+      .contact-action span { font-size: 13px; }
+      .wa-btn { font-size: 14px; padding: 12px 20px; }
+      .map-card { height: 160px; }
+      .ci-val { font-size: 14px; word-break: break-word; }
+    }
   </style>
 </head>
 <body>
@@ -255,12 +260,14 @@
           </div>
         </div>
 
-        <!-- Map placeholder -->
-        <a href="https://maps.app.goo.gl/fMbGfiiQo5oQbBRe7" target="_blank" class="map-card reveal">
-          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <span>Ver no Google Maps</span>
-          <span style="font-size:12px; color:var(--muted); font-weight:400">CAORT, Vila Olímpia, São Paulo</span>
-        </a>
+        <!-- Mapa -->
+        <div class="map-card reveal">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.6!2d-46.6869!3d-23.5928!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce574e3e1a7d7b%3A0x0!2sRua%20Helena%2C%20260%20-%20Vila%20Ol%C3%ADmpia%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1"
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            title="Localização CAORT - Rua Helena, 260, Vila Olímpia, São Paulo">
+          </iframe>
+        </div>
       </div>
 
       <!-- CONTACT CARD -->

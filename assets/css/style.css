@@ -350,6 +350,7 @@ footer { background: var(--dark); color: rgba(255,255,255,.65); padding: 72px 48
   nav { padding: 0 24px; }
   section { padding: 80px 24px; }
   footer { padding: 64px 24px 40px; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
   .page-hero { padding-left: 24px; padding-right: 24px; }
   .cta-strip { padding: 64px 24px; }
   .section-title { font-size: 36px; }
@@ -446,4 +447,13 @@ footer { background: var(--dark); color: rgba(255,255,255,.65); padding: 72px 48
   .cta-strip h2 { font-size: 28px; }
   .form-card { padding: 28px 20px; }
   .footer-logo img { width: 150px; height: 51px; }
+  footer { padding: 48px 20px 32px; }
+  .footer-top { gap: 32px; }
+  .footer-desc { max-width: 100%; }
+  .footer-bottom { gap: 12px; text-align: center; align-items: center; }
+  .footer-social { justify-content: center; }
+  .ci-icon { width: 42px; height: 42px; min-width: 42px; border-radius: 12px; }
+  .ci-icon svg { width: 20px; height: 20px; }
+  .ci-val { font-size: 14px; word-break: break-word; }
+  .contact-list { gap: 20px; }
 }
