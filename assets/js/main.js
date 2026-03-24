@@ -4,41 +4,55 @@
 
 // ── Mobile menu ──
 function toggleMenu() {
-  const links = document.getElementById('navLinks');
-  const burger = document.getElementById('hamburger');
-  links.classList.toggle('open');
-  burger.classList.toggle('open');
-  document.body.style.overflow = links.classList.contains('open') ? 'hidden' : '';
+  var drawer = document.getElementById('navDrawer');
+  var burger = document.getElementById('hamburger');
+  var overlay = document.getElementById('navOverlay');
+  var isOpen = drawer.classList.contains('open');
+
+  drawer.classList.toggle('open', !isOpen);
+  burger.classList.toggle('open', !isOpen);
+  overlay.classList.toggle('open', !isOpen);
+  document.body.style.overflow = isOpen ? '' : 'hidden';
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Close menu on link click
-  document.querySelectorAll('#navLinks a').forEach(a => {
-    a.addEventListener('click', () => {
-      document.getElementById('navLinks').classList.remove('open');
-      document.getElementById('hamburger').classList.remove('open');
-      document.body.style.overflow = '';
-    });
+function closeMenu() {
+  var drawer = document.getElementById('navDrawer');
+  if (drawer.classList.contains('open')) toggleMenu();
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+
+  // Close drawer when clicking a navigation link
+  var drawerLinks = document.querySelectorAll('#navDrawer li:not(.nav-drawer-social) a');
+  for (var i = 0; i < drawerLinks.length; i++) {
+    drawerLinks[i].addEventListener('click', closeMenu);
+  }
+
+  // Close on Escape key
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeMenu();
   });
 
   // Nav shadow on scroll
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function () {
     nav.classList.toggle('scrolled', window.scrollY > 40);
   });
 
-  // Active nav link (based on current page)
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.nav-links a').forEach(a => {
-    const href = a.getAttribute('href');
+  // Active nav link (desktop + drawer)
+  var currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  var allLinks = document.querySelectorAll('.nav-links a, .nav-drawer a');
+  for (var j = 0; j < allLinks.length; j++) {
+    var href = allLinks[j].getAttribute('href');
     if (href === currentPage || (currentPage === '' && href === 'index.html')) {
-      a.classList.add('active');
+      allLinks[j].classList.add('active');
     }
-  });
+  }
 
   // Scroll-reveal
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  var reveals = document.querySelectorAll('.reveal');
+  for (var k = 0; k < reveals.length; k++) io.observe(reveals[k]);
 });

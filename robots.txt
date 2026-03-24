@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://drjoaquimlopes.com.br/sitemap.xml
