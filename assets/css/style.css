@@ -344,7 +344,11 @@ footer { background: var(--dark); color: rgba(255,255,255,.65); padding: 72px 48
 .footer-contact-line a { color: rgba(255,255,255,.55); text-decoration: none; transition: color .2s; }
 .footer-contact-line a:hover { color: #fff; }
 .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 32px; }
+.footer-credits { display: flex; flex-direction: column; gap: 6px; }
 .footer-copy { font-size: 13px; color: rgba(255,255,255,.35); }
+.footer-dev { font-size: 13px; color: rgba(255,255,255,.35); }
+.footer-dev a { color: rgba(255,255,255,.55); text-decoration: none; transition: color .2s; }
+.footer-dev a:hover { color: #fff; }
 .footer-social { display: flex; gap: 16px; }
 .footer-social a { color: rgba(255,255,255,.45); line-height: 0; transition: color .2s; }
 .footer-social a:hover { color: #fff; }
