@@ -87,7 +87,7 @@ export default async function BlogPostPage({
         ])}
       />
 
-      <article className="px-5 pb-20 pt-[calc(72px+56px)] md:px-12 md:pb-24 md:pt-[calc(96px+64px)]">
+      <article className="px-5 pb-20 pt-[calc(72px+56px)] sm:px-8 lg:px-12 lg:pb-24 lg:pt-[calc(96px+64px)]">
         <div className="mx-auto max-w-[760px]">
           <nav className="mb-6 text-[13px] text-muted" aria-label="Breadcrumb">
             <Link href="/" className="text-p hover:underline">

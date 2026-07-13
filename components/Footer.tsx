@@ -8,9 +8,9 @@ export function Footer() {
   const year = 2026;
 
   return (
-    <footer className="bg-dark px-5 pb-10 pt-16 text-white/65 md:px-12 md:pt-[72px]">
+    <footer className="bg-dark px-5 pb-10 pt-16 text-white/65 sm:px-8 lg:px-12 lg:pt-[72px]">
       <div className="mx-auto max-w-[1120px]">
-        <div className="grid gap-10 border-b border-white/10 pb-12 md:grid-cols-[2fr_1fr_1.4fr] md:gap-14">
+        <div className="grid gap-10 border-b border-white/10 pb-12 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1.4fr] lg:gap-14">
           {/* Marca */}
           <div>
             <Link href="/" className="mb-3 block">
@@ -19,7 +19,7 @@ export function Footer() {
                 alt="Dr. Joaquim Lopes"
                 width={280}
                 height={96}
-                className="h-16 w-auto object-contain brightness-0 invert md:h-20"
+                className="h-16 w-auto object-contain brightness-0 invert lg:h-20"
               />
             </Link>
             <p className="mb-4 max-w-[280px] text-sm leading-relaxed">
@@ -58,7 +58,7 @@ export function Footer() {
           </div>
 
           {/* Contato + locais */}
-          <div>
+          <div className="min-w-0 sm:col-span-2 lg:col-span-1">
             <div className="mb-[18px] text-sm font-semibold text-white">Contato</div>
             <div className="mb-3 text-sm">
               <a

@@ -41,7 +41,7 @@ export function SectionHeading({
   return (
     <div className={`mb-16 ${alignCls}`}>
       <Eyebrow className="reveal mb-3.5">{eyebrow}</Eyebrow>
-      <h2 className="reveal text-3xl font-extrabold leading-[1.1] tracking-[-1.5px] text-dark md:text-[42px]">
+      <h2 className="reveal text-3xl font-extrabold leading-[1.1] tracking-[-1.5px] text-dark sm:text-4xl lg:text-[42px]">
         {title}
       </h2>
       {sub && (
@@ -66,7 +66,7 @@ export function PageHero({
   description: ReactNode;
 }) {
   return (
-    <div className="relative overflow-hidden bg-gradient-to-br from-p-muted to-[#dce4ea] px-5 pb-[72px] pt-[calc(72px+64px)] md:px-12 md:pt-[calc(96px+72px)]">
+    <div className="relative overflow-hidden bg-gradient-to-br from-p-muted to-[#dce4ea] px-5 pb-[72px] pt-[calc(72px+64px)] sm:px-8 lg:px-12 lg:pt-[calc(96px+72px)]">
       <div className="mx-auto max-w-[1120px]">
         <nav className="mb-4 text-[13px] text-muted" aria-label="Breadcrumb">
           <Link href="/" className="text-p hover:underline">
@@ -75,7 +75,7 @@ export function PageHero({
           <span className="mx-1.5">/</span>
           {breadcrumb}
         </nav>
-        <h1 className="mb-3.5 text-[32px] font-extrabold tracking-[-1.5px] text-dark md:text-5xl md:tracking-[-2px]">
+        <h1 className="mb-3.5 text-[32px] font-extrabold tracking-[-1.5px] text-dark sm:text-4xl lg:text-5xl lg:tracking-[-2px]">
           {title}
         </h1>
         <p className="max-w-[560px] text-base leading-relaxed text-muted md:text-lg">

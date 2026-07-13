@@ -27,25 +27,25 @@ export default function HomePage() {
   return (
     <>
       {/* ── HERO ── */}
-      <section className="relative flex min-h-[calc(100vh-72px)] items-center overflow-hidden px-5 pb-12 pt-28 md:min-h-screen md:px-12 md:pb-0 md:pt-24">
+      <section className="relative flex min-h-[calc(100vh-72px)] items-center overflow-hidden px-5 pb-12 pt-24 sm:px-8 sm:pt-28 lg:min-h-screen lg:px-12 lg:pb-0 lg:pt-24">
         <div
           aria-hidden
-          className="absolute inset-y-0 right-0 hidden w-[52%] bg-gradient-to-br from-p-muted to-[#dce4ea] [clip-path:polygon(12%_0,100%_0,100%_100%,0_100%)] md:block"
+          className="absolute inset-y-0 right-0 hidden w-[52%] bg-gradient-to-br from-p-muted to-[#dce4ea] [clip-path:polygon(12%_0,100%_0,100%_100%,0_100%)] lg:block"
         />
-        <div className="relative z-[2] mx-auto grid w-full max-w-[1120px] items-center gap-10 md:grid-cols-2 md:gap-14">
+        <div className="relative z-[2] mx-auto grid w-full max-w-[1120px] items-center gap-10 lg:grid-cols-2 lg:gap-14">
           <div>
             <div className="anim-fade-up mb-7 inline-flex items-center gap-2 rounded-full bg-p-muted px-[18px] py-2 text-[13px] font-semibold tracking-[0.3px] text-p [animation-delay:0.05s]">
               <span className="h-2 w-2 rounded-full bg-p" />
               Ortopedista &amp; Traumatologista em São Paulo - SP
             </div>
-            <h1 className="anim-fade-up text-[34px] font-extrabold leading-[1.04] tracking-[-1.5px] text-dark [animation-delay:0.15s] md:text-6xl md:tracking-[-2px]">
+            <h1 className="anim-fade-up text-[34px] font-extrabold leading-[1.04] tracking-[-1.5px] text-dark [animation-delay:0.15s] sm:text-5xl lg:text-6xl lg:tracking-[-2px]">
               Reconquiste sua <Accent>liberdade</Accent>
               <br />
               de movimento
             </h1>
 
             {/* Foto mobile */}
-            <div className="anim-fade-up mb-6 mt-6 h-[280px] overflow-hidden rounded-[20px] shadow-[0_16px_48px_rgba(86,105,122,0.2)] md:hidden">
+            <div className="anim-fade-up mb-6 mt-6 h-[240px] overflow-hidden rounded-[20px] shadow-[0_16px_48px_rgba(86,105,122,0.2)] sm:h-[360px] lg:hidden">
               <Image
                 src="/assets/images/dr/home-1.jpg"
                 alt="Dr. Joaquim Lopes"
@@ -92,7 +92,7 @@ export default function HomePage() {
           </div>
 
           {/* Foto desktop */}
-          <div className="anim-fade-up hidden justify-center md:flex [animation-delay:0.2s]">
+          <div className="anim-fade-up hidden justify-center lg:flex [animation-delay:0.2s]">
             <div className="h-[520px] w-[420px] max-w-full overflow-hidden rounded-[32px] shadow-photo">
               <Image
                 src="/assets/images/dr/home-1.jpg"
@@ -109,8 +109,8 @@ export default function HomePage() {
 
       {/* ── SOBRE TEASER ── */}
       <section className="bg-bg-alt px-5 py-20 md:px-12 md:py-24">
-        <div className="mx-auto grid max-w-[1120px] items-center gap-12 md:grid-cols-2 md:gap-20">
-          <div className="reveal h-[280px] overflow-hidden rounded-[18px] shadow-hover md:h-[480px]">
+        <div className="mx-auto grid max-w-[1120px] items-center gap-12 lg:grid-cols-2 lg:gap-20">
+          <div className="reveal h-[280px] overflow-hidden rounded-[18px] shadow-hover sm:h-[420px] lg:h-[480px]">
             <Image
               src="/assets/images/dr/home-2.jpg"
               alt="Dr. Joaquim Lopes"
@@ -168,7 +168,7 @@ export default function HomePage() {
                 <Link
                   key={item.name}
                   href="/especialidade"
-                  className={`reveal reveal-d${i + 1} group rounded-[18px] border border-line bg-bg-alt p-8 text-center transition-all duration-300 hover:-translate-y-1.5 hover:border-p-light hover:shadow-hover md:p-11`}
+                  className={`reveal reveal-d${i + 1} group rounded-[18px] border border-line bg-bg-alt p-8 text-center transition-all duration-300 hover:-translate-y-1.5 hover:border-p-light hover:shadow-hover lg:p-11`}
                 >
                   <div className="mx-auto mb-7 flex h-18 w-18 items-center justify-center rounded-[20px] bg-p transition-transform duration-300 group-hover:scale-105">
                     <Icon width={34} height={34} className="text-white" strokeWidth={1.6} />

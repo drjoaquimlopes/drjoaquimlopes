@@ -48,7 +48,7 @@ export function Nav() {
   return (
     <>
       <nav
-        className={`fixed inset-x-0 top-0 z-[999] flex h-[72px] items-center justify-between border-b border-p/[0.08] bg-white/85 px-5 backdrop-blur-xl transition-shadow duration-300 md:h-24 md:px-12 ${
+        className={`fixed inset-x-0 top-0 z-[999] flex h-[72px] items-center justify-between border-b border-p/[0.08] bg-white/85 px-5 backdrop-blur-xl transition-shadow duration-300 sm:px-8 lg:h-24 lg:px-12 ${
           scrolled ? "shadow-[0_4px_32px_rgba(86,105,122,0.1)]" : ""
         }`}
       >
@@ -59,12 +59,12 @@ export function Nav() {
             width={280}
             height={96}
             priority
-            className="h-[56px] w-auto object-contain md:h-24"
+            className="h-[56px] w-auto object-contain lg:h-24"
           />
         </Link>
 
         {/* Desktop links */}
-        <ul className="hidden items-center gap-7 md:flex">
+        <ul className="hidden items-center gap-7 lg:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
               <Link
@@ -90,7 +90,7 @@ export function Nav() {
         </ul>
 
         <SocialLinks
-          className="hidden md:flex"
+          className="hidden xl:flex"
           linkClassName="text-muted transition-colors hover:text-p"
         />
 
@@ -98,10 +98,10 @@ export function Nav() {
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-        aria-label={open ? "Fechar menu" : "Abrir menu"}
-        aria-expanded={open}
+          aria-label={open ? "Fechar menu" : "Abrir menu"}
+          aria-expanded={open}
           aria-controls="mobile-navigation"
-          className="flex h-11 w-11 flex-col items-center justify-center gap-[5px] md:hidden"
+          className="flex h-11 w-11 flex-col items-center justify-center gap-[5px] lg:hidden"
         >
           <span
             className={`h-0.5 w-[22px] rounded bg-p transition-all duration-300 ${
@@ -127,7 +127,7 @@ export function Nav() {
         tabIndex={-1}
         aria-hidden
         onClick={() => setOpen(false)}
-        className={`fixed inset-0 z-[1000] bg-black/35 transition-opacity duration-300 md:hidden ${
+        className={`fixed inset-0 z-[1000] bg-black/35 transition-opacity duration-300 lg:hidden ${
           open ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       />
@@ -137,7 +137,7 @@ export function Nav() {
         id="mobile-navigation"
         aria-hidden={!open}
         inert={!open}
-        className={`fixed inset-y-0 right-0 z-[1001] flex w-[280px] max-w-[82vw] flex-col overflow-y-auto bg-white px-7 pb-8 pt-[88px] shadow-[-4px_0_32px_rgba(0,0,0,0.15)] transition-transform duration-300 ease-out md:hidden ${
+        className={`fixed inset-y-0 right-0 z-[1001] flex w-[280px] max-w-[82vw] flex-col overflow-y-auto bg-white px-7 pb-8 pt-[88px] shadow-[-4px_0_32px_rgba(0,0,0,0.15)] transition-transform duration-300 ease-out lg:hidden ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >

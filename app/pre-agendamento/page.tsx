@@ -40,11 +40,11 @@ function ContactItem({
   children: React.ReactNode;
 }) {
   return (
-    <div className="reveal flex items-start gap-4">
+    <div className="reveal flex min-w-0 items-start gap-4">
       <div className="flex h-12 w-12 min-w-12 items-center justify-center rounded-[14px] bg-p-muted">
         <Icon width={22} height={22} className="text-p" />
       </div>
-      <div>
+      <div className="min-w-0 flex-1">
         <div className="mb-1 text-[11px] font-bold uppercase tracking-[0.8px] text-muted">
           {label}
         </div>
@@ -75,9 +75,9 @@ export default function PreAgendamentoPage() {
       />
 
       <section className="px-5 py-20 md:px-12 md:py-24">
-        <div className="mx-auto grid max-w-[1120px] items-start gap-12 md:grid-cols-2 md:gap-20">
+        <div className="mx-auto grid min-w-0 max-w-[1120px] items-start gap-12 lg:grid-cols-2 lg:gap-20">
           {/* Info */}
-          <div>
+          <div className="min-w-0">
             <span className="reveal mb-3.5 block text-xs font-bold uppercase tracking-[1.8px] text-p">
               Informações de contato
             </span>
@@ -164,7 +164,7 @@ export default function PreAgendamentoPage() {
           </div>
 
           {/* Card de contato */}
-          <div className="reveal">
+          <div className="reveal min-w-0">
             <div className="rounded-[18px] border border-line bg-bg-alt p-7 shadow-soft md:p-12">
               <h3 className="mb-1.5 text-2xl font-bold text-dark">
                 Fale com nossa equipe
@@ -190,7 +190,7 @@ export default function PreAgendamentoPage() {
                   className="flex items-start gap-3.5 rounded-[10px] border border-line bg-white p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-p-light hover:shadow-soft"
                 >
                   <Phone width={20} height={20} className="mt-0.5 text-p" strokeWidth={1.8} />
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <strong className="block text-sm text-dark">
                       Ligue para a clínica
                     </strong>
@@ -204,11 +204,11 @@ export default function PreAgendamentoPage() {
                   className="flex items-start gap-3.5 rounded-[10px] border border-line bg-white p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-p-light hover:shadow-soft"
                 >
                   <Mail width={20} height={20} className="mt-0.5 text-p" strokeWidth={1.8} />
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <strong className="block text-sm text-dark">
                       Envie um e-mail
                     </strong>
-                    <span className="block break-words text-sm text-muted">
+                    <span className="block break-all text-sm text-muted">
                       {site.email}
                     </span>
                   </div>

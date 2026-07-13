@@ -122,9 +122,9 @@ export default function SobrePage() {
       />
 
       <section className="px-5 py-20 md:px-12 md:py-24">
-        <div className="mx-auto grid max-w-[1120px] items-start gap-12 md:grid-cols-2 md:gap-20">
+        <div className="mx-auto grid max-w-[1120px] items-start gap-12 lg:grid-cols-2 lg:gap-20">
           {/* Foto */}
-          <div className="reveal h-[280px] overflow-hidden rounded-[18px] shadow-hover md:sticky md:top-24 md:h-[560px]">
+          <div className="reveal h-[280px] overflow-hidden rounded-[18px] shadow-hover sm:h-[440px] lg:sticky lg:top-24 lg:h-[560px]">
             <Image
               src="/assets/images/dr/sobre-1.jpg"
               alt="Dr. Joaquim Lopes"
@@ -139,7 +139,7 @@ export default function SobrePage() {
             <span className="reveal mb-3.5 block text-xs font-bold uppercase tracking-[1.8px] text-p">
               Trajetória
             </span>
-            <h2 className="reveal mb-6 text-3xl font-extrabold tracking-[-1.5px] text-dark md:text-[42px]">
+            <h2 className="reveal mb-6 text-3xl font-extrabold tracking-[-1.5px] text-dark sm:text-4xl lg:text-[42px]">
               Cuidado especializado com <Accent>empatia</Accent>
             </h2>
 

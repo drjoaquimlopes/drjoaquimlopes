@@ -165,10 +165,10 @@ export default function EspecialidadePage() {
           {blocks.map((block, i) => (
             <div key={block.number}>
               {i > 0 && <hr className="my-14 border-line md:my-20" />}
-              <div className="grid items-start gap-10 md:grid-cols-2 md:gap-16">
+              <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
                 <div
-                  className={`reveal h-[220px] overflow-hidden rounded-[18px] shadow-hover md:h-[400px] ${
-                    i % 2 === 1 ? "md:order-2" : ""
+                  className={`reveal h-[220px] overflow-hidden rounded-[18px] shadow-hover sm:h-[360px] lg:h-[400px] ${
+                    i % 2 === 1 ? "lg:order-2" : ""
                   }`}
                 >
                   <Image
