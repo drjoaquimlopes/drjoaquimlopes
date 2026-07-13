@@ -9,13 +9,16 @@ on:
     branches: [main]
     paths:
       - ".github/workflows/deploy-main.yml"
-      - "assets/**"
-      - "index.html"
-      - "especialidade.html"
-      - "pre-agendamento.html"
-      - "sobre.html"
-      - "robots.txt"
-      - "sitemap.xml"
+      - "app/**"
+      - "components/**"
+      - "lib/**"
+      - "content/**"
+      - "public/**"
+      - "package.json"
+      - "package-lock.json"
+      - "next.config.ts"
+      - "tsconfig.json"
+      - "postcss.config.mjs"
       - "vercel.json"
   workflow_dispatch:
 
