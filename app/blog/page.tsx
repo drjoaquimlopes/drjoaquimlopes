@@ -10,9 +10,9 @@ import { site } from "@/lib/site";
 import { Book } from "@/components/icons";
 
 export const metadata: Metadata = {
-  title: "Blog | Dr. Joaquim Lopes - Ortopedista em São Paulo",
+  title: "Blog de Ortopedia e Joelho",
   description:
-    "Artigos sobre ortopedia, cirurgia do joelho, lesões esportivas e recuperação, escritos pelo Dr. Joaquim Lopes, ortopedista em São Paulo.",
+    "Artigos do Dr. Joaquim Lopes sobre ortopedia, cirurgia do joelho, lesões esportivas, prevenção e recuperação.",
   keywords: [
     "blog ortopedia",
     "cirurgia do joelho",
@@ -34,6 +34,14 @@ export const metadata: Metadata = {
     title: "Blog | Dr. Joaquim Lopes",
     description:
       "Conteúdo sobre ortopedia, cirurgia do joelho e recuperação pelo Dr. Joaquim Lopes.",
+    images: [
+      {
+        url: "/assets/images/dr/1.jpg",
+        width: 1200,
+        height: 800,
+        alt: "Blog de ortopedia e cirurgia do joelho",
+      },
+    ],
   },
 };
 
@@ -54,7 +62,10 @@ export default function BlogIndexPage() {
       headline: p.title,
       url: `${site.url}/blog/${p.slug}`,
       datePublished: p.date,
+      dateModified: p.date,
       description: p.description,
+      author: { "@id": `${site.url}/#medico` },
+      ...(p.cover ? { image: `${site.url}${p.cover}` } : {}),
     })),
   };
 
@@ -132,6 +143,7 @@ export default function BlogIndexPage() {
                         alt={post.title}
                         width={600}
                         height={600}
+                        sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, calc(100vw - 40px)"
                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     ) : (

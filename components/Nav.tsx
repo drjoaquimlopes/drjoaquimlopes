@@ -59,6 +59,7 @@ export function Nav() {
             width={280}
             height={96}
             priority
+            sizes="(min-width: 1024px) 280px, 164px"
             className="h-[56px] w-auto object-contain lg:h-24"
           />
         </Link>
@@ -125,7 +126,7 @@ export function Nav() {
       <button
         type="button"
         tabIndex={-1}
-        aria-hidden
+        aria-label="Fechar menu"
         onClick={() => setOpen(false)}
         className={`fixed inset-0 z-[1000] bg-black/35 transition-opacity duration-300 lg:hidden ${
           open ? "opacity-100" : "pointer-events-none opacity-0"

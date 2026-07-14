@@ -16,9 +16,9 @@ import {
 } from "@/components/icons";
 
 export const metadata: Metadata = {
-  title: "Sobre o Dr. Joaquim Lopes | Ortopedista Especialista em Joelho - São Paulo",
+  title: "Formação e trajetória",
   description:
-    "Conheça o Dr. Joaquim Lopes: ortopedista em São Paulo com formação em Cirurgia do Joelho pela Santa Casa de SP, Fellow em Medicina Esportiva na Coreia do Sul. CRM-SP 171205.",
+    "Conheça a formação do Dr. Joaquim Lopes em ortopedia, cirurgia do joelho e medicina esportiva. CRM-SP 171205 e RQE 113362.",
   keywords: [
     "dr joaquim lopes ortopedista",
     "ortopedista vila olímpia",
@@ -37,7 +37,14 @@ export const metadata: Metadata = {
     title: "Sobre o Dr. Joaquim Lopes | Ortopedista em São Paulo",
     description:
       "Formação em Ortopedia pela HMCC, Cirurgia do Joelho pela Santa Casa de SP e Fellow em Medicina Esportiva na Coreia do Sul.",
-    images: [{ url: "/assets/images/dr/sobre-1.jpg" }],
+    images: [
+      {
+        url: "/assets/images/dr/fellow-1.jpg",
+        width: 1200,
+        height: 800,
+        alt: "Dr. Joaquim Lopes, ortopedista especialista em joelho",
+      },
+    ],
   },
 };
 
@@ -130,6 +137,7 @@ export default function SobrePage() {
               alt="Dr. Joaquim Lopes"
               width={560}
               height={560}
+              sizes="(min-width: 1024px) 50vw, calc(100vw - 40px)"
               className="h-full w-full object-cover object-top"
             />
           </div>
@@ -254,6 +262,7 @@ export default function SobrePage() {
                       alt="Dr. Joaquim Lopes durante Fellow em Medicina Esportiva no Myongji Hospital, Seul, Coreia do Sul"
                       width={600}
                       height={180}
+                      sizes="(min-width: 1024px) 480px, calc(100vw - 96px)"
                       className="h-full w-full object-cover object-[center_25%]"
                     />
                   </div>

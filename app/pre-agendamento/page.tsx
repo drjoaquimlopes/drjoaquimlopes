@@ -6,9 +6,9 @@ import { site, whatsappUrl } from "@/lib/site";
 import { Phone, Mail, MapPin, Clock, IdCard, WhatsAppSolid } from "@/components/icons";
 
 export const metadata: Metadata = {
-  title: "Agendar Consulta Ortopedista São Paulo e Osasco | Dr. Joaquim Lopes",
+  title: "Agendar Consulta Ortopédica",
   description:
-    "Agende sua consulta com o Dr. Joaquim Lopes, ortopedista em São Paulo e Osasco. Atendimento na Vila Olímpia, Higienópolis, Jardim Paulista, Itaim Bibi e Osasco.",
+    "Agende sua consulta com o Dr. Joaquim Lopes em São Paulo ou Osasco. Atendimento por WhatsApp, telefone ou e-mail.",
   keywords: [
     "agendar consulta ortopedista são paulo",
     "consulta ortopedia vila olímpia",
@@ -26,7 +26,14 @@ export const metadata: Metadata = {
       "Agendar Consulta | Dr. Joaquim Lopes - Ortopedista São Paulo e Osasco",
     description:
       "Agende sua consulta de ortopedia na Vila Olímpia, Higienópolis, Jardim Paulista, Itaim Bibi ou Osasco. WhatsApp (11) 92553-8077.",
-    images: [{ url: "/assets/images/logo/logo.png" }],
+    images: [
+      {
+        url: "/assets/images/dr/1.jpg",
+        width: 1200,
+        height: 800,
+        alt: "Dr. Joaquim Lopes, ortopedista em São Paulo e Osasco",
+      },
+    ],
   },
 };
 

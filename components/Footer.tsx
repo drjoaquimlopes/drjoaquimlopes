@@ -19,6 +19,7 @@ export function Footer() {
                 alt="Dr. Joaquim Lopes"
                 width={280}
                 height={96}
+                sizes="(min-width: 1024px) 233px, 187px"
                 className="h-16 w-auto object-contain brightness-0 invert lg:h-20"
               />
             </Link>
@@ -52,6 +53,14 @@ export function Footer() {
                   className="text-sm text-white/55 transition-colors hover:text-white"
                 >
                   Agendar consulta
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/politica-de-privacidade"
+                  className="text-sm text-white/55 transition-colors hover:text-white"
+                >
+                  Política de privacidade
                 </Link>
               </li>
             </ul>

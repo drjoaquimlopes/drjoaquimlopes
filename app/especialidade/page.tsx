@@ -7,10 +7,9 @@ import { breadcrumb } from "@/lib/jsonld";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title:
-    "Cirurgia do Joelho em São Paulo | Artroscopia, LCA, Prótese | Dr. Joaquim Lopes",
+  title: "Cirurgia do Joelho em São Paulo",
   description:
-    "Cirurgia do Joelho em São Paulo: artroscopia, reconstrução de LCA/LCP, prótese de joelho, infiltração e PRP. Dr. Joaquim Lopes, ortopedista na Vila Olímpia.",
+    "Tratamentos e cirurgia do joelho em São Paulo: artroscopia, reconstrução de LCA, prótese, infiltração e medicina esportiva.",
   keywords: [
     "cirurgia do joelho são paulo",
     "artroscopia joelho sp",
@@ -30,7 +29,14 @@ export const metadata: Metadata = {
     title: "Cirurgia do Joelho em São Paulo | Dr. Joaquim Lopes",
     description:
       "Artroscopia, reconstrução de LCA/LCP, prótese de joelho, infiltração e PRP. Ortopedista especialista na Vila Olímpia, SP.",
-    images: [{ url: "/assets/images/dr/1.jpg" }],
+    images: [
+      {
+        url: "/assets/images/dr/1.jpg",
+        width: 1200,
+        height: 800,
+        alt: "Dr. Joaquim Lopes durante atendimento ortopédico",
+      },
+    ],
   },
 };
 
@@ -176,6 +182,7 @@ export default function EspecialidadePage() {
                     alt={block.alt}
                     width={560}
                     height={400}
+                    sizes="(min-width: 1024px) 50vw, calc(100vw - 40px)"
                     className="h-full w-full object-cover"
                   />
                 </div>

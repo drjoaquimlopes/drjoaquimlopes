@@ -25,7 +25,9 @@ export async function generateMetadata({
 
   // Toda página compartilhada precisa de uma imagem; sem capa (ex.: post em
   // vídeo), usa a imagem padrão do site.
-  const ogImage = post.cover ?? "/assets/images/dr/home-1.jpg";
+  const ogImage = post.cover ?? "/assets/images/dr/1.jpg";
+  const ogImageWidth = post.cover ? post.coverW : 1200;
+  const ogImageHeight = post.cover ? post.coverH : 800;
 
   return {
     title: post.title,
@@ -41,13 +43,20 @@ export async function generateMetadata({
       modifiedTime: post.date,
       authors: [post.author],
       tags: post.tags,
-      images: [{ url: ogImage }],
+      images: [
+        {
+          url: ogImage,
+          width: ogImageWidth,
+          height: ogImageHeight,
+          alt: post.title,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.description,
-      images: [ogImage],
+      images: [{ url: ogImage, width: ogImageWidth, height: ogImageHeight }],
     },
   };
 }
@@ -60,6 +69,7 @@ export default async function BlogPostPage({
   const { slug } = await params;
   const post = getPost(slug);
   if (!post) notFound();
+  const articleImage = post.cover ?? "/assets/images/dr/1.jpg";
 
   const articleJsonLd = {
     "@context": "https://schema.org",
@@ -69,7 +79,7 @@ export default async function BlogPostPage({
     datePublished: post.date,
     dateModified: post.date,
     url: `${site.url}/blog/${post.slug}`,
-    ...(post.cover ? { image: `${site.url}${post.cover}` } : {}),
+    image: `${site.url}${articleImage}`,
     author: { "@type": "Person", name: post.author, "@id": `${site.url}/#medico` },
     publisher: { "@id": `${site.url}/#medico` },
     mainEntityOfPage: { "@type": "WebPage", "@id": `${site.url}/blog/${post.slug}` },
@@ -136,6 +146,7 @@ export default async function BlogPostPage({
                 width={post.coverW}
                 height={post.coverH}
                 priority
+                sizes="(max-width: 559px) calc(100vw - 40px), 520px"
                 className="h-auto w-full"
               />
             </div>
@@ -157,6 +168,7 @@ export default async function BlogPostPage({
                     alt={`${post.title} - imagem ${i + 1}`}
                     width={1080}
                     height={1080}
+                    sizes="(max-width: 599px) calc(100vw - 40px), 560px"
                     className="h-auto w-full"
                   />
                 </figure>

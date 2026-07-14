@@ -52,6 +52,7 @@ export default function HomePage() {
                 width={520}
                 height={280}
                 priority
+                sizes="(max-width: 639px) calc(100vw - 40px), (max-width: 1023px) calc(100vw - 64px), 420px"
                 className="h-full w-full object-cover object-top"
               />
             </div>
@@ -100,6 +101,7 @@ export default function HomePage() {
                 width={420}
                 height={520}
                 priority
+                sizes="420px"
                 className="h-full w-full object-cover object-top"
               />
             </div>
@@ -116,6 +118,7 @@ export default function HomePage() {
               alt="Dr. Joaquim Lopes"
               width={560}
               height={480}
+              sizes="(min-width: 1024px) 50vw, calc(100vw - 40px)"
               className="h-full w-full object-cover object-top"
             />
           </div>

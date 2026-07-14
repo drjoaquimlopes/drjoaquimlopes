@@ -7,7 +7,7 @@ export const site = {
   name: "Dr. Joaquim Lopes",
   role: "Ortopedista e Traumatologista",
   specialtyShort: "Especialista em Cirurgia do Joelho",
-  url: "https://drjoaquimlopes.com.br",
+  url: "https://www.drjoaquimlopes.com.br",
   locale: "pt_BR",
   crm: "CRM-SP 171205",
   rqe: "RQE 113362",

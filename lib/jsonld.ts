@@ -7,6 +7,7 @@ import { locations, type Location } from "./locations";
 
 const ORTHO_IMG = `${site.url}/assets/images/dr/home-1.jpg`;
 const LOGO_IMG = `${site.url}/assets/images/logo/logo.png`;
+const PRIMARY_LOCATION = locations.find((location) => location.primary) ?? locations[0];
 
 function clinicNode(loc: Location) {
   const node: Record<string, unknown> = {
@@ -72,6 +73,26 @@ export function organizationGraph() {
           "Ortopedista e Traumatologista especializado em Cirurgia do Joelho e Medicina Esportiva em São Paulo.",
         medicalSpecialty: ["Orthopedic", "SportsMedicine"],
         qualifications: site.qualifications,
+        ...(PRIMARY_LOCATION?.street
+          ? {
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: PRIMARY_LOCATION.street,
+                addressLocality: PRIMARY_LOCATION.city,
+                addressRegion: PRIMARY_LOCATION.region,
+                postalCode: PRIMARY_LOCATION.postalCode,
+                addressCountry: "BR",
+              },
+            }
+          : {}),
+        openingHoursSpecification: [
+          {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: site.hours.days,
+            opens: site.hours.opens,
+            closes: site.hours.closes,
+          },
+        ],
         memberOf: [
           {
             "@type": "MedicalOrganization",
