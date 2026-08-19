@@ -162,8 +162,8 @@ export default function JoelhoPage() {
 
       <section className="px-5 py-20 md:px-12 md:py-24">
         <div className="mx-auto max-w-[920px]">
-          <div className="reveal card-lift rounded-[18px] border border-line bg-bg-alt p-7 shadow-soft md:p-9">
-            <p className="mb-3 text-lg font-bold text-dark">
+          <div className="reveal rounded-[18px] border border-line bg-bg-alt p-7 md:p-9">
+            <p className="mb-3 text-h3 font-bold text-dark">
               Conteúdo médico por Dr. Joaquim Lopes
             </p>
             <p className="text-[15px] leading-[1.8] text-muted">
@@ -207,7 +207,7 @@ export default function JoelhoPage() {
                     href={`/blog/${link.slug}`}
                     className="reveal card-lift group rounded-[18px] border border-line bg-white p-7 shadow-soft"
                   >
-                    <h2 className="mb-3 text-xl font-bold text-dark transition-colors duration-300 group-hover:text-p">
+                    <h2 className="mb-3 text-h3 font-bold text-dark transition-colors duration-300 group-hover:text-p">
                       {link.label}
                     </h2>
                     <p className="mb-5 text-[15px] leading-[1.75] text-muted">
@@ -238,7 +238,7 @@ export default function JoelhoPage() {
           />
           <Link
             href="/especialidade"
-            className="reveal inline-flex items-center gap-2 rounded-full border-2 border-p px-7 py-3.5 font-semibold text-p transition-colors hover:bg-p hover:text-white"
+            className="reveal inline-flex items-center gap-2 rounded-full border-2 border-p px-7 py-3.5 font-semibold text-p transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:bg-p hover:text-white hover:shadow-[0_10px_28px_rgba(86,105,122,0.3)] active:translate-y-0 active:scale-[0.97]"
           >
             Ver tratamentos e cirurgias
             <ArrowRight width={17} height={17} strokeWidth={2} />

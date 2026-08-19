@@ -6,7 +6,7 @@ export default function NotFound() {
     <section className="flex min-h-[70vh] items-center px-5 py-24 md:px-12">
       <div className="mx-auto max-w-md text-center">
         <p className="mb-3 text-6xl font-extrabold tracking-tight text-p">404</p>
-        <h1 className="mb-4 text-2xl font-extrabold tracking-[-1px] text-dark md:text-3xl">
+        <h1 className="mb-4 text-h2 font-extrabold text-dark">
           Página <Accent>não encontrada</Accent>
         </h1>
         <p className="mb-8 text-muted">

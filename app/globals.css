@@ -111,12 +111,16 @@ body {
   will-change: auto;
 }
 
-/* Variantes de direção */
-.reveal-left {
-  transform: translate3d(-28px, 0, 0);
-}
-.reveal-right {
-  transform: translate3d(28px, 0, 0);
+/* Variantes de direção.
+   As horizontais valem só a partir do desktop: em telas estreitas o
+   deslocamento lateral empurra o bloco para fora e cria rolagem horizontal. */
+@media (min-width: 1024px) {
+  .reveal-left {
+    transform: translate3d(-28px, 0, 0);
+  }
+  .reveal-right {
+    transform: translate3d(28px, 0, 0);
+  }
 }
 .reveal-zoom {
   transform: scale(0.94);

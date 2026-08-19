@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PageHero, Accent } from "@/components/sections";
+import { PageHero, Accent, Eyebrow } from "@/components/sections";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumb } from "@/lib/jsonld";
 import { site, whatsappUrl } from "@/lib/site";
@@ -85,13 +85,11 @@ export default function PreAgendamentoPage() {
         <div className="mx-auto grid min-w-0 max-w-[1120px] items-start gap-12 lg:grid-cols-2 lg:gap-20">
           {/* Info */}
           <div className="min-w-0">
-            <span className="reveal mb-3.5 block text-xs font-bold uppercase tracking-[1.8px] text-p">
-              Informações de contato
-            </span>
-            <h2 className="reveal mb-5 text-[28px] font-extrabold tracking-[-1px] text-dark md:text-[32px]">
+            <Eyebrow className="reveal mb-3.5">Informações de contato</Eyebrow>
+            <h2 className="reveal mb-5 text-h2 font-extrabold text-dark">
               Estamos aqui para <Accent>ajudar</Accent>
             </h2>
-            <p className="reveal mb-10 text-base leading-[1.85] text-muted">
+            <p className="reveal mb-10 text-lead text-muted">
               Nossa equipe está pronta para orientar seu agendamento e confirmar
               sua consulta. Escolha o canal mais conveniente e fale conosco
               diretamente.
@@ -173,7 +171,7 @@ export default function PreAgendamentoPage() {
           {/* Card de contato */}
           <div className="reveal min-w-0">
             <div className="rounded-[18px] border border-line bg-bg-alt p-7 shadow-soft md:p-12">
-              <h3 className="mb-1.5 text-2xl font-bold text-dark">
+              <h3 className="mb-1.5 text-h3 font-bold text-dark">
                 Fale com nossa equipe
               </h3>
               <p className="mb-8 text-sm text-muted">

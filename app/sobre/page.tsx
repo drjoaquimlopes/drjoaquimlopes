@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { PageHero, Accent, CtaStrip } from "@/components/sections";
+import { PageHero, Accent, CtaStrip, Eyebrow } from "@/components/sections";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumb } from "@/lib/jsonld";
 import { site } from "@/lib/site";
@@ -8,7 +8,6 @@ import {
   IdCard,
   Shield,
   Award,
-  Globe,
   Heart,
   Target,
   Refresh,
@@ -144,27 +143,25 @@ export default function SobrePage() {
 
           {/* Texto */}
           <div>
-            <span className="reveal mb-3.5 block text-xs font-bold uppercase tracking-[1.8px] text-p">
-              Trajetória
-            </span>
-            <h2 className="reveal mb-6 text-3xl font-extrabold tracking-[-1.5px] text-dark sm:text-4xl lg:text-[42px]">
+            <Eyebrow className="reveal mb-3.5">Trajetória</Eyebrow>
+            <h2 className="reveal mb-6 text-h2 font-extrabold text-dark">
               Cuidado especializado com <Accent>empatia</Accent>
             </h2>
 
-            <p className="reveal mb-7 text-base leading-[1.9] text-muted">
+            <p className="reveal mb-7 text-lead text-muted">
               Dr. Joaquim Lopes é médico especialista em Ortopedia, Traumatologia e
               Medicina do Esporte, com formação sólida e contínua voltada ao cuidado
               completo do sistema músculo-esquelético. Seu diferencial está no
               atendimento humanizado: cada paciente é ouvido com atenção e tratado
               com respeito, independentemente do caso.
             </p>
-            <p className="reveal mb-7 text-base leading-[1.9] text-muted">
+            <p className="reveal mb-7 text-lead text-muted">
               Com residência em Cirurgia do Joelho pela renomada Santa Casa de São
               Paulo, o Dr. Joaquim está preparado para tratar desde lesões esportivas
               até condições degenerativas complexas, sempre buscando a recuperação
               completa e o retorno à qualidade de vida do paciente.
             </p>
-            <p className="reveal mb-7 text-base leading-[1.9] text-muted">
+            <p className="reveal mb-7 text-lead text-muted">
               É membro ativo da Sociedade Brasileira de Ortopedia e Traumatologia
               (SBOT) e da Sociedade Brasileira de Cirurgia do Joelho (SBCJ), estando
               constantemente atualizado com as mais modernas técnicas e protocolos da
@@ -174,37 +171,38 @@ export default function SobrePage() {
             <hr className="my-9 border-line" />
 
             {/* Credenciais */}
-            <p className="reveal mb-5 text-[17px] font-bold text-dark">
-              Registro profissional
-            </p>
-            <div className="reveal-group grid gap-4 sm:grid-cols-2">
+            <Eyebrow className="reveal mb-5">Registro profissional</Eyebrow>
+            <dl className="reveal-group grid gap-x-10 sm:grid-cols-2">
               {credentials.map((c, i) => {
                 const Icon = c.icon;
                 return (
                   <div
                     key={`${c.label}-${i}`}
-                    className="reveal card-lift flex items-start gap-3.5 rounded-[10px] border border-line bg-bg-alt p-5"
+                    className="reveal flex items-center gap-3 border-t border-line py-3.5 first:border-t-0 sm:[&:nth-child(2)]:border-t-0"
                   >
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[10px] bg-p-muted">
-                      <Icon width={20} height={20} className="text-p" strokeWidth={1.7} />
-                    </div>
-                    <div>
-                      <div className="mb-0.5 text-[11px] font-bold uppercase tracking-[0.8px] text-muted">
-                        {c.label}
-                      </div>
-                      <div className="text-sm font-semibold text-dark">{c.value}</div>
-                    </div>
+                    <Icon
+                      width={17}
+                      height={17}
+                      className="shrink-0 text-p-light"
+                      strokeWidth={1.7}
+                    />
+                    <dt className="text-[11px] font-bold uppercase tracking-[0.8px] text-muted">
+                      {c.label}
+                    </dt>
+                    <dd className="ml-auto text-sm font-semibold text-dark">
+                      {c.value}
+                    </dd>
                   </div>
                 );
               })}
-            </div>
+            </dl>
 
             <div className="reveal mt-9 flex flex-wrap gap-2.5">
               {["Ortopedia", "Traumatologia", "Cirurgia do Joelho", "Medicina do Esporte"].map(
                 (tag) => (
                   <span
                     key={tag}
-                    className="rounded-full border border-line bg-white px-4 py-[7px] text-[13px] font-semibold text-p transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:border-p-light hover:bg-p-muted"
+                    className="rounded-full border border-line bg-bg-alt px-4 py-[7px] text-[13px] font-semibold text-p"
                   >
                     {tag}
                   </span>
@@ -215,15 +213,11 @@ export default function SobrePage() {
             <hr className="my-9 border-line" />
 
             {/* Formação */}
-            <p className="reveal mb-6 text-[17px] font-bold text-dark">
-              Formação profissional
-            </p>
+            <Eyebrow className="reveal mb-6">Formação profissional</Eyebrow>
             <div className="flex flex-col">
               {timeline.map((item, i) => (
                 <div key={i} className="relative flex gap-[18px] pb-6">
-                  {i !== timeline.length - 1 && (
-                    <span className="absolute left-[13px] top-[30px] bottom-0 w-0.5 bg-line" />
-                  )}
+                  <span className="absolute left-[13px] top-[30px] bottom-0 w-0.5 bg-line" />
                   <span className="relative z-[1] flex h-7 w-7 min-w-7 items-center justify-center rounded-full border-2 border-p-light bg-p-muted">
                     <span className="h-[9px] w-[9px] rounded-full bg-p" />
                   </span>
@@ -238,25 +232,21 @@ export default function SobrePage() {
                 </div>
               ))}
 
-              {/* Fellow (destaque) */}
-              <div className="mt-1 flex gap-[18px] rounded-xl border-[1.5px] border-p-light bg-gradient-to-br from-[#f0f4f8] to-[#dce8f0] p-4">
+              {/* Fellow: último item da linha do tempo, com registro em foto */}
+              <div className="flex gap-[18px]">
                 <span className="relative z-[1] flex h-7 w-7 min-w-7 items-center justify-center rounded-full border-2 border-p bg-p">
                   <span className="h-[9px] w-[9px] rounded-full bg-white" />
                 </span>
-                <div className="flex flex-1 flex-col gap-3.5">
+                <div className="flex flex-1 flex-col gap-4">
                   <div>
-                    <div className="text-[13px] font-semibold uppercase tracking-[0.6px] text-p">
-                      Fellow Avançado
+                    <div className="mb-0.5 text-xs font-semibold tracking-[0.4px] text-p">
+                      Fellow avançado · Coreia do Sul
                     </div>
-                    <div className="text-[15px] font-semibold leading-[1.45] text-dark">
-                      Medicina Esportiva - Myongji Hospital, Seul · Coreia do Sul
+                    <div className="text-sm font-semibold leading-[1.45] text-dark">
+                      Medicina Esportiva - Myongji Hospital, Seul
                     </div>
-                    <span className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-p/10 px-3 py-1 text-[11px] font-bold tracking-[0.5px] text-p">
-                      <Globe width={13} height={13} strokeWidth={1.7} />
-                      Formação Internacional
-                    </span>
                   </div>
-                  <div className="h-[180px] w-full overflow-hidden rounded-lg">
+                  <div className="h-[200px] w-full overflow-hidden rounded-xl">
                     <Image
                       src="/assets/images/dr/fellow-1.jpg"
                       alt="Dr. Joaquim Lopes durante Fellow em Medicina Esportiva no Myongji Hospital, Seul, Coreia do Sul"
@@ -273,22 +263,29 @@ export default function SobrePage() {
             <hr className="my-9 border-line" />
 
             {/* Valores */}
-            <p className="reveal mb-5 text-[17px] font-bold text-dark">
-              Valores do atendimento
-            </p>
-            <div className="reveal-group grid gap-4 sm:grid-cols-2">
+            <Eyebrow className="reveal mb-5">Valores do atendimento</Eyebrow>
+            <div className="reveal-group grid gap-x-10 sm:grid-cols-2">
               {values.map((v) => {
                 const Icon = v.icon;
                 return (
                   <div
                     key={v.title}
-                    className="reveal card-lift rounded-[10px] border border-line bg-bg-alt p-6 text-center"
+                    className="reveal flex gap-4 border-t border-line py-5 first:border-t-0 sm:[&:nth-child(2)]:border-t-0"
                   >
-                    <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-p-muted">
-                      <Icon width={24} height={24} className="text-p" strokeWidth={1.7} />
+                    <Icon
+                      width={22}
+                      height={22}
+                      className="mt-0.5 shrink-0 text-p"
+                      strokeWidth={1.7}
+                    />
+                    <div>
+                      <div className="mb-1 text-[15px] font-bold text-dark">
+                        {v.title}
+                      </div>
+                      <div className="text-[13px] leading-relaxed text-muted">
+                        {v.desc}
+                      </div>
                     </div>
-                    <div className="mb-1.5 text-[15px] font-bold text-dark">{v.title}</div>
-                    <div className="text-[13px] leading-relaxed text-muted">{v.desc}</div>
                   </div>
                 );
               })}

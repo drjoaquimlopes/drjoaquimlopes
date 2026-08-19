@@ -96,7 +96,7 @@ export default function BlogIndexPage() {
               <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-[20px] bg-p-muted">
                 <Book width={30} height={30} className="text-p" />
               </div>
-              <h2 className="mb-2.5 text-2xl font-bold text-dark">
+              <h2 className="mb-2.5 text-h3 font-bold text-dark">
                 Conteúdo em breve
               </h2>
               <p className="text-muted">
@@ -162,7 +162,7 @@ export default function BlogIndexPage() {
                         </>
                       )}
                     </div>
-                    <h2 className="mb-2 text-xl font-bold leading-snug text-dark transition-colors duration-300 group-hover:text-p">
+                    <h2 className="mb-2 text-h3 font-bold leading-snug text-dark transition-colors duration-300 group-hover:text-p">
                       {post.title}
                     </h2>
                     <p className="text-sm leading-relaxed text-muted">

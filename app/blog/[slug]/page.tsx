@@ -134,12 +134,8 @@ export default async function BlogPostPage({
             ))}
           </div>
 
-          <h1 className="mb-4 text-[32px] font-extrabold leading-tight tracking-[-1.2px] text-dark md:text-[44px] md:tracking-[-2px]">
-            {post.title}
-          </h1>
-          <p className="mb-8 text-lg leading-relaxed text-muted">
-            {post.description}
-          </p>
+          <h1 className="mb-4 text-h1 font-extrabold text-dark">{post.title}</h1>
+          <p className="mb-8 text-lead text-muted">{post.description}</p>
 
           <div className="mb-8 flex flex-col gap-1 rounded-[14px] border border-line bg-bg-alt px-5 py-4 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
             <p>
@@ -224,7 +220,7 @@ export default async function BlogPostPage({
             <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
               <h2
                 id="conteudos-relacionados"
-                className="text-2xl font-extrabold tracking-[-0.8px] text-dark"
+                className="text-h3 font-extrabold text-dark md:text-[1.75rem]"
               >
                 Conteúdos relacionados
               </h2>
@@ -251,7 +247,7 @@ export default async function BlogPostPage({
 
           <div className="flex flex-col items-start gap-4 rounded-[18px] bg-bg-alt p-8 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <p className="text-lg font-bold text-dark">
+              <p className="text-h3 font-bold text-dark">
                 Ficou com alguma dúvida?
               </p>
               <p className="text-sm text-muted">

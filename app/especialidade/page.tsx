@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { PageHero, Accent, CtaStrip } from "@/components/sections";
+import { PageHero, Accent, CtaStrip, Eyebrow } from "@/components/sections";
 import { Button } from "@/components/Button";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumb } from "@/lib/jsonld";
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
 
 const blocks = [
   {
-    number: "01. Exames",
+    label: "Exames",
     image: "/assets/images/dr/1.jpg",
     alt: "Exames ortopédicos",
     title: (
@@ -62,7 +62,7 @@ const blocks = [
     cta: "Agendar avaliação",
   },
   {
-    number: "02. Procedimentos",
+    label: "Procedimentos",
     image: "/assets/images/dr/2.jpg",
     alt: "Procedimentos ortopédicos",
     title: (
@@ -82,7 +82,7 @@ const blocks = [
     cta: "Consultar tratamentos",
   },
   {
-    number: "03. Cirurgias",
+    label: "Cirurgias",
     image: "/assets/images/dr/3.jpg",
     alt: "Cirurgias do joelho",
     title: (
@@ -170,7 +170,7 @@ export default function EspecialidadePage() {
       <section className="px-5 py-20 md:px-12 md:py-24">
         <div className="mx-auto max-w-[1120px]">
           {blocks.map((block, i) => (
-            <div key={block.number}>
+            <div key={block.label}>
               {i > 0 && <hr className="my-14 border-line md:my-20" />}
               <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
                 <div
@@ -188,15 +188,11 @@ export default function EspecialidadePage() {
                   />
                 </div>
                 <div>
-                  <span className="reveal mb-3 block text-[13px] font-bold uppercase tracking-[2px] text-p-light">
-                    {block.number}
-                  </span>
-                  <h2 className="reveal mb-5 text-[26px] font-extrabold tracking-[-1.2px] text-dark md:text-[34px]">
+                  <Eyebrow className="reveal mb-3">{block.label}</Eyebrow>
+                  <h2 className="reveal mb-5 text-h2 font-extrabold text-dark">
                     {block.title}
                   </h2>
-                  <p className="reveal mb-7 text-base leading-[1.85] text-muted">
-                    {block.body}
-                  </p>
+                  <p className="reveal mb-7 text-lead text-muted">{block.body}</p>
                   <ul className="reveal mb-8 flex flex-col gap-3">
                     {block.items.map((item) => (
                       <CheckItem key={item}>{item}</CheckItem>
@@ -216,7 +212,7 @@ export default function EspecialidadePage() {
 
       <section className="bg-bg-alt px-5 py-16 text-center md:px-12">
         <div className="mx-auto max-w-[720px]">
-          <h2 className="mb-3 text-2xl font-extrabold text-dark md:text-3xl">
+          <h2 className="text-h3 mb-3 font-extrabold text-dark md:text-[1.75rem]">
             Quer entender melhor os problemas do joelho?
           </h2>
           <p className="mb-7 leading-relaxed text-muted">
