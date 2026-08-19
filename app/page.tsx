@@ -44,11 +44,14 @@ const sinaisParaAvaliacao = [
   },
 ];
 
-/** Credenciais exibidas no hero — todas derivadas de site.qualifications. */
+/**
+ * Credenciais exibidas no hero — derivadas de site.qualifications.
+ * Só siglas, para as colunas ficarem simétricas; a residência na Santa Casa
+ * aparece por extenso no texto da seção "Sobre", logo abaixo.
+ */
 const credenciaisHero = [
   { sigla: "SBOT", label: "Título de especialista" },
   { sigla: "SBCJ", label: "Especialista em joelho" },
-  { sigla: "Santa Casa", label: "Residência em joelho" },
 ];
 
 const perguntasFrequentes = [
@@ -163,16 +166,15 @@ export default function HomePage() {
               </Button>
             </div>
 
-            {/* Faixa de credenciais: divisores em vez de blocos soltos */}
-            <dl className="anim-fade-up mt-11 flex flex-wrap items-stretch border-t border-p/15 pt-6 [animation-delay:0.45s]">
+            {/* Faixa de credenciais: colunas de largura igual, para o divisor
+                nunca ficar órfão numa segunda linha. */}
+            <dl className="anim-fade-up mt-11 grid max-w-[400px] grid-cols-2 border-t border-p/15 pt-6 [animation-delay:0.45s]">
               {credenciaisHero.map((item, i) => (
                 <div
                   key={item.sigla}
-                  className={`pr-6 sm:pr-8 ${
-                    i > 0 ? "ml-6 border-l border-p/15 pl-6 sm:ml-8 sm:pl-8" : ""
-                  }`}
+                  className={i > 0 ? "border-l border-p/15 pl-6" : "pr-6"}
                 >
-                  <dt className="block text-xl font-extrabold tracking-[-0.02em] text-p-dark sm:text-2xl">
+                  <dt className="text-2xl font-extrabold tracking-[-0.02em] text-p-dark">
                     {item.sigla}
                   </dt>
                   <dd className="mt-0.5 text-xs font-medium text-muted">
