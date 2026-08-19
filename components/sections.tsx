@@ -24,29 +24,51 @@ export function Accent({ children }: { children: ReactNode }) {
   return <em className="not-italic text-p">{children}</em>;
 }
 
-/** Cabeçalho de seção centralizado (eyebrow + título + subtítulo). */
+/**
+ * Cabeçalho de seção (eyebrow + título + subtítulo).
+ *
+ * `size` controla o peso do título na página: `lead` para as seções que
+ * carregam a narrativa, `support` para as de apoio — é o que evita que todas
+ * as seções gritem no mesmo volume.
+ *
+ * `spacing` separa o cabeçalho do conteúdo. O padrão acompanha o alinhamento
+ * (centralizado respira mais); passe explicitamente quando o cabeçalho for
+ * seguido de texto corrido, sem precisar de margem negativa no consumidor.
+ */
 export function SectionHeading({
   eyebrow,
   title,
   sub,
   align = "center",
+  size = "lead",
+  spacing,
 }: {
-  eyebrow: string;
+  eyebrow?: string;
   title: ReactNode;
   sub?: ReactNode;
   align?: "center" | "left";
+  size?: "lead" | "support";
+  spacing?: "normal" | "tight";
 }) {
-  const alignCls = align === "center" ? "text-center" : "text-left";
-  const subAlign = align === "center" ? "mx-auto" : "";
+  const isCenter = align === "center";
+  const gap =
+    (spacing ?? (isCenter ? "normal" : "tight")) === "normal"
+      ? "mb-14 md:mb-16"
+      : "mb-7";
+  const titleCls =
+    size === "lead"
+      ? "text-h2 font-extrabold text-dark"
+      : "text-h3 font-bold text-dark md:text-[1.75rem]";
+
   return (
-    <div className={`mb-16 ${alignCls}`}>
-      <Eyebrow className="reveal mb-3.5">{eyebrow}</Eyebrow>
-      <h2 className="reveal text-3xl font-extrabold leading-[1.1] tracking-[-1.5px] text-dark sm:text-4xl lg:text-[42px]">
-        {title}
-      </h2>
+    <div className={`${gap} ${isCenter ? "text-center" : "text-left"}`}>
+      {eyebrow && <Eyebrow className="reveal mb-3.5">{eyebrow}</Eyebrow>}
+      <h2 className={`reveal ${titleCls}`}>{title}</h2>
       {sub && (
         <p
-          className={`reveal mt-5 max-w-[540px] text-[17px] leading-relaxed text-muted ${subAlign}`}
+          className={`reveal mt-5 max-w-[540px] text-lead text-muted ${
+            isCenter ? "mx-auto" : ""
+          }`}
         >
           {sub}
         </p>
@@ -66,11 +88,7 @@ export function PageHero({
   description: ReactNode;
 }) {
   return (
-    <div className="anim-gradient relative overflow-hidden bg-gradient-to-br from-p-muted via-[#e4eaf0] to-[#dce4ea] px-5 pb-[72px] pt-[calc(72px+64px)] sm:px-8 lg:px-12 lg:pt-[calc(96px+72px)]">
-      <div
-        aria-hidden
-        className="anim-float pointer-events-none absolute -right-16 -top-10 h-64 w-64 rounded-full bg-white/40 blur-3xl"
-      />
+    <div className="relative overflow-hidden bg-gradient-to-br from-p-muted to-[#dce4ea] px-5 pb-[72px] pt-[calc(72px+64px)] sm:px-8 lg:px-12 lg:pt-[calc(96px+72px)]">
       <div className="relative mx-auto max-w-[1120px]">
         <nav
           className="anim-fade-up mb-4 text-[13px] text-muted"
@@ -82,10 +100,10 @@ export function PageHero({
           <span className="mx-1.5">/</span>
           {breadcrumb}
         </nav>
-        <h1 className="anim-fade-up mb-3.5 text-[32px] font-extrabold tracking-[-1.5px] text-dark [animation-delay:0.08s] sm:text-4xl lg:text-5xl lg:tracking-[-2px]">
+        <h1 className="anim-fade-up mb-3.5 text-h1 font-extrabold text-dark [animation-delay:0.08s]">
           {title}
         </h1>
-        <p className="anim-fade-up max-w-[560px] text-base leading-relaxed text-muted [animation-delay:0.16s] md:text-lg">
+        <p className="anim-fade-up max-w-[560px] text-lead text-muted [animation-delay:0.16s]">
           {description}
         </p>
       </div>
@@ -110,20 +128,12 @@ export function CtaStrip({
   href?: string;
 }) {
   return (
-    <section className="anim-gradient relative overflow-hidden bg-gradient-to-br from-p via-[#4d6070] to-p-dark px-5 py-20 text-center md:px-12">
-      <div
-        aria-hidden
-        className="anim-float-slow pointer-events-none absolute -left-20 top-0 h-72 w-72 rounded-full bg-white/[0.07] blur-3xl"
-      />
-      <div
-        aria-hidden
-        className="anim-float pointer-events-none absolute -bottom-24 -right-10 h-80 w-80 rounded-full bg-white/[0.06] blur-3xl"
-      />
-      <div className="relative reveal-group">
-        <h2 className="reveal mb-3.5 text-[28px] font-extrabold tracking-[-1px] text-white md:text-4xl">
+    <section className="bg-p px-5 py-20 text-center md:px-12">
+      <div className="reveal-group">
+        <h2 className="reveal mb-3.5 text-h2 font-extrabold text-white">
           {title}
         </h2>
-        <p className="reveal mx-auto mb-9 max-w-xl text-[17px] text-white/75">
+        <p className="reveal mx-auto mb-9 max-w-xl text-lead text-white/75">
           {text}
         </p>
         <div className="reveal flex justify-center">

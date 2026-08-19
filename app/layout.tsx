@@ -85,6 +85,11 @@ export default function RootLayout({
         >
           Pular para o conteúdo
         </a>
+        {/* Sem JS o IntersectionObserver não roda: o conteúdo com .reveal
+            ficaria invisível. Este fallback garante a página legível. */}
+        <noscript>
+          <style>{`.reveal{opacity:1!important;transform:none!important;filter:none!important}`}</style>
+        </noscript>
         <JsonLd data={organizationGraph()} />
         <header>
           <Nav />

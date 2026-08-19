@@ -44,6 +44,13 @@ const sinaisParaAvaliacao = [
   },
 ];
 
+/** Credenciais exibidas no hero — todas derivadas de site.qualifications. */
+const credenciaisHero = [
+  { sigla: "SBOT", label: "Título de especialista" },
+  { sigla: "SBCJ", label: "Especialista em joelho" },
+  { sigla: "Santa Casa", label: "Residência em joelho" },
+];
+
 const perguntasFrequentes = [
   {
     question: "Quando devo procurar um ortopedista especialista em joelho?",
@@ -103,35 +110,31 @@ export default function HomePage() {
     <>
       <JsonLd data={homeJsonLd} />
       <JsonLd data={faqJsonLd} />
-      {/* ── HERO ── */}
-      <section className="relative flex min-h-[calc(100vh-72px)] items-center overflow-hidden px-5 pb-12 pt-24 sm:px-8 sm:pt-28 lg:min-h-screen lg:px-12 lg:pb-0 lg:pt-24">
+
+      {/* ══ HERO ══
+          Altura menor que a viewport inteira: a seção seguinte aparece na
+          dobra e convida a rolar sem precisar de um indicador explícito. */}
+      <section className="relative flex min-h-[86vh] items-center overflow-hidden px-5 pb-16 pt-24 sm:px-8 sm:pt-28 lg:min-h-[90vh] lg:px-12 lg:pb-20">
         <div
           aria-hidden
-          className="anim-gradient absolute inset-y-0 right-0 hidden w-[52%] bg-gradient-to-br from-p-muted via-[#e4eaf0] to-[#dce4ea] [clip-path:polygon(12%_0,100%_0,100%_100%,0_100%)] lg:block"
+          className="absolute inset-y-0 right-0 hidden w-[52%] bg-gradient-to-br from-p-muted to-[#dce4ea] [clip-path:polygon(18%_0,100%_0,100%_100%,4%_100%)] lg:block"
         />
-        <div
-          aria-hidden
-          className="anim-float pointer-events-none absolute -left-32 top-24 hidden h-80 w-80 rounded-full bg-p-light/25 blur-3xl lg:block"
-        />
-        <div
-          aria-hidden
-          className="anim-float-slow pointer-events-none absolute -right-10 bottom-0 hidden h-96 w-96 rounded-full bg-p-muted/70 blur-3xl lg:block"
-        />
-        <div className="relative z-[2] mx-auto grid w-full max-w-[1120px] items-center gap-10 lg:grid-cols-2 lg:gap-14">
+
+        <div className="relative z-[2] mx-auto grid w-full max-w-[1120px] items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
           <div>
-            <div className="anim-fade-up mb-7 inline-flex items-center gap-2 rounded-full bg-p-muted px-[18px] py-2 text-[13px] font-semibold tracking-[0.3px] text-p [animation-delay:0.05s]">
-              <span className="anim-pulse-dot h-2 w-2 rounded-full bg-p" />
-              Ortopedista &amp; Traumatologista em São Paulo - SP
-            </div>
-            <h1 className="anim-fade-up text-[34px] font-extrabold leading-[1.04] tracking-[-1.5px] text-dark [animation-delay:0.15s] sm:text-5xl lg:text-6xl lg:tracking-[-2px]">
+            <p className="anim-fade-up mb-5 text-xs font-bold uppercase tracking-[1.8px] text-p [animation-delay:0.05s]">
+              Ortopedista e Traumatologista em São Paulo - SP
+            </p>
+
+            <h1 className="anim-fade-up text-display font-extrabold text-dark [animation-delay:0.15s]">
               Ortopedista em <Accent>São Paulo</Accent>
-              <span className="mt-2 block text-[0.72em] leading-[1.12] tracking-[-1px] text-p-dark">
+              <span className="mt-2 block text-[0.68em] leading-[1.15] text-p-dark">
                 especialista em joelho
               </span>
             </h1>
 
             {/* Foto mobile */}
-            <div className="anim-fade-up group mb-6 mt-6 h-[240px] overflow-hidden rounded-[20px] shadow-[0_16px_48px_rgba(86,105,122,0.2)] sm:h-[360px] lg:hidden">
+            <div className="anim-fade-up group mb-7 mt-7 h-[240px] overflow-hidden rounded-[20px] shadow-[0_16px_48px_rgba(86,105,122,0.2)] sm:h-[360px] lg:hidden">
               <Image
                 src="/assets/images/dr/home-1.jpg"
                 alt="Dr. Joaquim Lopes, ortopedista em São Paulo especialista em joelho"
@@ -143,11 +146,12 @@ export default function HomePage() {
               />
             </div>
 
-            <p className="anim-fade-up mb-10 max-w-[480px] text-[15px] leading-[1.75] text-muted [animation-delay:0.25s] md:text-lg">
+            <p className="anim-fade-up mt-6 mb-9 max-w-[470px] text-lead text-muted [animation-delay:0.25s]">
               Dr. Joaquim Lopes é ortopedista e traumatologista com foco em
               cirurgia do joelho e medicina esportiva. Realiza avaliação,
               tratamento e acompanhamento individualizado em São Paulo.
             </p>
+
             <div className="anim-fade-up flex flex-col gap-3.5 [animation-delay:0.35s] sm:flex-row sm:flex-wrap">
               <Button href="/pre-agendamento">
                 <Calendar width={17} height={17} strokeWidth={2} />
@@ -158,34 +162,38 @@ export default function HomePage() {
                 <ArrowRight width={17} height={17} strokeWidth={2} />
               </Button>
             </div>
-            <div className="anim-fade-up mt-13 flex gap-10 [animation-delay:0.45s]">
-              <div>
-                <span className="block text-2xl font-extrabold tracking-[-1px] text-p-dark">
-                  SBOT
-                </span>
-                <span className="text-xs font-medium text-muted">
-                  Membro certificado
-                </span>
-              </div>
-              <div>
-                <span className="block text-2xl font-extrabold tracking-[-1px] text-p-dark">
-                  SBCJ
-                </span>
-                <span className="text-xs font-medium text-muted">
-                  Especialista em Joelho
-                </span>
-              </div>
-            </div>
+
+            {/* Faixa de credenciais: divisores em vez de blocos soltos */}
+            <dl className="anim-fade-up mt-11 flex flex-wrap items-stretch border-t border-p/15 pt-6 [animation-delay:0.45s]">
+              {credenciaisHero.map((item, i) => (
+                <div
+                  key={item.sigla}
+                  className={`pr-6 sm:pr-8 ${
+                    i > 0 ? "ml-6 border-l border-p/15 pl-6 sm:ml-8 sm:pl-8" : ""
+                  }`}
+                >
+                  <dt className="block text-xl font-extrabold tracking-[-0.02em] text-p-dark sm:text-2xl">
+                    {item.sigla}
+                  </dt>
+                  <dd className="mt-0.5 text-xs font-medium text-muted">
+                    {item.label}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+            <p className="anim-fade-up mt-4 text-xs text-muted [animation-delay:0.45s]">
+              {site.crmRqe}
+            </p>
           </div>
 
           {/* Foto desktop */}
           <div className="anim-fade-up hidden justify-center lg:flex [animation-delay:0.2s]">
-            <div className="group h-[520px] w-[420px] max-w-full overflow-hidden rounded-[32px] shadow-photo transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1.5">
+            <div className="group h-[540px] w-[420px] max-w-full overflow-hidden rounded-[32px] shadow-photo transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1.5">
               <Image
                 src="/assets/images/dr/home-1.jpg"
                 alt="Dr. Joaquim Lopes, ortopedista em São Paulo especialista em joelho"
                 width={420}
-                height={520}
+                height={540}
                 priority
                 sizes="420px"
                 className="h-full w-full object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
@@ -195,54 +203,111 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── QUANDO PROCURAR ── */}
-      <section id="quando-procurar" className="px-5 py-20 md:px-12 md:py-24">
+      {/* ══ QUANDO PROCURAR ══
+          Lista com filetes em vez de quatro caixas iguais: o cabeçalho fica
+          fixo à esquerda no desktop e os sinais correm ao lado. */}
+      <section id="quando-procurar" className="px-5 py-20 md:px-12 md:py-28">
+        <div className="mx-auto grid max-w-[1120px] gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-20">
+          <div className="lg:sticky lg:top-32 lg:self-start">
+            <SectionHeading
+              align="left"
+              eyebrow="Avaliação ortopédica"
+              title={
+                <>
+                  Quando procurar um <Accent>ortopedista de joelho</Accent>?
+                </>
+              }
+              sub="Uma avaliação especializada ajuda a identificar a causa dos sintomas e definir o tratamento adequado para cada caso."
+            />
+            <div className="reveal flex flex-wrap gap-3">
+              <Button href="/joelho" size="sm">
+                Guia de saúde do joelho
+                <ArrowRight width={16} height={16} strokeWidth={2} />
+              </Button>
+              <Button href="/especialidade" variant="outline" size="sm">
+                Tratamentos e cirurgias
+              </Button>
+            </div>
+          </div>
+
+          <ul className="reveal-group flex flex-col">
+            {sinaisParaAvaliacao.map((item) => (
+              <li
+                key={item.title}
+                className="reveal border-t border-line py-7 first:border-t-0 first:pt-0"
+              >
+                <h3 className="mb-2 text-h3 font-bold text-dark">{item.title}</h3>
+                <p className="max-w-[540px] text-[15px] leading-[1.75] text-muted">
+                  {item.desc}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* ══ ESPECIALIDADE ══
+          Sobe na página, logo depois dos sintomas: é o momento de conversão. */}
+      <section className="bg-bg-alt px-5 py-20 md:px-12 md:py-28">
         <div className="mx-auto max-w-[1120px]">
           <SectionHeading
-            eyebrow="Avaliação ortopédica"
+            eyebrow="Especialidade"
             title={
               <>
-                Quando procurar um <Accent>ortopedista de joelho</Accent>?
+                Do diagnóstico à <Accent>recuperação</Accent>
               </>
             }
-            sub="Uma avaliação especializada ajuda a identificar a causa dos sintomas e definir o tratamento adequado para cada caso."
+            sub="Atendimento completo com foco em Cirurgia do Joelho, com diagnóstico, tratamento e cirurgias de alta complexidade."
           />
-          <div className="reveal-group grid gap-5 sm:grid-cols-2">
-            {sinaisParaAvaliacao.map((item) => (
-              <article
-                key={item.title}
-                className="reveal card-lift rounded-[18px] border border-line bg-white p-7 shadow-soft"
-              >
-                <h3 className="mb-2 text-lg font-bold text-dark">{item.title}</h3>
-                <p className="text-[15px] leading-[1.75] text-muted">{item.desc}</p>
-              </article>
-            ))}
-          </div>
-          <div className="reveal mt-9 flex flex-wrap justify-center gap-3">
-            <Button href="/especialidade" variant="outline">
-              Conhecer tratamentos e cirurgias
-              <ArrowRight width={17} height={17} strokeWidth={2} />
-            </Button>
-            <Button href="/joelho">
-              Explorar o guia de saúde do joelho
-            </Button>
+
+          <div className="reveal-group grid gap-6 md:grid-cols-3 md:gap-7">
+            {especialidades.map((item) => {
+              const Icon = item.icon;
+              return (
+                <Link
+                  key={item.name}
+                  href="/especialidade"
+                  className="reveal card-lift group flex flex-col rounded-[20px] border border-line bg-white p-8 shadow-soft lg:p-9"
+                >
+                  <span className="mb-6 flex h-16 w-16 items-center justify-center rounded-[18px] bg-p transition-colors duration-300 group-hover:bg-p-dark">
+                    <Icon
+                      width={30}
+                      height={30}
+                      className="text-white"
+                      strokeWidth={1.6}
+                    />
+                  </span>
+                  <h3 className="mb-3 text-h3 font-bold text-dark transition-colors duration-300 group-hover:text-p">
+                    {item.name}
+                  </h3>
+                  <p className="mb-6 text-[15px] leading-relaxed text-muted">
+                    {item.desc}
+                  </p>
+                  <span className="mt-auto inline-flex items-center gap-2 text-sm font-bold text-p">
+                    Saber mais
+                    <ArrowRight width={15} height={15} strokeWidth={2} />
+                  </span>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* ── SOBRE TEASER ── */}
-      <section className="bg-bg-alt px-5 py-20 md:px-12 md:py-24">
-        <div className="mx-auto grid max-w-[1120px] items-center gap-12 lg:grid-cols-2 lg:gap-20">
-          <div className="reveal h-[280px] overflow-hidden rounded-[18px] shadow-hover sm:h-[420px] lg:h-[480px]">
+      {/* ══ SOBRE ══ */}
+      <section className="px-5 py-20 md:px-12 md:py-28">
+        <div className="mx-auto grid max-w-[1120px] items-center gap-14 lg:grid-cols-2 lg:gap-20">
+          <div className="reveal reveal-left group h-[300px] overflow-hidden rounded-[20px] shadow-hover sm:h-[440px] lg:h-[500px]">
             <Image
               src="/assets/images/dr/home-2.jpg"
-              alt="Dr. Joaquim Lopes"
+              alt="Dr. Joaquim Lopes em atendimento"
               width={560}
-              height={480}
+              height={500}
               sizes="(min-width: 1024px) 50vw, calc(100vw - 40px)"
-              className="h-full w-full object-cover object-top"
+              className="h-full w-full object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
             />
           </div>
+
           <div>
             <SectionHeading
               align="left"
@@ -253,15 +318,19 @@ export default function HomePage() {
                 </>
               }
             />
-            <p className="reveal mb-7 -mt-10 text-base leading-[1.85] text-muted">
+            <p className="reveal mb-6 text-lead text-muted">
               Dr. Joaquim Lopes é especialista em Ortopedia, Traumatologia e
-              Medicina do Esporte, com residência em Cirurgia do Joelho pela Santa
-              Casa de São Paulo. Membro da SBCJ e da SBOT.
+              Medicina do Esporte, com residência em Cirurgia do Joelho pela
+              Santa Casa de São Paulo. Membro da SBCJ e da SBOT.
             </p>
-            <p className="reveal mb-7 text-base leading-[1.85] text-muted">
+            <p className="reveal mb-6 text-lead text-muted">
               Seu atendimento é marcado pela escuta ativa, empatia e foco na
-              recuperação completa do paciente, unindo técnica de excelência a um
-              cuidado verdadeiramente humanizado.
+              recuperação completa do paciente, unindo técnica de excelência a
+              um cuidado verdadeiramente humanizado.
+            </p>
+            <p className="reveal mb-8 border-l-2 border-p-light pl-5 text-[15px] leading-[1.7] text-muted">
+              Fellow avançado em Medicina Esportiva pelo Myongji Hospital, em
+              Seul, na Coreia do Sul.
             </p>
             <div className="reveal">
               <Button href="/sobre">
@@ -273,62 +342,37 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── ESPECIALIDADES ── */}
-      <section className="px-5 py-20 md:px-12 md:py-24">
-        <div className="mx-auto max-w-[1120px]">
-          <SectionHeading
-            eyebrow="Especialidade"
-            title={
-              <>
-                Do diagnóstico à <Accent>recuperação</Accent>
-              </>
-            }
-            sub="Atendimento completo com foco em Cirurgia do Joelho, com diagnóstico, tratamento e cirurgias de alta complexidade."
-          />
-          <div className="reveal-group grid gap-6 md:grid-cols-3">
-            {especialidades.map((item) => {
-              const Icon = item.icon;
-              return (
-                <Link
-                  key={item.name}
-                  href="/especialidade"
-                  className="reveal card-lift group rounded-[18px] border border-line bg-bg-alt p-8 text-center lg:p-11"
-                >
-                  <div className="mx-auto mb-7 flex h-18 w-18 items-center justify-center rounded-[20px] bg-p shadow-[0_8px_24px_rgba(86,105,122,0.25)] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1 group-hover:rotate-3 group-hover:scale-105 group-hover:bg-p-dark">
-                    <Icon width={34} height={34} className="text-white" strokeWidth={1.6} />
-                  </div>
-                  <h3 className="mb-3 text-[22px] font-bold text-dark transition-colors duration-300 group-hover:text-p">
-                    {item.name}
-                  </h3>
-                  <p className="text-[15px] leading-relaxed text-muted">{item.desc}</p>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ── LOCAIS ── */}
+      {/* ══ LOCAIS ══
+          Conteúdo de referência: peso visual reduzido de propósito, para não
+          competir com as seções que carregam a decisão do paciente. */}
       <section className="bg-bg-alt px-5 py-20 md:px-12 md:py-24">
         <div className="mx-auto max-w-[1120px]">
           <SectionHeading
+            size="support"
             eyebrow="Locais de atendimento"
             title={
               <>
                 Consultas em <Accent>São Paulo e Osasco</Accent>
               </>
             }
-            sub="O Dr. Joaquim Lopes atende em clínicas e hospitais de referência para ortopedia, traumatologia e cirurgia do joelho."
+            sub="Clínicas e hospitais de referência para ortopedia, traumatologia e cirurgia do joelho."
           />
-          <div className="reveal-group grid gap-[18px] md:grid-cols-2">
+          <ul className="reveal-group grid gap-x-12 gap-y-0 sm:grid-cols-2">
             {locations.map((loc) => (
-              <article
+              <li
                 key={loc.schemaId}
-                className="reveal card-lift rounded-xl border border-line bg-white p-6 shadow-soft"
+                className="reveal border-t border-line py-5 first:border-t-0 sm:[&:nth-child(2)]:border-t-0"
               >
-                <h3 className="mb-2.5 text-lg font-bold text-dark">{loc.name}</h3>
+                <h3 className="mb-1 flex flex-wrap items-center gap-2 text-[15px] font-bold text-dark">
+                  {loc.name}
+                  {loc.primary && (
+                    <span className="rounded-full bg-p-muted px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.8px] text-p">
+                      Consultório
+                    </span>
+                  )}
+                </h3>
                 {loc.addressLines ? (
-                  <p className="text-sm leading-[1.65] text-muted">
+                  <p className="text-sm leading-[1.6] text-muted">
                     {loc.addressLines.map((line, j) => (
                       <span key={j} className="block">
                         {line}
@@ -336,19 +380,19 @@ export default function HomePage() {
                     ))}
                   </p>
                 ) : (
-                  <p className="text-sm leading-[1.65] text-muted">
+                  <p className="text-sm leading-[1.6] text-muted">
                     {loc.city} - {loc.region}
                   </p>
                 )}
-              </article>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
-      {/* ── FAQ ── */}
-      <section className="px-5 py-20 md:px-12 md:py-24">
-        <div className="mx-auto max-w-[860px]">
+      {/* ══ FAQ ══ */}
+      <section className="px-5 py-20 md:px-12 md:py-28">
+        <div className="mx-auto max-w-[820px]">
           <SectionHeading
             eyebrow="Dúvidas frequentes"
             title={
@@ -358,14 +402,10 @@ export default function HomePage() {
             }
             sub="Informações gerais para ajudar você a entender quando buscar avaliação e como funciona o atendimento."
           />
-          <div className="reveal-group space-y-3">
+          <div className="reveal-group divide-y divide-line border-y border-line">
             {perguntasFrequentes.map((item) => (
-              <details
-                key={item.question}
-                name="faq-home"
-                className="reveal group rounded-[14px] border border-line bg-white px-6 py-5 shadow-soft transition-[border-color,box-shadow] duration-300 hover:border-p-light hover:shadow-hover open:border-p-light"
-              >
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-5 font-bold text-dark transition-colors duration-300 marker:content-none group-hover:text-p">
+              <details key={item.question} name="faq-home" className="reveal group">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-5 py-5 text-[17px] font-bold text-dark transition-colors duration-300 marker:content-none group-hover:text-p">
                   {item.question}
                   <span
                     aria-hidden
@@ -374,7 +414,7 @@ export default function HomePage() {
                     +
                   </span>
                 </summary>
-                <p className="mt-4 border-t border-line pt-4 text-[15px] leading-[1.8] text-muted">
+                <p className="pb-6 pr-12 text-[15px] leading-[1.8] text-muted">
                   {item.answer}
                 </p>
               </details>
