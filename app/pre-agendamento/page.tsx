@@ -194,7 +194,7 @@ export default function PreAgendamentoPage() {
               <div className="mt-6 flex flex-col gap-4">
                 <a
                   href={`tel:${site.phoneE164.replace(/-/g, "")}`}
-                  className="flex items-start gap-3.5 rounded-[10px] border border-line bg-white p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-p-light hover:shadow-soft"
+                  className="card-lift flex items-start gap-3.5 rounded-[10px] border border-line bg-white p-5 shadow-[0_1px_2px_rgba(86,105,122,0.04)]"
                 >
                   <Phone width={20} height={20} className="mt-0.5 text-p" strokeWidth={1.8} />
                   <div className="min-w-0 flex-1">
@@ -208,7 +208,7 @@ export default function PreAgendamentoPage() {
                 </a>
                 <a
                   href={`mailto:${site.email}`}
-                  className="flex items-start gap-3.5 rounded-[10px] border border-line bg-white p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-p-light hover:shadow-soft"
+                  className="card-lift flex items-start gap-3.5 rounded-[10px] border border-line bg-white p-5 shadow-[0_1px_2px_rgba(86,105,122,0.04)]"
                 >
                   <Mail width={20} height={20} className="mt-0.5 text-p" strokeWidth={1.8} />
                   <div className="min-w-0 flex-1">

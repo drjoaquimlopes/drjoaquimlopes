@@ -27,7 +27,7 @@ export function Nav() {
   // Trava o scroll do body e fecha no Escape quando o drawer está aberto.
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
-    const background = document.querySelectorAll<HTMLElement>("main, footer");
+    const background = document.querySelectorAll<HTMLElement>("main, footer, [data-nav-background]");
     background.forEach((element) => {
       element.inert = open;
     });
@@ -48,11 +48,17 @@ export function Nav() {
   return (
     <>
       <nav
-        className={`fixed inset-x-0 top-0 z-[999] flex h-[72px] items-center justify-between border-b border-p/[0.08] bg-white/85 px-5 backdrop-blur-xl transition-shadow duration-300 sm:px-8 lg:h-24 lg:px-12 ${
-          scrolled ? "shadow-[0_4px_32px_rgba(86,105,122,0.1)]" : ""
+        className={`fixed inset-x-0 top-0 z-[999] flex items-center justify-between border-b border-p/[0.08] px-5 backdrop-blur-xl transition-[height,background-color,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] sm:px-8 lg:px-12 ${
+          scrolled
+            ? "h-16 bg-white/95 shadow-[0_4px_32px_rgba(86,105,122,0.1)] lg:h-[76px]"
+            : "h-[72px] bg-white/85 lg:h-24"
         }`}
       >
-        <Link href="/" aria-label="Dr. Joaquim Lopes - Início" className="shrink-0">
+        <Link
+          href="/"
+          aria-label="Dr. Joaquim Lopes - Início"
+          className="shrink-0 transition-transform duration-300 ease-out active:scale-95"
+        >
           <Image
             src="/assets/images/logo/logo.png"
             alt="Dr. Joaquim Lopes"
@@ -60,7 +66,9 @@ export function Nav() {
             height={96}
             priority
             sizes="(min-width: 1024px) 280px, 164px"
-            className="h-[56px] w-auto object-contain lg:h-24"
+            className={`w-auto object-contain transition-[height] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+              scrolled ? "h-11 lg:h-[60px]" : "h-[56px] lg:h-24"
+            }`}
           />
         </Link>
 
@@ -70,10 +78,10 @@ export function Nav() {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className={`relative text-sm font-medium transition-colors after:absolute after:-bottom-1 after:left-0 after:right-0 after:h-0.5 after:rounded after:bg-p after:transition-transform after:duration-300 ${
+                className={`relative text-sm font-medium transition-colors duration-300 after:absolute after:-bottom-1 after:left-0 after:right-0 after:h-0.5 after:origin-left after:rounded after:bg-p after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.22,1,0.36,1)] ${
                   isActive(pathname, link.href)
                     ? "text-p after:scale-x-100"
-                    : "text-muted hover:text-p after:scale-x-0"
+                    : "text-muted after:scale-x-0 hover:text-p hover:after:scale-x-100"
                 }`}
               >
                 {link.label}
@@ -83,7 +91,7 @@ export function Nav() {
           <li>
             <Link
               href="/pre-agendamento"
-              className="rounded-full bg-p px-[22px] py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-p-dark"
+              className="rounded-full bg-p px-[22px] py-2.5 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(86,105,122,0.22)] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:bg-p-dark hover:shadow-[0_10px_26px_rgba(86,105,122,0.36)] active:translate-y-0 active:scale-[0.97] active:duration-100"
             >
               Agendar Consulta
             </Link>
@@ -138,7 +146,7 @@ export function Nav() {
         id="mobile-navigation"
         aria-hidden={!open}
         inert={!open}
-        className={`fixed inset-y-0 right-0 z-[1001] flex w-[280px] max-w-[82vw] flex-col overflow-y-auto bg-white px-7 pb-8 pt-[88px] shadow-[-4px_0_32px_rgba(0,0,0,0.15)] transition-transform duration-300 ease-out lg:hidden ${
+        className={`fixed inset-y-0 right-0 z-[1001] flex w-[280px] max-w-[82vw] flex-col overflow-y-auto bg-white px-7 pb-8 pt-[88px] shadow-[-4px_0_32px_rgba(0,0,0,0.15)] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] lg:hidden ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -153,12 +161,18 @@ export function Nav() {
         </button>
 
         <ul className="flex flex-col">
-          {navLinks.map((link) => (
-            <li key={link.href} className="border-b border-line">
+          {navLinks.map((link, i) => (
+            <li
+              key={link.href}
+              style={{ transitionDelay: open ? `${120 + i * 55}ms` : "0ms" }}
+              className={`border-b border-line transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
+                open ? "translate-x-0 opacity-100" : "translate-x-5 opacity-0"
+              }`}
+            >
               <Link
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className={`block py-4 text-base font-semibold transition-colors ${
+                className={`block py-4 text-base font-semibold transition-all duration-300 hover:translate-x-1 ${
                   isActive(pathname, link.href)
                     ? "text-p"
                     : "text-dark hover:text-p"
@@ -168,7 +182,14 @@ export function Nav() {
               </Link>
             </li>
           ))}
-          <li className="pt-4">
+          <li
+            style={{
+              transitionDelay: open ? `${120 + navLinks.length * 55}ms` : "0ms",
+            }}
+            className={`pt-4 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
+              open ? "translate-x-0 opacity-100" : "translate-x-5 opacity-0"
+            }`}
+          >
             <Link
               href="/pre-agendamento"
               onClick={() => setOpen(false)}

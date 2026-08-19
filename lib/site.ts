@@ -45,6 +45,7 @@ export function whatsappUrl(message: string = site.whatsappMessage): string {
 export const navLinks = [
   { href: "/", label: "Início" },
   { href: "/sobre", label: "Sobre" },
+  { href: "/joelho", label: "Saúde do Joelho" },
   { href: "/especialidade", label: "Especialidade" },
   { href: "/blog", label: "Blog" },
 ] as const;

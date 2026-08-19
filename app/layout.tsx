@@ -4,6 +4,7 @@ import "./globals.css";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { RevealObserver } from "@/components/RevealObserver";
+import { FloatingActions } from "@/components/FloatingActions";
 import { JsonLd } from "@/components/JsonLd";
 import { organizationGraph } from "@/lib/jsonld";
 import { site } from "@/lib/site";
@@ -18,11 +19,11 @@ const inter = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Dr. Joaquim Lopes | Ortopedista Especialista em Joelho",
+    default: "Ortopedista em São Paulo | Dr. Joaquim Lopes",
     template: "%s | Dr. Joaquim Lopes",
   },
   description:
-    "Ortopedista especialista em joelho e medicina esportiva. Consultas em São Paulo e Osasco com o Dr. Joaquim Lopes. CRM-SP 171205.",
+    "Ortopedista em São Paulo especialista em joelho e medicina esportiva. Consultas com o Dr. Joaquim Lopes na Vila Olímpia, Higienópolis e Jardins.",
   authors: [{ name: site.name }],
   creator: site.name,
   publisher: site.name,
@@ -44,6 +45,9 @@ export const metadata: Metadata = {
     siteName: "Dr. Joaquim Lopes - Ortopedista",
     locale: site.locale,
     url: site.url,
+    title: "Ortopedista em São Paulo | Dr. Joaquim Lopes",
+    description:
+      "Ortopedista especialista em joelho e medicina esportiva, com atendimento na Vila Olímpia, Higienópolis e Jardins, em São Paulo.",
     images: [
       {
         url: "/assets/images/dr/1.jpg",
@@ -53,7 +57,12 @@ export const metadata: Metadata = {
       },
     ],
   },
-  twitter: { card: "summary_large_image" },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ortopedista em São Paulo | Dr. Joaquim Lopes",
+    description:
+      "Ortopedista especialista em joelho e medicina esportiva, com atendimento em São Paulo.",
+  },
   other: {
     "geo.region": "BR-SP",
     "geo.placename": "São Paulo",
@@ -82,6 +91,7 @@ export default function RootLayout({
         </header>
         <main id="conteudo-principal">{children}</main>
         <Footer />
+        <FloatingActions />
         <RevealObserver />
       </body>
     </html>

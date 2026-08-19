@@ -3,12 +3,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { getPost, getPostSlugs } from "@/lib/blog";
+import { getAllPosts, getPost, getPostSlugs } from "@/lib/blog";
 import { formatDatePtBr } from "@/lib/format";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumb } from "@/lib/jsonld";
 import { site } from "@/lib/site";
 import { ArrowRight, Instagram } from "@/components/icons";
+import { ReadingProgress } from "@/components/ReadingProgress";
 
 export function generateStaticParams() {
   return getPostSlugs().map((slug) => ({ slug }));
@@ -70,6 +71,14 @@ export default async function BlogPostPage({
   const post = getPost(slug);
   if (!post) notFound();
   const articleImage = post.cover ?? "/assets/images/dr/1.jpg";
+  const relatedPosts = getAllPosts()
+    .filter((candidate) => candidate.slug !== post.slug)
+    .map((candidate) => ({
+      ...candidate,
+      relevance: candidate.tags.filter((tag) => post.tags.includes(tag)).length,
+    }))
+    .sort((a, b) => b.relevance - a.relevance || (a.date < b.date ? 1 : -1))
+    .slice(0, 3);
 
   const articleJsonLd = {
     "@context": "https://schema.org",
@@ -84,10 +93,14 @@ export default async function BlogPostPage({
     publisher: { "@id": `${site.url}/#medico` },
     mainEntityOfPage: { "@type": "WebPage", "@id": `${site.url}/blog/${post.slug}` },
     keywords: post.tags.join(", "),
+    inLanguage: "pt-BR",
+    isAccessibleForFree: true,
+    about: post.tags.map((tag) => ({ "@type": "Thing", name: tag })),
   };
 
   return (
     <>
+      <ReadingProgress />
       <JsonLd data={articleJsonLd} />
       <JsonLd
         data={breadcrumb([
@@ -100,11 +113,11 @@ export default async function BlogPostPage({
       <article className="px-5 pb-20 pt-[calc(72px+56px)] sm:px-8 lg:px-12 lg:pb-24 lg:pt-[calc(96px+64px)]">
         <div className="mx-auto max-w-[760px]">
           <nav className="mb-6 text-[13px] text-muted" aria-label="Breadcrumb">
-            <Link href="/" className="text-p hover:underline">
+            <Link href="/" className="link-underline text-p">
               Início
             </Link>
             <span className="mx-1.5">/</span>
-            <Link href="/blog" className="text-p hover:underline">
+            <Link href="/blog" className="link-underline text-p">
               Blog
             </Link>
           </nav>
@@ -114,7 +127,7 @@ export default async function BlogPostPage({
             {post.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-full border border-line bg-bg-alt px-3 py-1 text-xs font-semibold text-p"
+                className="rounded-full border border-line bg-bg-alt px-3 py-1 text-xs font-semibold text-p transition-colors duration-300 hover:border-p-light hover:bg-p-muted"
               >
                 {tag}
               </span>
@@ -127,6 +140,17 @@ export default async function BlogPostPage({
           <p className="mb-8 text-lg leading-relaxed text-muted">
             {post.description}
           </p>
+
+          <div className="mb-8 flex flex-col gap-1 rounded-[14px] border border-line bg-bg-alt px-5 py-4 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
+            <p>
+              Conteúdo por{" "}
+              <Link href="/sobre" className="font-bold text-p hover:underline">
+                Dr. Joaquim Lopes
+              </Link>
+              , Ortopedista e Traumatologista
+            </p>
+            <p className="shrink-0 text-xs">CRM-SP 171205 · RQE 113362</p>
+          </div>
 
           {post.video ? (
             <div className="mx-auto mb-10 max-w-[520px] overflow-hidden rounded-[18px] shadow-hover">
@@ -155,6 +179,12 @@ export default async function BlogPostPage({
           <div className="prose-article">
             <MDXRemote source={post.content} />
           </div>
+
+          <aside className="mt-10 rounded-[14px] border border-line bg-bg-alt p-5 text-sm leading-relaxed text-muted">
+            Este conteúdo é informativo e não substitui consulta, exame físico ou
+            diagnóstico individual. Em caso de trauma importante, dor intensa ou
+            incapacidade de apoiar o membro, procure atendimento médico.
+          </aside>
 
           {post.gallery && post.gallery.length > 0 && (
             <div className="mt-10 flex flex-col items-center gap-5">
@@ -189,6 +219,35 @@ export default async function BlogPostPage({
           )}
 
           <hr className="my-12 border-line" />
+
+          <section aria-labelledby="conteudos-relacionados" className="mb-12">
+            <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
+              <h2
+                id="conteudos-relacionados"
+                className="text-2xl font-extrabold tracking-[-0.8px] text-dark"
+              >
+                Conteúdos relacionados
+              </h2>
+              <Link
+                href="/joelho"
+                className="inline-flex items-center gap-1.5 text-sm font-bold text-p hover:underline"
+              >
+                Ver guia de saúde do joelho
+                <ArrowRight width={15} height={15} strokeWidth={2} />
+              </Link>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-3">
+              {relatedPosts.map((related) => (
+                <Link
+                  key={related.slug}
+                  href={`/blog/${related.slug}`}
+                  className="card-lift rounded-[12px] border border-line bg-white p-4 text-sm font-bold leading-snug text-dark hover:text-p"
+                >
+                  {related.title}
+                </Link>
+              ))}
+            </div>
+          </section>
 
           <div className="flex flex-col items-start gap-4 rounded-[18px] bg-bg-alt p-8 sm:flex-row sm:items-center sm:justify-between">
             <div>

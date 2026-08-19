@@ -67,11 +67,25 @@ export function organizationGraph() {
         "@type": "Physician",
         "@id": `${site.url}/#medico`,
         name: site.name,
+        alternateName: "Dr. Joaquim Alberto Lopes Ferreira Junior",
         url: site.url,
         image: ORTHO_IMG,
         description:
           "Ortopedista e Traumatologista especializado em Cirurgia do Joelho e Medicina Esportiva em São Paulo.",
         medicalSpecialty: ["Orthopedic", "SportsMedicine"],
+        areaServed: [
+          { "@type": "City", name: "São Paulo" },
+          { "@type": "City", name: "Osasco" },
+        ],
+        knowsAbout: [
+          "Ortopedia",
+          "Traumatologia",
+          "Cirurgia do joelho",
+          "Lesões esportivas",
+          "Artroscopia do joelho",
+          "Reconstrução do ligamento cruzado anterior",
+          "Artroplastia do joelho",
+        ],
         qualifications: site.qualifications,
         ...(PRIMARY_LOCATION?.street
           ? {

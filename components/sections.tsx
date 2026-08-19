@@ -66,19 +66,26 @@ export function PageHero({
   description: ReactNode;
 }) {
   return (
-    <div className="relative overflow-hidden bg-gradient-to-br from-p-muted to-[#dce4ea] px-5 pb-[72px] pt-[calc(72px+64px)] sm:px-8 lg:px-12 lg:pt-[calc(96px+72px)]">
-      <div className="mx-auto max-w-[1120px]">
-        <nav className="mb-4 text-[13px] text-muted" aria-label="Breadcrumb">
-          <Link href="/" className="text-p hover:underline">
+    <div className="anim-gradient relative overflow-hidden bg-gradient-to-br from-p-muted via-[#e4eaf0] to-[#dce4ea] px-5 pb-[72px] pt-[calc(72px+64px)] sm:px-8 lg:px-12 lg:pt-[calc(96px+72px)]">
+      <div
+        aria-hidden
+        className="anim-float pointer-events-none absolute -right-16 -top-10 h-64 w-64 rounded-full bg-white/40 blur-3xl"
+      />
+      <div className="relative mx-auto max-w-[1120px]">
+        <nav
+          className="anim-fade-up mb-4 text-[13px] text-muted"
+          aria-label="Breadcrumb"
+        >
+          <Link href="/" className="link-underline text-p">
             Início
           </Link>
           <span className="mx-1.5">/</span>
           {breadcrumb}
         </nav>
-        <h1 className="mb-3.5 text-[32px] font-extrabold tracking-[-1.5px] text-dark sm:text-4xl lg:text-5xl lg:tracking-[-2px]">
+        <h1 className="anim-fade-up mb-3.5 text-[32px] font-extrabold tracking-[-1.5px] text-dark [animation-delay:0.08s] sm:text-4xl lg:text-5xl lg:tracking-[-2px]">
           {title}
         </h1>
-        <p className="max-w-[560px] text-base leading-relaxed text-muted md:text-lg">
+        <p className="anim-fade-up max-w-[560px] text-base leading-relaxed text-muted [animation-delay:0.16s] md:text-lg">
           {description}
         </p>
       </div>
@@ -103,15 +110,27 @@ export function CtaStrip({
   href?: string;
 }) {
   return (
-    <section className="bg-p px-5 py-20 text-center md:px-12">
-      <h2 className="reveal mb-3.5 text-[28px] font-extrabold tracking-[-1px] text-white md:text-4xl">
-        {title}
-      </h2>
-      <p className="reveal mx-auto mb-9 max-w-xl text-[17px] text-white/75">{text}</p>
-      <div className="reveal flex justify-center">
-        <Button href={href} variant="white">
-          {buttonLabel}
-        </Button>
+    <section className="anim-gradient relative overflow-hidden bg-gradient-to-br from-p via-[#4d6070] to-p-dark px-5 py-20 text-center md:px-12">
+      <div
+        aria-hidden
+        className="anim-float-slow pointer-events-none absolute -left-20 top-0 h-72 w-72 rounded-full bg-white/[0.07] blur-3xl"
+      />
+      <div
+        aria-hidden
+        className="anim-float pointer-events-none absolute -bottom-24 -right-10 h-80 w-80 rounded-full bg-white/[0.06] blur-3xl"
+      />
+      <div className="relative reveal-group">
+        <h2 className="reveal mb-3.5 text-[28px] font-extrabold tracking-[-1px] text-white md:text-4xl">
+          {title}
+        </h2>
+        <p className="reveal mx-auto mb-9 max-w-xl text-[17px] text-white/75">
+          {text}
+        </p>
+        <div className="reveal flex justify-center">
+          <Button href={href} variant="white">
+            {buttonLabel}
+          </Button>
+        </div>
       </div>
     </section>
   );

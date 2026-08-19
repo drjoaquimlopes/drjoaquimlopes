@@ -105,12 +105,12 @@ export default function BlogIndexPage() {
               </p>
             </div>
           ) : (
-            <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
-              {posts.map((post, i) => (
+            <div className="reveal-group grid gap-7 md:grid-cols-2 lg:grid-cols-3">
+              {posts.map((post) => (
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
-                  className={`reveal reveal-d${(i % 3) + 1} group flex flex-col overflow-hidden rounded-[18px] border border-line bg-white shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:shadow-hover`}
+                  className="reveal card-lift group flex flex-col overflow-hidden rounded-[18px] border border-line bg-white shadow-soft"
                 >
                   <div className="relative aspect-square overflow-hidden bg-p-muted">
                     {post.video ? (
@@ -162,7 +162,7 @@ export default function BlogIndexPage() {
                         </>
                       )}
                     </div>
-                    <h2 className="mb-2 text-xl font-bold leading-snug text-dark transition-colors group-hover:text-p">
+                    <h2 className="mb-2 text-xl font-bold leading-snug text-dark transition-colors duration-300 group-hover:text-p">
                       {post.title}
                     </h2>
                     <p className="text-sm leading-relaxed text-muted">

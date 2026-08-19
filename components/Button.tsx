@@ -5,7 +5,7 @@ type Variant = "primary" | "outline" | "white";
 type Size = "md" | "sm";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300 ease-out";
+  "group inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] active:translate-y-0 active:scale-[0.97] active:duration-100 motion-reduce:transform-none";
 
 const sizes: Record<Size, string> = {
   md: "px-7 py-[15px] text-base",

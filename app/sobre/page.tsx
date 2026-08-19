@@ -177,13 +177,13 @@ export default function SobrePage() {
             <p className="reveal mb-5 text-[17px] font-bold text-dark">
               Registro profissional
             </p>
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="reveal-group grid gap-4 sm:grid-cols-2">
               {credentials.map((c, i) => {
                 const Icon = c.icon;
                 return (
                   <div
                     key={`${c.label}-${i}`}
-                    className={`reveal reveal-d${(i % 2) + 1} flex items-start gap-3.5 rounded-[10px] border border-line bg-bg-alt p-5`}
+                    className="reveal card-lift flex items-start gap-3.5 rounded-[10px] border border-line bg-bg-alt p-5"
                   >
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[10px] bg-p-muted">
                       <Icon width={20} height={20} className="text-p" strokeWidth={1.7} />
@@ -204,7 +204,7 @@ export default function SobrePage() {
                 (tag) => (
                   <span
                     key={tag}
-                    className="rounded-full border border-line bg-white px-4 py-[7px] text-[13px] font-semibold text-p"
+                    className="rounded-full border border-line bg-white px-4 py-[7px] text-[13px] font-semibold text-p transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:border-p-light hover:bg-p-muted"
                   >
                     {tag}
                   </span>
@@ -276,13 +276,13 @@ export default function SobrePage() {
             <p className="reveal mb-5 text-[17px] font-bold text-dark">
               Valores do atendimento
             </p>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {values.map((v, i) => {
+            <div className="reveal-group grid gap-4 sm:grid-cols-2">
+              {values.map((v) => {
                 const Icon = v.icon;
                 return (
                   <div
                     key={v.title}
-                    className={`reveal reveal-d${(i % 2) + 1} rounded-[10px] border border-line bg-bg-alt p-6 text-center`}
+                    className="reveal card-lift rounded-[10px] border border-line bg-bg-alt p-6 text-center"
                   >
                     <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-p-muted">
                       <Icon width={24} height={24} className="text-p" strokeWidth={1.7} />

@@ -24,6 +24,10 @@ const nextConfig: NextConfig = {
       { source: "/sobre.html", destination: "/sobre", permanent: true },
       { source: "/especialidade.html", destination: "/especialidade", permanent: true },
       { source: "/pre-agendamento.html", destination: "/pre-agendamento", permanent: true },
+      // Recupera sinais e links das páginas antigas ainda presentes no índice.
+      { source: "/especialidade/exames", destination: "/especialidade", permanent: true },
+      { source: "/especialidade/procedimentos", destination: "/especialidade", permanent: true },
+      { source: "/especialidade/cirurgias", destination: "/especialidade", permanent: true },
     ];
   },
 };

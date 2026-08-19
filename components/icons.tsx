@@ -21,10 +21,21 @@ function Line(props: IconProps & { children: React.ReactNode }) {
   );
 }
 
-export const ArrowRight = (p: IconProps) => (
-  <Line {...p}>
+/**
+ * Recebe `icon-arrow` por padrão: desliza para a direita quando o link/botão
+ * que a contém recebe hover (regra em globals.css).
+ */
+export const ArrowRight = ({ className = "", ...p }: IconProps) => (
+  <Line className={`icon-arrow ${className}`.trim()} {...p}>
     <line x1="5" y1="12" x2="19" y2="12" />
     <polyline points="12 5 19 12 12 19" />
+  </Line>
+);
+
+export const ArrowUp = (p: IconProps) => (
+  <Line {...p}>
+    <line x1="12" y1="19" x2="12" y2="5" />
+    <polyline points="5 12 12 5 19 12" />
   </Line>
 );
 

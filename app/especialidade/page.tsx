@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { PageHero, Accent, CtaStrip } from "@/components/sections";
 import { Button } from "@/components/Button";
 import { JsonLd } from "@/components/JsonLd";
@@ -173,8 +174,8 @@ export default function EspecialidadePage() {
               {i > 0 && <hr className="my-14 border-line md:my-20" />}
               <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
                 <div
-                  className={`reveal h-[220px] overflow-hidden rounded-[18px] shadow-hover sm:h-[360px] lg:h-[400px] ${
-                    i % 2 === 1 ? "lg:order-2" : ""
+                  className={`reveal group h-[220px] overflow-hidden rounded-[18px] shadow-hover sm:h-[360px] lg:h-[400px] ${
+                    i % 2 === 1 ? "lg:order-2 reveal-right" : "reveal-left"
                   }`}
                 >
                   <Image
@@ -183,7 +184,7 @@ export default function EspecialidadePage() {
                     width={560}
                     height={400}
                     sizes="(min-width: 1024px) 50vw, calc(100vw - 40px)"
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
                   />
                 </div>
                 <div>
@@ -210,6 +211,24 @@ export default function EspecialidadePage() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="bg-bg-alt px-5 py-16 text-center md:px-12">
+        <div className="mx-auto max-w-[720px]">
+          <h2 className="mb-3 text-2xl font-extrabold text-dark md:text-3xl">
+            Quer entender melhor os problemas do joelho?
+          </h2>
+          <p className="mb-7 leading-relaxed text-muted">
+            Consulte o guia com informações sobre dor, artrose, LCA, cartilagem,
+            cirurgias, recuperação e prevenção de lesões.
+          </p>
+          <Link
+            href="/joelho"
+            className="inline-flex rounded-full border-2 border-p px-7 py-3.5 font-semibold text-p transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:bg-p hover:text-white hover:shadow-[0_10px_28px_rgba(86,105,122,0.3)] active:translate-y-0 active:scale-[0.97]"
+          >
+            Acessar guia de saúde do joelho
+          </Link>
         </div>
       </section>
 
