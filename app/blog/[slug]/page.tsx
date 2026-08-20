@@ -24,12 +24,6 @@ export async function generateMetadata({
   const post = getPost(slug);
   if (!post) return {};
 
-  // Toda página compartilhada precisa de uma imagem; sem capa (ex.: post em
-  // vídeo), usa a imagem padrão do site.
-  const ogImage = post.cover ?? "/assets/images/dr/1.jpg";
-  const ogImageWidth = post.cover ? post.coverW : 1200;
-  const ogImageHeight = post.cover ? post.coverH : 800;
-
   return {
     title: post.title,
     description: post.description,
@@ -44,20 +38,24 @@ export async function generateMetadata({
       modifiedTime: post.date,
       authors: [post.author],
       tags: post.tags,
-      images: [
-        {
-          url: ogImage,
-          width: ogImageWidth,
-          height: ogImageHeight,
-          alt: post.title,
-        },
-      ],
+      images: post.cover
+        ? [
+            {
+              url: post.cover,
+              width: post.coverW,
+              height: post.coverH,
+              alt: post.title,
+            },
+          ]
+        : [],
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.description,
-      images: [{ url: ogImage, width: ogImageWidth, height: ogImageHeight }],
+      images: post.cover
+        ? [{ url: post.cover, width: post.coverW, height: post.coverH }]
+        : [],
     },
   };
 }
@@ -70,7 +68,6 @@ export default async function BlogPostPage({
   const { slug } = await params;
   const post = getPost(slug);
   if (!post) notFound();
-  const articleImage = post.cover ?? "/assets/images/dr/1.jpg";
   const relatedPosts = getAllPosts()
     .filter((candidate) => candidate.slug !== post.slug)
     .map((candidate) => ({
@@ -88,7 +85,7 @@ export default async function BlogPostPage({
     datePublished: post.date,
     dateModified: post.date,
     url: `${site.url}/blog/${post.slug}`,
-    image: `${site.url}${articleImage}`,
+    ...(post.cover ? { image: `${site.url}${post.cover}` } : {}),
     author: { "@type": "Person", name: post.author, "@id": `${site.url}/#medico` },
     publisher: { "@id": `${site.url}/#medico` },
     mainEntityOfPage: { "@type": "WebPage", "@id": `${site.url}/blog/${post.slug}` },

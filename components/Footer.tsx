@@ -28,7 +28,7 @@ export function Footer() {
               Atendimento humanizado com excelência técnica para sua recuperação
               completa.
             </p>
-            <p className="text-xs text-white/35">{site.crmRqe}</p>
+            <p className="text-xs text-white/55">{site.crmRqe}</p>
           </div>
 
           {/* Navegação */}
@@ -100,10 +100,10 @@ export function Footer() {
 
         <div className="flex flex-col items-center gap-4 pt-8 text-center md:flex-row md:justify-between md:text-left">
           <div className="flex flex-col gap-1.5">
-            <p className="text-[13px] text-white/35">
+            <p className="text-[13px] text-white/55">
               © {year} {site.name}. Todos os direitos reservados.
             </p>
-            <p className="text-[13px] text-white/35">
+            <p className="text-[13px] text-white/55">
               Desenvolvido por{" "}
               <a
                 href="https://www.joaovictordss.dev/"

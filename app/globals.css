@@ -12,7 +12,8 @@
 
   --color-dark: #1d2832;
   --color-text: #2d3d4a;
-  --color-muted: #6b7f8c;
+  /* Contraste AA para textos pequenos inclusive sobre o gradiente dos heroes. */
+  --color-muted: #546873;
   --color-bg-alt: #f8f9fb;
   --color-line: #e8ecf0;
 

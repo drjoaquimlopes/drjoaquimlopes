@@ -10,6 +10,21 @@ export const metadata: Metadata = {
     "Saiba como o site do Dr. Joaquim Lopes trata dados de navegação, contatos e serviços externos.",
   alternates: { canonical: "/politica-de-privacidade" },
   robots: { index: true, follow: true },
+  openGraph: {
+    type: "website",
+    url: "/politica-de-privacidade",
+    title: "Política de Privacidade | Dr. Joaquim Lopes",
+    description:
+      "Saiba como o site do Dr. Joaquim Lopes trata dados de navegação, contatos e serviços externos.",
+    images: [],
+  },
+  twitter: {
+    card: "summary",
+    title: "Política de Privacidade | Dr. Joaquim Lopes",
+    description:
+      "Saiba como o site do Dr. Joaquim Lopes trata dados de navegação, contatos e serviços externos.",
+    images: [],
+  },
 };
 
 export default function PoliticaDePrivacidadePage() {

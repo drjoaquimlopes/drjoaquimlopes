@@ -39,6 +39,13 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Cirurgia do Joelho em São Paulo | Dr. Joaquim Lopes",
+    description:
+      "Artroscopia, reconstrução de LCA/LCP, prótese de joelho, infiltração e PRP. Ortopedista especialista na Vila Olímpia, SP.",
+    images: ["/assets/images/dr/1.jpg"],
+  },
 };
 
 const blocks = [

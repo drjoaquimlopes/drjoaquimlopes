@@ -27,6 +27,13 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Saúde do Joelho: Sintomas, Lesões e Tratamentos",
+    description:
+      "Informações médicas sobre problemas do joelho, opções de tratamento, cirurgias e retorno ao esporte.",
+    images: ["/assets/images/dr/3.jpg"],
+  },
 };
 
 const grupos = [

@@ -45,6 +45,13 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sobre o Dr. Joaquim Lopes | Ortopedista em São Paulo",
+    description:
+      "Formação em Ortopedia pela HMCC, Cirurgia do Joelho pela Santa Casa de SP e Fellow em Medicina Esportiva na Coreia do Sul.",
+    images: ["/assets/images/dr/fellow-1.jpg"],
+  },
 };
 
 const credentials = [

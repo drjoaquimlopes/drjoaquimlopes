@@ -43,6 +43,13 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog de Ortopedia e Joelho | Dr. Joaquim Lopes",
+    description:
+      "Conteúdo sobre ortopedia, cirurgia do joelho e recuperação pelo Dr. Joaquim Lopes.",
+    images: ["/assets/images/dr/1.jpg"],
+  },
 };
 
 export default function BlogIndexPage() {

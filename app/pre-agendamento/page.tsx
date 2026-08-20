@@ -35,6 +35,14 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title:
+      "Agendar Consulta | Dr. Joaquim Lopes - Ortopedista São Paulo e Osasco",
+    description:
+      "Agende sua consulta de ortopedia na Vila Olímpia, Higienópolis, Jardim Paulista, Itaim Bibi ou Osasco.",
+    images: ["/assets/images/dr/1.jpg"],
+  },
 };
 
 function ContactItem({
