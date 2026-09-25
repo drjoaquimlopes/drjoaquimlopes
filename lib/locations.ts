@@ -22,14 +22,16 @@ export type Location = {
 export const locations: Location[] = [
   {
     schemaId: "clinica",
-    name: "CAORT - Clínica Avançada de Ortopedia e Traumatologia",
-    street: "Rua Helena, 260",
-    neighborhood: "Vila Olímpia",
+    name: "Clínica Derplus",
+    street: "R. Arminda, 93 - Conj 102",
+    neighborhood: "Vila Nova Conceição",
     city: "São Paulo",
     region: "SP",
-    postalCode: "04552-040",
-    addressLines: ["Rua Helena, 260, Vila Olímpia", "São Paulo - SP, CEP 04552-040"],
-    geo: { latitude: -23.5928, longitude: -46.6847 },
+    postalCode: "04545-100",
+    addressLines: [
+      "R. Arminda, 93 - Conj 102, Vila Nova Conceição",
+      "São Paulo - SP, CEP 04545-100",
+    ],
     primary: true,
   },
   {

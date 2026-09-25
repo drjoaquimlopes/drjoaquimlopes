@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: "%s | Dr. Joaquim Lopes",
   },
   description:
-    "Ortopedista em São Paulo especialista em joelho e medicina esportiva. Consultas com o Dr. Joaquim Lopes na Vila Olímpia, Higienópolis e Jardins.",
+    "Ortopedista em São Paulo especialista em joelho e medicina esportiva. Consultas com o Dr. Joaquim Lopes na Vila Nova Conceição, Higienópolis e Jardins.",
   authors: [{ name: site.name }],
   creator: site.name,
   publisher: site.name,
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     url: site.url,
     title: "Ortopedista em São Paulo | Dr. Joaquim Lopes",
     description:
-      "Ortopedista especialista em joelho e medicina esportiva, com atendimento na Vila Olímpia, Higienópolis e Jardins, em São Paulo.",
+      "Ortopedista especialista em joelho e medicina esportiva, com atendimento na Vila Nova Conceição, Higienópolis e Jardins, em São Paulo.",
     images: [
       {
         url: "/assets/images/dr/1.jpg",

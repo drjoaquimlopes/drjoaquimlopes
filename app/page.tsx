@@ -73,7 +73,7 @@ const perguntasFrequentes = [
   {
     question: "Onde o Dr. Joaquim Lopes atende em São Paulo?",
     answer:
-      "O atendimento é realizado na Vila Olímpia, Higienópolis, Jardim Paulista e Itaim Bibi, além de uma unidade em Osasco. Os endereços completos estão disponíveis nesta página.",
+      "O atendimento é realizado na Vila Nova Conceição, Higienópolis, Jardim Paulista e Itaim Bibi, além de uma unidade em Osasco. Os endereços completos estão disponíveis nesta página.",
   },
   {
     question: "Como agendar uma consulta ortopédica?",

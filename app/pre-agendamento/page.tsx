@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     "Agende sua consulta com o Dr. Joaquim Lopes em São Paulo ou Osasco. Atendimento por WhatsApp, telefone ou e-mail.",
   keywords: [
     "agendar consulta ortopedista são paulo",
-    "consulta ortopedia vila olímpia",
+    "consulta ortopedia vila nova conceição",
     "ortopedista higienópolis",
     "ortopedista jardim paulista",
     "ortopedista itaim bibi",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     title:
       "Agendar Consulta | Dr. Joaquim Lopes - Ortopedista São Paulo e Osasco",
     description:
-      "Agende sua consulta de ortopedia na Vila Olímpia, Higienópolis, Jardim Paulista, Itaim Bibi ou Osasco. WhatsApp (11) 92553-8077.",
+      "Agende sua consulta de ortopedia na Vila Nova Conceição, Higienópolis, Jardim Paulista, Itaim Bibi ou Osasco. WhatsApp (11) 92553-8077.",
     images: [
       {
         url: "/assets/images/dr/1.jpg",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     title:
       "Agendar Consulta | Dr. Joaquim Lopes - Ortopedista São Paulo e Osasco",
     description:
-      "Agende sua consulta de ortopedia na Vila Olímpia, Higienópolis, Jardim Paulista, Itaim Bibi ou Osasco.",
+      "Agende sua consulta de ortopedia na Vila Nova Conceição, Higienópolis, Jardim Paulista, Itaim Bibi ou Osasco.",
     images: ["/assets/images/dr/1.jpg"],
   },
 };
@@ -125,13 +125,18 @@ export default function PreAgendamentoPage() {
               </ContactItem>
 
               <ContactItem icon={MapPin} label="Localização">
-                <span className="block text-[15px] font-semibold leading-[1.5] text-dark">
-                  CAORT - Clínica Avançada de Ortopedia e Traumatologia
+                <a
+                  href="https://maps.app.goo.gl/X39WtzS18QjHe7b66"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-[15px] font-semibold leading-[1.5] text-dark transition-colors hover:text-p"
+                >
+                  Clínica Derplus
                   <br />
-                  Rua Helena, 260, Vila Olímpia
+                  R. Arminda, 93 - Conj 102, Vila Nova Conceição
                   <br />
-                  São Paulo - SP, CEP 04552-040
-                </span>
+                  São Paulo - SP, CEP 04545-100
+                </a>
               </ContactItem>
 
               <ContactItem icon={MapPin} label="Outros locais de atendimento">
@@ -164,14 +169,14 @@ export default function PreAgendamentoPage() {
             {/* Mapa */}
             <div className="reveal mt-10 h-[250px] overflow-hidden rounded-[18px] border border-line">
               <iframe
-                src="https://maps.google.com/maps?q=CAORT+Cl%C3%ADnica+Avan%C3%A7ada+de+Ortopedia+e+Traumatologia+Rua+Helena+260+Vila+Ol%C3%ADmpia+S%C3%A3o+Paulo&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q=Cl%C3%ADnica+Derplus+Edif%C3%ADcio+Personna+R.+Arminda%2C+93+Vila+Nova+Concei%C3%A7%C3%A3o+S%C3%A3o+Paulo&t=&z=16&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Localização CAORT - Rua Helena, 260, Vila Olímpia, São Paulo"
+                title="Localização Clínica Derplus - R. Arminda, 93, Vila Nova Conceição, São Paulo"
               />
             </div>
           </div>

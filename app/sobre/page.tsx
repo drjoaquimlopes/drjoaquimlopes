@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     "Conheça a formação do Dr. Joaquim Lopes em ortopedia, cirurgia do joelho e medicina esportiva. CRM-SP 171205 e RQE 113362.",
   keywords: [
     "dr joaquim lopes ortopedista",
-    "ortopedista vila olímpia",
+    "ortopedista vila nova conceição",
     "traumatologista são paulo",
     "especialista joelho são paulo",
     "cirurgião do joelho sp",
