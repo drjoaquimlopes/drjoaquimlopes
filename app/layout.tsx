@@ -3,7 +3,6 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
-import { RevealObserver } from "@/components/RevealObserver";
 import { FloatingActions } from "@/components/FloatingActions";
 import { JsonLd } from "@/components/JsonLd";
 import { organizationGraph } from "@/lib/jsonld";
@@ -85,11 +84,6 @@ export default function RootLayout({
         >
           Pular para o conteúdo
         </a>
-        {/* Sem JS o IntersectionObserver não roda: o conteúdo com .reveal
-            ficaria invisível. Este fallback garante a página legível. */}
-        <noscript>
-          <style>{`.reveal{opacity:1!important;transform:none!important;filter:none!important}`}</style>
-        </noscript>
         <JsonLd data={organizationGraph()} />
         <header>
           <Nav />
@@ -97,7 +91,6 @@ export default function RootLayout({
         <main id="conteudo-principal">{children}</main>
         <Footer />
         <FloatingActions />
-        <RevealObserver />
       </body>
     </html>
   );

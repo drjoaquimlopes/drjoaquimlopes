@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -16,6 +16,8 @@ export function Nav() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const drawerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -26,18 +28,34 @@ export function Nav() {
 
   // Trava o scroll do body e fecha no Escape quando o drawer está aberto.
   useEffect(() => {
+    const toggle = toggleRef.current;
     document.body.style.overflow = open ? "hidden" : "";
     const background = document.querySelectorAll<HTMLElement>("main, footer, [data-nav-background]");
     background.forEach((element) => {
       element.inert = open;
     });
 
+    if (open) drawerRef.current?.querySelector<HTMLButtonElement>("button")?.focus();
     const onKey = (e: KeyboardEvent) => {
+      if (!open) return;
       if (e.key === "Escape") setOpen(false);
+      if (e.key === "Tab") {
+        const controls = drawerRef.current?.querySelectorAll<HTMLElement>('a[href], button, [tabindex="0"]');
+        if (!controls?.length) return;
+        const first = controls[0];
+        const last = controls[controls.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
     };
+    const desktop = window.matchMedia("(min-width: 1024px)");
+    const onResize = () => { if (desktop.matches) setOpen(false); };
+    desktop.addEventListener("change", onResize);
     document.addEventListener("keydown", onKey);
     return () => {
       document.removeEventListener("keydown", onKey);
+      desktop.removeEventListener("change", onResize);
+      if (open) toggle?.focus();
       document.body.style.overflow = "";
       background.forEach((element) => {
         element.inert = false;
@@ -78,6 +96,7 @@ export function Nav() {
             <li key={link.href}>
               <Link
                 href={link.href}
+                aria-current={isActive(pathname, link.href) ? "page" : undefined}
                 className={`relative text-sm font-medium transition-colors duration-300 after:absolute after:-bottom-1 after:left-0 after:right-0 after:h-0.5 after:origin-left after:rounded after:bg-p after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.22,1,0.36,1)] ${
                   isActive(pathname, link.href)
                     ? "text-p after:scale-x-100"
@@ -105,6 +124,7 @@ export function Nav() {
 
         {/* Hamburger */}
         <button
+          ref={toggleRef}
           type="button"
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Fechar menu" : "Abrir menu"}
@@ -143,6 +163,10 @@ export function Nav() {
 
       {/* Drawer */}
       <div
+        ref={drawerRef}
+        role="dialog"
+        aria-modal={open ? true : undefined}
+        aria-label="Menu de navegação"
         id="mobile-navigation"
         aria-hidden={!open}
         inert={!open}
@@ -171,6 +195,7 @@ export function Nav() {
             >
               <Link
                 href={link.href}
+                aria-current={isActive(pathname, link.href) ? "page" : undefined}
                 onClick={() => setOpen(false)}
                 className={`block py-4 text-base font-semibold transition-all duration-300 hover:translate-x-1 ${
                   isActive(pathname, link.href)

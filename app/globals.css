@@ -4,8 +4,8 @@
    Design tokens — paleta original do site
    ══════════════════════════════════════════ */
 @theme {
-  --color-p: #56697a;
-  --color-p-dark: #3d4f5c;
+  --color-p: #28566b;
+  --color-p-dark: #183d50;
   --color-p-mid: #7a8f9e;
   --color-p-light: #c5cfd7;
   --color-p-muted: #eef1f4;
@@ -96,15 +96,12 @@ body {
    Scroll reveal (IntersectionObserver adiciona .is-visible)
    ══════════════════════════════════════════ */
 .reveal {
-  opacity: 0;
-  transform: translate3d(0, 20px, 0);
-  transition:
-    opacity 0.7s var(--ease-out-soft) var(--reveal-delay, 0s),
-    transform 0.7s var(--ease-out-soft) var(--reveal-delay, 0s);
+  opacity: 1;
+  transform: none;
 }
 /* Só promove a camada enquanto a animação ainda vai acontecer */
 .reveal:not(.is-visible) {
-  will-change: opacity, transform;
+  will-change: auto;
 }
 .reveal.is-visible {
   opacity: 1;
@@ -117,14 +114,14 @@ body {
    deslocamento lateral empurra o bloco para fora e cria rolagem horizontal. */
 @media (min-width: 1024px) {
   .reveal-left {
-    transform: translate3d(-28px, 0, 0);
+    transform: none;
   }
   .reveal-right {
-    transform: translate3d(28px, 0, 0);
+    transform: none;
   }
 }
 .reveal-zoom {
-  transform: scale(0.94);
+  transform: none;
 }
 
 /* Atrasos manuais */
@@ -252,8 +249,13 @@ details[open]::details-content {
   }
 }
 .anim-fade-up {
-  animation: fadeUp 0.8s var(--ease-out-soft) both;
+  animation: none;
 }
+
+h1, h2, h3 { text-wrap: balance; }
+p { text-wrap: pretty; }
+select { color-scheme: light; }
+footer { padding-bottom: calc(5rem + env(safe-area-inset-bottom)); }
 
 /* ══════════════════════════════════════════
    Preferência por menos movimento

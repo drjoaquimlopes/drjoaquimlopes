@@ -4,7 +4,8 @@ import Image from "next/image";
 import { PageHero, Accent } from "@/components/sections";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumb } from "@/lib/jsonld";
-import { getAllPosts } from "@/lib/blog";
+import { getAllPosts, postAuthorSchema } from "@/lib/blog";
+import { FeaturedArticles } from "@/components/FeaturedArticles";
 import { formatDatePtBr } from "@/lib/format";
 import { site } from "@/lib/site";
 import { Book } from "@/components/icons";
@@ -12,7 +13,7 @@ import { Book } from "@/components/icons";
 export const metadata: Metadata = {
   title: "Blog de Ortopedia e Joelho",
   description:
-    "Artigos do Dr. Joaquim Lopes sobre ortopedia, cirurgia do joelho, lesões esportivas, prevenção e recuperação.",
+    "Artigos e guias informativos sobre ortopedia, cirurgia do joelho, lesões esportivas, prevenção e recuperação.",
   keywords: [
     "blog ortopedia",
     "cirurgia do joelho",
@@ -71,7 +72,7 @@ export default function BlogIndexPage() {
       datePublished: p.date,
       dateModified: p.date,
       description: p.description,
-      author: { "@id": `${site.url}/#medico` },
+      author: postAuthorSchema(p.author),
       ...(p.cover ? { image: `${site.url}${p.cover}` } : {}),
     })),
   };
@@ -96,8 +97,10 @@ export default function BlogIndexPage() {
         description="Artigos sobre cirurgia do joelho, lesões esportivas, tratamentos e recuperação, para ajudar você a entender melhor sua saúde."
       />
 
-      <section className="px-5 py-20 md:px-12 md:py-24">
+      <FeaturedArticles />
+      <section className="border-t border-line px-5 py-14 md:px-12 md:py-20">
         <div className="mx-auto max-w-[1120px]">
+          <h2 className="mb-8 text-h2 font-bold text-dark">Mais sobre joelho e movimento</h2>
           {posts.length === 0 ? (
             <div className="mx-auto max-w-md rounded-[18px] border border-line bg-bg-alt p-12 text-center">
               <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-[20px] bg-p-muted">
@@ -113,7 +116,7 @@ export default function BlogIndexPage() {
             </div>
           ) : (
             <div className="reveal-group grid gap-7 md:grid-cols-2 lg:grid-cols-3">
-              {posts.map((post) => (
+              {posts.filter((post) => !post.featured).map((post) => (
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}

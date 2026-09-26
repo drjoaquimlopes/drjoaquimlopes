@@ -1,16 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { ArrowUp, WhatsAppSolid } from "./icons";
 import { whatsappUrl } from "@/lib/site";
 
 /**
  * Ações flutuantes no canto inferior direito:
- * - WhatsApp sempre disponível (aparece após o primeiro scroll);
+ * - WhatsApp sempre disponível, inclusive antes do primeiro scroll;
  * - "Voltar ao topo" surge quando a página já rolou bastante.
  */
 export function FloatingActions() {
-  const [showWhats, setShowWhats] = useState(false);
+  const pathname = usePathname();
   const [showTop, setShowTop] = useState(false);
 
   useEffect(() => {
@@ -19,7 +20,6 @@ export function FloatingActions() {
     const update = () => {
       frame = 0;
       const y = window.scrollY;
-      setShowWhats(y > 240);
       setShowTop(y > window.innerHeight * 1.2);
     };
 
@@ -60,21 +60,16 @@ export function FloatingActions() {
         <ArrowUp width={18} height={18} strokeWidth={2} />
       </button>
 
-      <a
+      {pathname !== "/pre-agendamento" && <a
         href={whatsappUrl()}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Falar pelo WhatsApp"
-        tabIndex={showWhats ? 0 : -1}
-        aria-hidden={!showWhats}
-        className={`pointer-events-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#25d366] text-white shadow-[0_10px_28px_rgba(37,211,102,0.4)] transition-all duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:bg-[#1da851] hover:shadow-[0_16px_38px_rgba(37,211,102,0.5)] active:scale-95 motion-reduce:transition-none ${
-          showWhats
-            ? "translate-y-0 scale-100 opacity-100"
-            : "pointer-events-none translate-y-3 scale-90 opacity-0"
-        }`}
+        className="pointer-events-auto flex h-14 items-center justify-center gap-2 rounded-full bg-[#176b45] px-4 text-white shadow-soft hover:bg-[#105335]"
       >
         <WhatsAppSolid width={26} height={26} />
-      </a>
+        <span className="text-sm font-semibold">Agendar</span>
+      </a>}
     </div>
   );
 }

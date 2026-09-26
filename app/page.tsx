@@ -5,23 +5,28 @@ import { Accent, SectionHeading, CtaStrip } from "@/components/sections";
 import { Calendar, ArrowRight, Search, Activity, Shield } from "@/components/icons";
 import { locations } from "@/lib/locations";
 import { JsonLd } from "@/components/JsonLd";
-import { site } from "@/lib/site";
+import { site, whatsappUrl } from "@/lib/site";
+import { GoogleReviewsLink } from "@/components/GoogleReviewsLink";
+import { FeaturedArticles } from "@/components/FeaturedArticles";
 
 const especialidades = [
   {
     icon: Search,
-    name: "Exames",
-    desc: "Avaliação clínica completa e diagnóstico preciso para identificar a melhor conduta para cada paciente.",
+    name: "Entender a dor",
+    desc: "História dos sintomas, exame do joelho e investigação orientada para o seu caso.",
+    href: "/blog/dor-no-joelho-quando-procurar-atendimento",
   },
   {
     icon: Activity,
-    name: "Procedimentos",
-    desc: "Tratamentos personalizados e procedimentos minimamente invasivos para sua recuperação com segurança.",
+    name: "Discutir o tratamento",
+    desc: "Conheça as abordagens conservadoras e cirúrgicas para conversar sobre suas opções.",
+    href: "/especialidade",
   },
   {
     icon: Shield,
-    name: "Cirurgias",
-    desc: "Especializado em Cirurgia do Joelho, incluindo LCA, artroplastia, menisco e outras intervenções de alta complexidade.",
+    name: "Retomar a rotina",
+    desc: "Informação sobre recuperação e retorno ao exercício, respeitando a evolução de cada pessoa.",
+    href: "/blog/retornar-a-academia-apos-cirurgia-de-joelho",
   },
 ];
 
@@ -55,6 +60,10 @@ const credenciaisHero = [
 ];
 
 const perguntasFrequentes = [
+  {
+    question: "Como consultar valores, convênios e reembolso?",
+    answer: "A Clínica Derplus atende somente particular. Nas demais unidades há atendimento por convênios, com operadoras e planos a confirmar com a equipe antes do agendamento. Reembolso depende das condições do seu contrato: verifique com a operadora.",
+  },
   {
     question: "Quando devo procurar um ortopedista especialista em joelho?",
     answer:
@@ -117,7 +126,7 @@ export default function HomePage() {
       {/* ══ HERO ══
           Altura menor que a viewport inteira: a seção seguinte aparece na
           dobra e convida a rolar sem precisar de um indicador explícito. */}
-      <section className="relative flex min-h-[86vh] items-center overflow-hidden px-5 pb-16 pt-24 sm:px-8 sm:pt-28 lg:min-h-[90vh] lg:px-12 lg:pb-20">
+      <section className="relative flex items-center overflow-hidden bg-[#f3f6f8] px-5 pb-14 pt-28 sm:px-8 sm:pt-32 lg:px-12 lg:pb-20 lg:pt-40">
         <div
           aria-hidden
           className="absolute inset-y-0 right-0 hidden w-[52%] bg-gradient-to-br from-p-muted to-[#dce4ea] [clip-path:polygon(18%_0,100%_0,100%_100%,4%_100%)] lg:block"
@@ -126,14 +135,11 @@ export default function HomePage() {
         <div className="relative z-[2] mx-auto grid w-full max-w-[1120px] items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
           <div>
             <p className="anim-fade-up mb-5 text-xs font-bold uppercase tracking-[1.8px] text-p [animation-delay:0.05s]">
-              Ortopedista e Traumatologista em São Paulo - SP
+              Dr. Joaquim Lopes · Ortopedia e cirurgia do joelho
             </p>
 
             <h1 className="anim-fade-up text-display font-extrabold text-dark [animation-delay:0.15s]">
-              Ortopedista em <Accent>São Paulo</Accent>
-              <span className="mt-2 block text-[0.68em] leading-[1.15] text-p-dark">
-                especialista em joelho
-              </span>
+              Cuidado com o joelho para a vida em movimento.
             </h1>
 
             {/* Foto mobile */}
@@ -150,18 +156,18 @@ export default function HomePage() {
             </div>
 
             <p className="anim-fade-up mt-6 mb-9 max-w-[470px] text-lead text-muted [animation-delay:0.25s]">
-              Dr. Joaquim Lopes é ortopedista e traumatologista com foco em
-              cirurgia do joelho e medicina esportiva. Realiza avaliação,
-              tratamento e acompanhamento individualizado em São Paulo.
+              Ortopedista em São Paulo, com foco em cirurgia do joelho e medicina
+              esportiva. Da caminhada ao esporte, uma avaliação para entender sua
+              dor e discutir o tratamento de acordo com sua rotina.
             </p>
 
             <div className="anim-fade-up flex flex-col gap-3.5 [animation-delay:0.35s] sm:flex-row sm:flex-wrap">
               <Button href="/pre-agendamento">
                 <Calendar width={17} height={17} strokeWidth={2} />
-                Agendar Consulta
+                Agendar consulta
               </Button>
-              <Button href="/sobre" variant="outline">
-                Conheça o Dr. Joaquim
+              <Button href="#locais" variant="outline">
+                Ver locais de atendimento
                 <ArrowRight width={17} height={17} strokeWidth={2} />
               </Button>
             </div>
@@ -205,10 +211,18 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section aria-label="Formação e atendimento" className="border-y border-line px-5 py-8 sm:px-8 lg:px-12">
+        <dl className="mx-auto grid max-w-[1120px] gap-7 md:grid-cols-3 md:gap-10">
+          <div><dt className="font-semibold text-dark">Santa Casa de São Paulo</dt><dd className="mt-1 text-sm text-muted">Residência em Cirurgia do Joelho</dd></div>
+          <div><dt className="font-semibold text-dark">Myongji Hospital, Coreia do Sul</dt><dd className="mt-1 text-sm text-muted">Fellow avançado em Medicina Esportiva</dd></div>
+          <div><dt className="font-semibold text-dark">São Paulo e Osasco</dt><dd className="mt-1 text-sm text-muted">Escolha entre os locais de atendimento</dd></div>
+        </dl>
+      </section>
+
       {/* ══ QUANDO PROCURAR ══
           Lista com filetes em vez de quatro caixas iguais: o cabeçalho fica
           fixo à esquerda no desktop e os sinais correm ao lado. */}
-      <section id="quando-procurar" className="px-5 py-20 md:px-12 md:py-28">
+      <section id="quando-procurar" className="px-5 py-14 md:px-12 md:py-20">
         <div className="mx-auto grid max-w-[1120px] gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-20">
           <div className="lg:sticky lg:top-32 lg:self-start">
             <SectionHeading
@@ -250,16 +264,17 @@ export default function HomePage() {
 
       {/* ══ ESPECIALIDADE ══
           Sobe na página, logo depois dos sintomas: é o momento de conversão. */}
-      <section className="bg-bg-alt px-5 py-20 md:px-12 md:py-28">
+      <section className="bg-bg-alt px-5 py-14 md:px-12 md:py-20">
         <div className="mx-auto max-w-[1120px]">
           <SectionHeading
+            align="left"
             eyebrow="Especialidade"
             title={
               <>
                 Do diagnóstico à <Accent>recuperação</Accent>
               </>
             }
-            sub="Atendimento completo com foco em Cirurgia do Joelho, com diagnóstico, tratamento e cirurgias de alta complexidade."
+            sub="O cuidado começa com suas dúvidas e considera o que você precisa para o dia a dia."
           />
 
           <div className="reveal-group grid gap-6 md:grid-cols-3 md:gap-7">
@@ -268,14 +283,14 @@ export default function HomePage() {
               return (
                 <Link
                   key={item.name}
-                  href="/especialidade"
-                  className="reveal card-lift group flex flex-col rounded-[20px] border border-line bg-white p-8 shadow-soft lg:p-9"
+                  href={item.href}
+                  className="group flex flex-col border-t-2 border-p/25 py-6 hover:border-p"
                 >
-                  <span className="mb-6 flex h-16 w-16 items-center justify-center rounded-[18px] bg-p transition-colors duration-300 group-hover:bg-p-dark">
+                  <span className="mb-5 flex h-11 w-11 items-center justify-center rounded-full bg-p-muted">
                     <Icon
                       width={30}
                       height={30}
-                      className="text-white"
+                      className="text-p"
                       strokeWidth={1.6}
                     />
                   </span>
@@ -297,7 +312,7 @@ export default function HomePage() {
       </section>
 
       {/* ══ SOBRE ══ */}
-      <section className="px-5 py-20 md:px-12 md:py-28">
+      <section className="px-5 py-14 md:px-12 md:py-20">
         <div className="mx-auto grid max-w-[1120px] items-center gap-14 lg:grid-cols-2 lg:gap-20">
           <div className="reveal reveal-left group h-[300px] overflow-hidden rounded-[20px] shadow-hover sm:h-[440px] lg:h-[500px]">
             <Image
@@ -316,19 +331,19 @@ export default function HomePage() {
               eyebrow="Sobre o médico"
               title={
                 <>
-                  Cuidado especializado com <Accent>empatia</Accent>
+                  Formação em joelho. Atenção à sua rotina.
                 </>
               }
             />
             <p className="reveal mb-6 text-lead text-muted">
-              Dr. Joaquim Lopes é especialista em Ortopedia, Traumatologia e
-              Medicina do Esporte, com residência em Cirurgia do Joelho pela
+              Dr. Joaquim Lopes é ortopedista e traumatologista, com
+              residência em Cirurgia do Joelho pela
               Santa Casa de São Paulo. Membro da SBCJ e da SBOT.
             </p>
             <p className="reveal mb-6 text-lead text-muted">
-              Seu atendimento é marcado pela escuta ativa, empatia e foco na
-              recuperação completa do paciente, unindo técnica de excelência a
-              um cuidado verdadeiramente humanizado.
+              Na consulta, a história dos sintomas, as limitações no dia a dia e
+              seus objetivos ajudam a orientar a avaliação. As opções de
+              tratamento são discutidas de acordo com cada caso.
             </p>
             <p className="reveal mb-8 border-l-2 border-p-light pl-5 text-[15px] leading-[1.7] text-muted">
               Fellow avançado em Medicina Esportiva pelo Myongji Hospital, em
@@ -344,10 +359,13 @@ export default function HomePage() {
         </div>
       </section>
 
+      <GoogleReviewsLink />
+      <FeaturedArticles />
+
       {/* ══ LOCAIS ══
           Conteúdo de referência: peso visual reduzido de propósito, para não
           competir com as seções que carregam a decisão do paciente. */}
-      <section className="bg-bg-alt px-5 py-20 md:px-12 md:py-24">
+      <section id="locais" className="px-5 py-14 md:px-12 md:py-20">
         <div className="mx-auto max-w-[1120px]">
           <SectionHeading
             size="support"
@@ -373,6 +391,7 @@ export default function HomePage() {
                     </span>
                   )}
                 </h3>
+                <p className="mb-2 text-sm font-semibold text-p">{loc.payment === "private" ? "Somente particular" : "Convênios · confirme seu plano"}</p>
                 {loc.addressLines ? (
                   <p className="text-sm leading-[1.6] text-muted">
                     {loc.addressLines.map((line, j) => (
@@ -386,6 +405,11 @@ export default function HomePage() {
                     {loc.city} - {loc.region}
                   </p>
                 )}
+                <div className="mt-3 flex flex-wrap gap-x-5">
+                  <a href={whatsappUrl(`Olá, gostaria de consultar horários e condições para uma consulta com o Dr. Joaquim Lopes em ${loc.name}, ${loc.city}.`)} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center text-sm font-semibold text-p underline underline-offset-4">Consultar horários nesta unidade</a>
+                  {loc.street && <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${loc.name}, ${loc.street}, ${loc.city}`)}`} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center text-sm text-p underline underline-offset-4">Ver no mapa</a>}
+                  {loc.coverageUrl && <a href={loc.coverageUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center text-sm text-p underline underline-offset-4">Consultar convênios da unidade</a>}
+                </div>
               </li>
             ))}
           </ul>
@@ -393,7 +417,7 @@ export default function HomePage() {
       </section>
 
       {/* ══ FAQ ══ */}
-      <section className="px-5 py-20 md:px-12 md:py-28">
+      <section className="bg-bg-alt px-5 py-14 md:px-12 md:py-20">
         <div className="mx-auto max-w-[820px]">
           <SectionHeading
             eyebrow="Dúvidas frequentes"
@@ -426,8 +450,8 @@ export default function HomePage() {
       </section>
 
       <CtaStrip
-        title="Pronto para dar o primeiro passo?"
-        text="Agende sua consulta e reconquiste sua qualidade de vida."
+        title="Vamos conversar sobre seu joelho?"
+        text="Escolha o local de atendimento e fale com a equipe para consultar horários e orientar seu agendamento."
       />
     </>
   );

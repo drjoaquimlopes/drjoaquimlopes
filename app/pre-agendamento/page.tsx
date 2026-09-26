@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { PageHero, Accent, Eyebrow } from "@/components/sections";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumb } from "@/lib/jsonld";
-import { site, whatsappUrl } from "@/lib/site";
-import { Phone, Mail, MapPin, Clock, IdCard, WhatsAppSolid } from "@/components/icons";
+import { site } from "@/lib/site";
+import { Phone, Mail, MapPin, Clock, IdCard } from "@/components/icons";
+import { AppointmentChooser } from "@/components/AppointmentChooser";
 
 export const metadata: Metadata = {
   title: "Agendar Consulta Ortopédica",
@@ -83,16 +84,16 @@ export default function PreAgendamentoPage() {
         breadcrumb="Pré-agendamento"
         title={
           <>
-            Dê o primeiro <Accent>passo</Accent>
+            Agende sua <Accent>consulta</Accent>
           </>
         }
-        description="Entre em contato diretamente com nossa equipe pelo WhatsApp, telefone ou e-mail. Confirmamos sua consulta o mais breve possível."
+        description="Escolha uma unidade e converse com a equipe sobre horários e condições de atendimento. A confirmação acontece pelo WhatsApp, telefone ou e-mail."
       />
 
-      <section className="px-5 py-20 md:px-12 md:py-24">
+      <section className="px-5 py-12 md:px-12 md:py-20">
         <div className="mx-auto grid min-w-0 max-w-[1120px] items-start gap-12 lg:grid-cols-2 lg:gap-20">
           {/* Info */}
-          <div className="min-w-0">
+          <div className="order-2 min-w-0 lg:order-1">
             <Eyebrow className="reveal mb-3.5">Informações de contato</Eyebrow>
             <h2 className="reveal mb-5 text-h2 font-extrabold text-dark">
               Estamos aqui para <Accent>ajudar</Accent>
@@ -120,7 +121,7 @@ export default function PreAgendamentoPage() {
                   href={`mailto:${site.email}`}
                   className="block break-words text-[15px] font-semibold text-dark transition-colors hover:text-p"
                 >
-                  {site.email}
+                  {site.email.split("@")[0]}@<wbr />{site.email.split("@")[1]}
                 </a>
               </ContactItem>
 
@@ -182,25 +183,26 @@ export default function PreAgendamentoPage() {
           </div>
 
           {/* Card de contato */}
-          <div className="reveal min-w-0">
-            <div className="rounded-[18px] border border-line bg-bg-alt p-7 shadow-soft md:p-12">
+          <div className="reveal order-1 min-w-0 lg:order-2 lg:sticky lg:top-28">
+            <div className="rounded-[18px] border border-line bg-bg-alt p-4 shadow-soft sm:p-6 md:p-10">
               <h3 className="mb-1.5 text-h3 font-bold text-dark">
-                Fale com nossa equipe
+                Sua consulta começa aqui
               </h3>
               <p className="mb-8 text-sm text-muted">
-                Por enquanto, o agendamento está sendo feito diretamente pelos
-                canais abaixo.
+                Selecione o local de sua preferência ou peça ajuda à equipe.
               </p>
 
-              <a
-                href={whatsappUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2.5 rounded-full bg-[#25d366] px-6 py-3.5 text-[15px] font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1da851] hover:shadow-[0_8px_24px_rgba(37,211,102,0.3)]"
-              >
-                <WhatsAppSolid width={20} height={20} />
-                Agendar pelo WhatsApp
-              </a>
+              <AppointmentChooser />
+
+              <div className="mt-7 border-t border-line pt-6">
+                <h3 className="font-semibold text-dark">Particular, convênios e reembolso</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted">Na Clínica Derplus, o atendimento é somente particular. Nas demais unidades, há atendimento por convênios: confirme com a equipe quais operadoras e planos cobrem sua consulta. Reembolso depende do seu contrato e deve ser verificado com a operadora.</p>
+              </div>
+
+              <div className="mt-6 border-t border-line pt-6">
+                <h3 className="font-semibold text-dark">Depois do contato</h3>
+                <ol className="mt-3 list-decimal space-y-2 pl-5 text-sm text-muted"><li>Combine a unidade e consulte os horários.</li><li>Confirme as condições de atendimento.</li><li>Aguarde a confirmação da equipe antes de comparecer.</li></ol>
+              </div>
 
               <div className="mt-6 flex flex-col gap-4">
                 <a

@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { getAllPosts, getPost, getPostSlugs } from "@/lib/blog";
+import { getAllPosts, getPost, getPostSlugs, postAuthorSchema } from "@/lib/blog";
 import { formatDatePtBr } from "@/lib/format";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumb } from "@/lib/jsonld";
@@ -86,7 +86,7 @@ export default async function BlogPostPage({
     dateModified: post.date,
     url: `${site.url}/blog/${post.slug}`,
     ...(post.cover ? { image: `${site.url}${post.cover}` } : {}),
-    author: { "@type": "Person", name: post.author, "@id": `${site.url}/#medico` },
+    author: postAuthorSchema(post.author),
     publisher: { "@id": `${site.url}/#medico` },
     mainEntityOfPage: { "@type": "WebPage", "@id": `${site.url}/blog/${post.slug}` },
     keywords: post.tags.join(", "),
@@ -121,6 +121,7 @@ export default async function BlogPostPage({
 
           <div className="mb-4 flex flex-wrap items-center gap-2 text-sm text-muted">
             <time dateTime={post.date}>{formatDatePtBr(post.date)}</time>
+            <span>Leitura de {post.readingMinutes} min</span>
             {post.tags.map((tag) => (
               <span
                 key={tag}
@@ -136,11 +137,11 @@ export default async function BlogPostPage({
 
           <div className="mb-8 flex flex-col gap-1 rounded-[14px] border border-line bg-bg-alt px-5 py-4 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
             <p>
-              Conteúdo por{" "}
+              {post.author === site.name ? <>Conteúdo por{" "}
               <Link href="/sobre" className="font-bold text-p hover:underline">
                 Dr. Joaquim Lopes
               </Link>
-              , Ortopedista e Traumatologista
+              , Ortopedista e Traumatologista</> : <>Conteúdo informativo com referências. Não substitui avaliação individual.</>}
             </p>
             <p className="shrink-0 text-xs">CRM-SP 171205 · RQE 113362</p>
           </div>
@@ -169,8 +170,12 @@ export default async function BlogPostPage({
             </div>
           ) : null}
 
+          {post.featured && <nav aria-label="Neste artigo" className="mb-9 border-y border-line py-6">
+            <p className="mb-3 font-semibold text-p">Neste artigo</p>
+            <ul className="space-y-2 text-sm">{[...post.content.matchAll(/^## (.+)$/gm)].map((match) => <li key={match[1]}><a href={`#${headingId(match[1])}`} className="inline-flex py-1 text-muted underline decoration-p-light underline-offset-4 hover:text-p">{match[1]}</a></li>)}</ul>
+          </nav>}
           <div className="prose-article">
-            <MDXRemote source={post.content} />
+            <MDXRemote source={post.content} components={post.featured ? { h2: ({ children }) => <h2 id={headingId(String(children))}>{children}</h2> } : undefined} />
           </div>
 
           <aside className="mt-10 rounded-[14px] border border-line bg-bg-alt p-5 text-sm leading-relaxed text-muted">
@@ -263,4 +268,8 @@ export default async function BlogPostPage({
       </article>
     </>
   );
+}
+
+function headingId(text: string) {
+  return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 }

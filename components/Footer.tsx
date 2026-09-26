@@ -25,8 +25,7 @@ export function Footer() {
             </Link>
             <p className="mb-4 max-w-[280px] text-sm leading-relaxed">
               Ortopedista e Traumatologista especializado em Cirurgia do Joelho.
-              Atendimento humanizado com excelência técnica para sua recuperação
-              completa.
+              Avaliação e acompanhamento individualizado em São Paulo e Osasco.
             </p>
             <p className="text-xs text-white/55">{site.crmRqe}</p>
           </div>

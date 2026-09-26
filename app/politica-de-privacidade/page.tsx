@@ -51,7 +51,9 @@ export default function PoliticaDePrivacidadePage() {
         <div className="prose-article mx-auto max-w-[760px]">
           <p>
             Este site apresenta informações institucionais e conteúdos de saúde do
-            {` ${site.name}`}. Não solicitamos dados pessoais por formulários próprios.
+            {` ${site.name}`}. A seleção de unidade no agendamento prepara uma
+            mensagem para o WhatsApp e não é armazenada no site. Não solicitamos
+            nome, telefone ou informações clínicas por formulários próprios.
           </p>
 
           <h2>Dados de navegação</h2>
@@ -82,7 +84,7 @@ export default function PoliticaDePrivacidadePage() {
             {` ${site.email}`}.
           </p>
 
-          <p>Última atualização: 13 de julho de 2026.</p>
+          <p>Última atualização: 25 de setembro de 2026.</p>
         </div>
       </article>
     </>

@@ -5,6 +5,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
+import { site } from "./site";
 
 const BLOG_DIR = path.join(process.cwd(), "content", "blog");
 
@@ -26,6 +27,8 @@ export type PostMeta = {
   tags: string[];
   author: string;
   draft: boolean;
+  featured: boolean;
+  readingMinutes: number;
 };
 
 export type Post = PostMeta & { content: string };
@@ -53,6 +56,8 @@ function parseFile(file: string): Post {
     tags: Array.isArray(data.tags) ? data.tags : [],
     author: data.author ?? "Dr. Joaquim Lopes",
     draft: Boolean(data.draft),
+    featured: Boolean(data.featured),
+    readingMinutes: Math.max(1, Math.ceil(content.trim().split(/\s+/).length / 200)),
     content,
   };
 }
@@ -72,6 +77,8 @@ function toPostMeta(post: Post): PostMeta {
     tags: post.tags,
     author: post.author,
     draft: post.draft,
+    featured: post.featured,
+    readingMinutes: post.readingMinutes,
   };
 }
 
@@ -94,4 +101,10 @@ export function getPost(slug: string): Post | null {
   const post = parseFile(file);
   if (post.draft) return null;
   return post;
+}
+
+export function postAuthorSchema(author: string) {
+  return author === "Dr. Joaquim Lopes"
+    ? { "@type": "Person", name: author, "@id": `${site.url}/#medico` }
+    : { "@type": "Organization", name: "Site do Dr. Joaquim Lopes" };
 }

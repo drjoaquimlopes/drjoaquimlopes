@@ -7,6 +7,8 @@ export type Location = {
   /** id usado no @id do schema (https://.../#<schemaId>) */
   schemaId: string;
   name: string;
+  payment: "private" | "insurance";
+  coverageUrl?: string;
   /** endereço em uma linha para exibição (pode ser omitido) */
   addressLines?: string[];
   neighborhood?: string;
@@ -23,6 +25,7 @@ export const locations: Location[] = [
   {
     schemaId: "clinica",
     name: "Clínica Derplus",
+    payment: "private",
     street: "R. Arminda, 93 - Conj 102",
     neighborhood: "Vila Nova Conceição",
     city: "São Paulo",
@@ -37,6 +40,8 @@ export const locations: Location[] = [
   {
     schemaId: "instituto-vita",
     name: "Instituto Vita - Ortopedia e Fisioterapia",
+    payment: "insurance",
+    coverageUrl: "https://vita.org.br/convenios",
     street: "Rua Mato Grosso, 306",
     neighborhood: "Higienópolis",
     city: "São Paulo",
@@ -50,6 +55,8 @@ export const locations: Location[] = [
   {
     schemaId: "hospital-9-de-julho",
     name: "Hospital 9 de Julho - Ambulatório",
+    payment: "insurance",
+    coverageUrl: "https://www.h9j.com.br/convenios/",
     street: "Rua Peixoto Gomide, 545",
     neighborhood: "Jardim Paulista",
     city: "São Paulo",
@@ -63,6 +70,8 @@ export const locations: Location[] = [
   {
     schemaId: "hospital-sao-luiz-itaim",
     name: "Hospital São Luiz Itaim, Rede D'Or - Ambulatório",
+    payment: "insurance",
+    coverageUrl: "https://www.rededorsaoluiz.com.br/hospital/sao-luiz-itaim/marcar-consulta",
     street: "Rua Dr. Alceu de Campos Rodrigues, 95",
     neighborhood: "Itaim Bibi",
     city: "São Paulo",
@@ -76,6 +85,8 @@ export const locations: Location[] = [
   {
     schemaId: "hospital-sao-luiz-osasco",
     name: "Hospital São Luiz, Rede D'Or - Ambulatório",
+    payment: "insurance",
+    coverageUrl: "https://www.rededorsaoluiz.com.br/hospital/sao-luiz-osasco",
     city: "Osasco",
     region: "SP",
   },

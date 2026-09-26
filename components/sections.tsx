@@ -12,16 +12,16 @@ export function Eyebrow({
 }) {
   return (
     <span
-      className={`block text-xs font-bold uppercase tracking-[1.8px] text-p ${className}`}
+      className={`block text-sm font-semibold tracking-normal text-p ${className}`}
     >
       {children}
     </span>
   );
 }
 
-/** Destaque colorido dentro de títulos (equivale ao <em> do site antigo). */
+/** Mantém os títulos em uma única cor para preservar a hierarquia. */
 export function Accent({ children }: { children: ReactNode }) {
-  return <em className="not-italic text-p">{children}</em>;
+  return <span>{children}</span>;
 }
 
 /**
@@ -53,7 +53,7 @@ export function SectionHeading({
   const isCenter = align === "center";
   const gap =
     (spacing ?? (isCenter ? "normal" : "tight")) === "normal"
-      ? "mb-14 md:mb-16"
+      ? "mb-10 md:mb-12"
       : "mb-7";
   const titleCls =
     size === "lead"
@@ -88,7 +88,7 @@ export function PageHero({
   description: ReactNode;
 }) {
   return (
-    <div className="relative overflow-hidden bg-gradient-to-br from-p-muted to-[#dce4ea] px-5 pb-[72px] pt-[calc(72px+64px)] sm:px-8 lg:px-12 lg:pt-[calc(96px+72px)]">
+    <div className="relative overflow-hidden border-b border-p/15 bg-p-muted px-5 pb-10 pt-28 sm:px-8 sm:pb-14 lg:px-12 lg:pt-36">
       <div className="relative mx-auto max-w-[1120px]">
         <nav
           className="anim-fade-up mb-4 text-[13px] text-muted"
@@ -107,10 +107,6 @@ export function PageHero({
           {description}
         </p>
       </div>
-      <div
-        aria-hidden
-        className="absolute inset-x-0 -bottom-px h-12 bg-white [clip-path:ellipse(60%_100%_at_50%_100%)]"
-      />
     </div>
   );
 }
@@ -128,15 +124,17 @@ export function CtaStrip({
   href?: string;
 }) {
   return (
-    <section className="bg-p px-5 py-20 text-center md:px-12">
-      <div className="reveal-group">
+    <section className="bg-p-dark px-5 py-14 md:px-12 md:py-20">
+      <div className="mx-auto grid max-w-[1120px] items-center gap-8 lg:grid-cols-[1fr_auto] lg:gap-x-16">
+        <div>
         <h2 className="reveal mb-3.5 text-h2 font-extrabold text-white">
           {title}
         </h2>
-        <p className="reveal mx-auto mb-9 max-w-xl text-lead text-white/75">
+        <p className="reveal max-w-xl text-lead text-white/80">
           {text}
         </p>
-        <div className="reveal flex justify-center">
+        </div>
+        <div className="reveal flex">
           <Button href={href} variant="white">
             {buttonLabel}
           </Button>

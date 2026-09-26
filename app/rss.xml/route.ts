@@ -45,7 +45,7 @@ export function GET() {
   <channel>
     <title>Blog do Dr. Joaquim Lopes</title>
     <link>${site.url}/blog</link>
-    <description>Artigos sobre ortopedia, cirurgia do joelho e medicina esportiva pelo Dr. Joaquim Lopes.</description>
+    <description>Artigos e guias informativos sobre ortopedia, cirurgia do joelho e medicina esportiva.</description>
     <language>pt-BR</language>
     <atom:link href="${site.url}/rss.xml" rel="self" type="application/rss+xml" />${items}
   </channel>

@@ -44,6 +44,8 @@ const grupos = [
     description:
       "Dor, inchaço, rigidez, travamento e instabilidade podem ter causas diferentes. A avaliação clínica e, quando necessários, exames complementares ajudam a identificar a origem do problema.",
     links: [
+      { slug: "dor-no-joelho-quando-procurar-atendimento", label: "Dor no joelho: consulta ou urgência?" },
+      { slug: "lesao-de-menisco-quando-precisa-operar", label: "Lesão de menisco: quando operar?" },
       {
         slug: "atividade-fisica-no-tratamento-da-artrose",
         label: "Artrose do joelho e atividade física",
@@ -131,10 +133,8 @@ export default function JoelhoPage() {
     name: "Saúde do Joelho: Sintomas, Lesões e Tratamentos",
     description:
       "Conteúdo sobre sintomas, condições, tratamentos, cirurgias e prevenção de problemas do joelho.",
-    dateModified: "2026-08-19",
-    lastReviewed: "2026-08-19",
+    dateModified: "2026-09-25",
     author: { "@id": `${site.url}/#medico` },
-    reviewedBy: { "@id": `${site.url}/#medico` },
     about: { "@type": "AnatomicalStructure", name: "Joelho" },
     mainEntity: {
       "@type": "ItemList",
@@ -171,13 +171,16 @@ export default function JoelhoPage() {
         <div className="mx-auto max-w-[920px]">
           <div className="reveal rounded-[18px] border border-line bg-bg-alt p-7 md:p-9">
             <p className="mb-3 text-h3 font-bold text-dark">
-              Conteúdo médico por Dr. Joaquim Lopes
+              Informação para conversar sobre sua saúde
             </p>
             <p className="text-[15px] leading-[1.8] text-muted">
-              Ortopedista e Traumatologista, especialista em Cirurgia do Joelho,
-              CRM-SP 171205 e RQE 113362. Este material tem caráter informativo e
-              não substitui uma avaliação médica individual.
+              Artigos e guias sobre o joelho, com autoria identificada em cada página.
+              Este material tem caráter informativo e não substitui uma avaliação médica individual.
             </p>
+            <Link
+              href="/blog/primeira-consulta-ortopedista-joelho"
+              className="mr-6 mt-4 inline-flex min-h-11 items-center gap-2 text-sm font-bold text-p underline underline-offset-4"
+            >Como preparar sua consulta</Link>
             <Link
               href="/sobre"
               className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-p hover:underline"

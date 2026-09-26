@@ -13,6 +13,7 @@ export const site = {
   rqe: "RQE 113362",
   crmRqe: "CRM-SP 171205 / RQE 113362",
   email: "atendimento@drjoaquimlopes.com.br",
+  googleProfileUrl: "https://share.google/jmv4oYMPU1SXn54K0",
   phoneDisplay: "(11) 92553-8077",
   phoneE164: "+55-11-92553-8077",
   whatsappNumber: "5511925538077",

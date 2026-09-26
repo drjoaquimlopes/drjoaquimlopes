@@ -6,6 +6,7 @@ import { Button } from "@/components/Button";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumb } from "@/lib/jsonld";
 import { site } from "@/lib/site";
+import { TreatmentLinks } from "@/components/TreatmentLinks";
 
 export const metadata: Metadata = {
   title: "Cirurgia do Joelho em São Paulo",
@@ -235,6 +236,7 @@ export default function EspecialidadePage() {
         </div>
       </section>
 
+      <TreatmentLinks />
       <CtaStrip
         title="Tem alguma dúvida sobre seu caso?"
         text="Agende uma consulta e receba uma avaliação personalizada."
