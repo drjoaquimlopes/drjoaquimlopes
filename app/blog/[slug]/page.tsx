@@ -10,6 +10,10 @@ import { breadcrumb } from "@/lib/jsonld";
 import { site } from "@/lib/site";
 import { ArrowRight, Instagram } from "@/components/icons";
 import { ReadingProgress } from "@/components/ReadingProgress";
+import { KneeAtlasLink } from "@/components/KneeAtlasLink";
+import { kneeParts } from "@/lib/knee-anatomy";
+
+const anatomyArticlePaths = new Set<string>(kneeParts.map((part) => part.link));
 
 export function generateStaticParams() {
   return getPostSlugs().map((slug) => ({ slug }));
@@ -183,6 +187,8 @@ export default async function BlogPostPage({
             diagnóstico individual. Em caso de trauma importante, dor intensa ou
             incapacidade de apoiar o membro, procure atendimento médico.
           </aside>
+
+          {anatomyArticlePaths.has(`/blog/${post.slug}`) && <div className="mt-8"><KneeAtlasLink compact /></div>}
 
           {post.gallery && post.gallery.length > 0 && (
             <div className="mt-10 flex flex-col items-center gap-5">

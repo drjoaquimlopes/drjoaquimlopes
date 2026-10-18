@@ -3,6 +3,7 @@ import Image from "next/image";
 import { site, navLinks } from "@/lib/site";
 import { locations, locationOneLine } from "@/lib/locations";
 import { SocialLinks } from "./SocialLinks";
+import { kneePage } from "@/lib/knee-page";
 
 export function Footer() {
   const year = 2026;
@@ -46,6 +47,9 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link href={kneePage.path} className="text-sm text-white/55 transition-colors hover:text-white">Anatomia do joelho em 3D</Link>
+              </li>
               <li>
                 <Link
                   href="/pre-agendamento"

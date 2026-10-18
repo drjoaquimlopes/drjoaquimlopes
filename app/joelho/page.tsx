@@ -6,6 +6,8 @@ import { ArrowRight } from "@/components/icons";
 import { getAllPosts } from "@/lib/blog";
 import { breadcrumb } from "@/lib/jsonld";
 import { site } from "@/lib/site";
+import { KneeAtlasLink } from "@/components/KneeAtlasLink";
+import { kneePage } from "@/lib/knee-page";
 
 export const metadata: Metadata = {
   title: "Saúde do Joelho: Sintomas, Lesões e Tratamentos",
@@ -133,9 +135,10 @@ export default function JoelhoPage() {
     name: "Saúde do Joelho: Sintomas, Lesões e Tratamentos",
     description:
       "Conteúdo sobre sintomas, condições, tratamentos, cirurgias e prevenção de problemas do joelho.",
-    dateModified: "2026-09-25",
+    dateModified: kneePage.modified,
     author: { "@id": `${site.url}/#medico` },
     about: { "@type": "AnatomicalStructure", name: "Joelho" },
+    hasPart: { "@id": `${site.url}${kneePage.path}#pagina`, "@type": "MedicalWebPage", url: `${site.url}${kneePage.path}`, name: kneePage.title },
     mainEntity: {
       "@type": "ItemList",
       itemListElement: listedPosts.map((post, index) => ({
@@ -169,6 +172,7 @@ export default function JoelhoPage() {
 
       <section className="px-5 py-20 md:px-12 md:py-24">
         <div className="mx-auto max-w-[920px]">
+          <div className="mb-8"><KneeAtlasLink /></div>
           <div className="reveal rounded-[18px] border border-line bg-bg-alt p-7 md:p-9">
             <p className="mb-3 text-h3 font-bold text-dark">
               Informação para conversar sobre sua saúde

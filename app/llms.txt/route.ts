@@ -10,6 +10,8 @@ export function GET() {
 ## Páginas principais
 - ${site.url}/sobre
 - ${site.url}/especialidade
+- ${site.url}/joelho
+- ${site.url}/joelho/anatomia — guia educativo de anatomia com modelo 3D e texto sobre cada estrutura
 - ${site.url}/pre-agendamento
 - ${site.url}/blog
 

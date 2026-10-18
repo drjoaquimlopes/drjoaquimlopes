@@ -8,6 +8,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { site, whatsappUrl } from "@/lib/site";
 import { GoogleReviewsLink } from "@/components/GoogleReviewsLink";
 import { FeaturedArticles } from "@/components/FeaturedArticles";
+import { KneeAtlasLink } from "@/components/KneeAtlasLink";
 
 const especialidades = [
   {
@@ -360,6 +361,9 @@ export default function HomePage() {
       </section>
 
       <GoogleReviewsLink />
+      <section aria-label="Conheça a anatomia do joelho" className="px-5 py-12 sm:px-8 lg:px-12">
+        <div className="mx-auto max-w-[1120px]"><KneeAtlasLink /></div>
+      </section>
       <FeaturedArticles />
 
       {/* ══ LOCAIS ══
