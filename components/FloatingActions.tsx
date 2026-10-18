@@ -13,6 +13,19 @@ import { whatsappUrl } from "@/lib/site";
 export function FloatingActions() {
   const pathname = usePathname();
   const [showTop, setShowTop] = useState(false);
+  const [atlasVisible, setAtlasVisible] = useState(false);
+
+  useEffect(() => {
+    if (pathname !== "/joelho/anatomia") return;
+    const atlas = document.getElementById("explorar-joelho");
+    if (!atlas) return;
+    // Keep floating links clear of the model, markers and flexion controls.
+    const observer = new IntersectionObserver(entries => {
+      setAtlasVisible(entries.some(entry => entry.isIntersecting));
+    }, { rootMargin: "0px 0px 100px 0px" });
+    observer.observe(atlas);
+    return () => observer.disconnect();
+  }, [pathname]);
 
   useEffect(() => {
     let frame = 0;
@@ -39,6 +52,8 @@ export function FloatingActions() {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     window.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" });
   };
+
+  if (pathname === "/joelho/anatomia" && atlasVisible) return null;
 
   return (
     <div
