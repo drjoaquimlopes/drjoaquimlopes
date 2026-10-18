@@ -78,7 +78,7 @@ export function createKneeViewer(host: HTMLDivElement, onSelect: (id: KneePartId
   const meshes: THREE.Mesh<THREE.BufferGeometry, THREE.MeshPhysicalMaterial>[] = [];
   const outlines = new Map<THREE.Mesh, THREE.Mesh>();
   let markers: ReturnType<typeof createKneeMarkers> | undefined;
-  const render = () => { if (!disposed) { renderer.render(scene, camera); markers?.update(camera,selected); } };
+  const render = () => { if (!disposed) { renderer.render(scene, camera); markers?.update(camera,spotlight ? selected : null); } };
   controls.addEventListener("change", render);
   const resize = () => {
     const width = host.clientWidth, height = host.clientHeight;
@@ -99,7 +99,7 @@ export function createKneeViewer(host: HTMLDivElement, onSelect: (id: KneePartId
   const updateMaterials = () => {
     const part = kneeParts.find(p => p.id === selected)!;
     for (const mesh of meshes) {
-      const active = (part.meshes as readonly string[]).includes(mesh.name);
+      const active = spotlight && (part.meshes as readonly string[]).includes(mesh.name);
       const muscle = !!mesh.userData.muscleLayer;
       const meshPart = kneeParts.find(p => (p.meshes as readonly string[]).includes(mesh.name));
       mesh.visible = !!meshPart && layers[kneeLayerForPart(meshPart.id)];

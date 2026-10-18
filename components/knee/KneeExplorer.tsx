@@ -9,12 +9,14 @@ import { KneeQuickSummary } from "./KneeQuickSummary";
 export function KneeExplorer() {
   const host = useRef<HTMLDivElement>(null);
   const viewer = useRef<KneeViewer | null>(null);
-  const [selected, setSelected] = useState<KneePartId>("meniscos");
+  const [{ selected, focused, quickSummary }, setSelection] = useState({
+    selected: "meniscos" as KneePartId,
+    focused: false,
+    quickSummary: false,
+  });
   const [inside, setInside] = useState(false);
   const [detail, setDetail] = useState(true);
   const [layers, setLayers] = useState<KneeLayerState>({ ...defaultKneeLayers });
-  const [focused, setFocused] = useState(false);
-  const [quickSummary, setQuickSummary] = useState(false);
   const selectionTrigger = useRef<HTMLElement | null>(null);
   const [flexion, setFlexion] = useState(0);
   const [playing, setPlaying] = useState(false);
@@ -25,23 +27,28 @@ export function KneeExplorer() {
   const part = kneeParts.find(p => p.id === selected)!;
   const selectPart = useCallback((id: KneePartId, origin: "model" | "panel" = "model") => {
     selectionTrigger.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-    setSelected(id);
+    const showSummary = origin === "model" && window.matchMedia("(max-width: 680px)").matches;
+    setSelection(previous => {
+      const focused = previous.selected !== id || !previous.focused;
+      return { selected: id, focused, quickSummary: focused && showSummary };
+    });
     setLayers(previous => ({ ...previous, [kneeLayerForPart(id)]: true }));
-    setFocused(true);
     setPlaying(false);
-    setQuickSummary(origin === "model" && window.matchMedia("(max-width: 680px)").matches);
   }, []);
   const closeSummary = useCallback(() => {
-    setQuickSummary(false);
+    setSelection(previous => ({ ...previous, quickSummary: false }));
     if (selectionTrigger.current?.isConnected) selectionTrigger.current.focus({ preventScroll: true });
   }, []);
   const toggleLayer = (id: KneeLayerId) => {
     setLayers(previous => ({ ...previous, [id]: !previous[id] }));
-    if (id === kneeLayerForPart(selected) && layers[id]) { setFocused(false); setQuickSummary(false); }
+    if (id === kneeLayerForPart(selected) && layers[id]) {
+      setSelection(previous => ({ ...previous, focused: false, quickSummary: false }));
+    }
   };
   const restore = () => {
-    setPlaying(false); setFlexion(0); setSelected("meniscos"); setLayers({ ...defaultKneeLayers });
-    setFocused(false); setInside(false); setDetail(true); setView("front"); setQuickSummary(false);
+    setPlaying(false); setFlexion(0); setLayers({ ...defaultKneeLayers });
+    setSelection({ selected: "meniscos", focused: false, quickSummary: false });
+    setInside(false); setDetail(true); setView("front");
     viewer.current?.view("front"); viewer.current?.frame(true);
   };
 
@@ -69,7 +76,7 @@ export function KneeExplorer() {
   useEffect(() => { viewer.current?.spotlight(focused); }, [focused, status]);
   useEffect(() => {
     const mobile = window.matchMedia("(max-width: 680px)");
-    const onChange = () => { if (!mobile.matches) setQuickSummary(false); };
+    const onChange = () => { if (!mobile.matches) setSelection(previous => ({ ...previous, quickSummary: false })); };
     mobile.addEventListener("change", onChange);
     return () => mobile.removeEventListener("change", onChange);
   }, []);
@@ -110,8 +117,8 @@ export function KneeExplorer() {
         <button type="button" className="knee-restore" onClick={restore}><span aria-hidden="true">↺</span> Restaurar visão</button>
       </div>
       <div className="knee-selection-strip" data-focused={focused}>
-        <p>{focused ? <><span>{part.number}</span> Explorando <strong>{part.name}</strong><span className="knee-selection-explanation"> · As demais estruturas estão suavizadas</span></> : "Toque em um número para destacar uma estrutura."}</p>
-        <button type="button" aria-pressed={focused} onClick={() => { setFocused(!focused); setLayers(previous => ({ ...previous, [kneeLayerForPart(selected)]: true })); }}>{focused ? "Ver conjunto" : "Destacar seleção"}</button>
+        <p>{focused ? <><span>{part.number}</span> Explorando <strong>{part.name}</strong><span className="knee-selection-explanation"> · Clique novamente para ver o conjunto</span></> : "Toque em um número para destacar uma estrutura."}</p>
+        <button type="button" aria-pressed={focused} onClick={() => { setSelection(previous => ({ ...previous, focused: !previous.focused, quickSummary: false })); setLayers(previous => ({ ...previous, [kneeLayerForPart(selected)]: true })); }}>{focused ? "Ver conjunto" : "Destacar seleção"}</button>
       </div>
       <div className="knee-explorer-grid">
         <div className="knee-visual">
@@ -159,7 +166,7 @@ export function KneeExplorer() {
         <div className="knee-information">
           <div className="knee-parts-label">O QUE VOCÊ QUER CONHECER?</div>
           <div className="knee-parts" role="group" aria-label="Estruturas do joelho">
-            {kneeParts.map(item => <button key={item.id} type="button" aria-label={`Conhecer ${item.name}`} aria-pressed={selected === item.id} aria-controls="knee-detail" onClick={() => selectPart(item.id,"panel")}>
+            {kneeParts.map(item => <button key={item.id} type="button" aria-label={`Conhecer ${item.name}`} aria-pressed={focused && selected === item.id} aria-controls="knee-detail" onClick={() => selectPart(item.id,"panel")}>
               <span className="knee-part-number" aria-hidden="true">{item.number}</span>{item.name}
             </button>)}
           </div>

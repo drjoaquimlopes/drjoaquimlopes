@@ -55,7 +55,7 @@ export function createKneeMarkers(host: HTMLElement, meshes: THREE.Mesh[], onSel
   host.appendChild(overlay);
   const point=new THREE.Vector3();
   return {
-    update: (camera: THREE.Camera, selected: KneePartId) => {
+    update: (camera: THREE.Camera, selected: KneePartId | null) => {
       const width=host.clientWidth, height=host.clientHeight;
       for(const entry of entries) {
         point.fromBufferAttribute(entry.mesh.geometry.getAttribute("position"),entry.index).applyMatrix4(entry.mesh.matrixWorld).project(camera);
