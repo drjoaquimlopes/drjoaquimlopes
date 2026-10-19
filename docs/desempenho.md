@@ -48,6 +48,8 @@ Depois da publicação, as execuções completas mantiveram acessibilidade, boas
 
 O atlas publicado passou de 61 no diagnóstico inicial para 85 e 92 nas verificações seguintes, com transferência inicial de aproximadamente 391 KB e CLS zero. Na segunda conferência, o bloqueio total foi de 99 ms, comparado com 3.553 ms antes. A melhoria é do carregamento inicial e da priorização do conteúdo; o custo da exploração 3D ainda depende do aparelho. Sobre permaneceu em 93, com as outras três categorias em 100. Os cabeçalhos de cache do modelo e o HTML com apenas uma foto principal foram confirmados no domínio oficial.
 
+Após a correção do contraste, a auditoria final do atlas publicado confirmou acessibilidade, boas práticas e SEO em 100. Desempenho em 89, TBT de 59 ms, CLS zero e transferência inicial de 388.503 bytes. Essa execução novamente recebeu o documento mais lentamente (aproximadamente 770 ms no servidor); o resultado foi registrado sem repetir apenas para obter uma nota maior. Os controles do modelo foram conferidos no site oficial em celular de 390×844 e desktop de 1440×1000, sem erros JavaScript.
+
 ## Verificação e manutenção
 
 - ESLint sem avisos, TypeScript e build de produção.
