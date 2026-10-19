@@ -22,7 +22,9 @@ const nextConfig: NextConfig = {
     return [
       { source: "/index.html", destination: "/", permanent: true },
       { source: "/sobre.html", destination: "/sobre", permanent: true },
+      { source: "/sobre/index.html", destination: "/sobre", permanent: true },
       { source: "/especialidade.html", destination: "/especialidade", permanent: true },
+      { source: "/especialidade/index.html", destination: "/especialidade", permanent: true },
       { source: "/pre-agendamento.html", destination: "/pre-agendamento", permanent: true },
       // Recupera sinais e links das páginas antigas ainda presentes no índice.
       { source: "/especialidade/exames", destination: "/especialidade", permanent: true },
