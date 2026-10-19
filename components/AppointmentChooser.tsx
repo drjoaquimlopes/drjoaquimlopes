@@ -5,12 +5,14 @@ import type { KeyboardEvent } from "react";
 import Link from "next/link";
 import { locations } from "@/lib/locations";
 import { whatsappUrl } from "@/lib/site";
+import { trackEvent } from "@/lib/analytics";
 import { MapPin, WhatsAppSolid } from "./icons";
 
 const options = [
-  { value: "", name: "Quero ajuda para escolher", detail: "Converse com a equipe", payment: "", coverageUrl: undefined as string | undefined },
+  { value: "", analyticsId: "help", name: "Quero ajuda para escolher", detail: "Converse com a equipe", payment: "", coverageUrl: undefined as string | undefined },
   ...locations.map((item) => ({
     value: `${item.name} — ${item.neighborhood ?? item.city}`,
+    analyticsId: item.schemaId,
     name: item.name.replace(" - Ortopedia e Fisioterapia", "").replace(", Rede D'Or - Ambulatório", "").replace(" - Ambulatório", ""),
     detail: item.neighborhood ?? item.city,
     payment: item.payment === "private" ? "Somente particular" : "Convênios sob consulta",
@@ -49,6 +51,7 @@ export function AppointmentChooser() {
   }, [active, open]);
 
   function choose(index: number) {
+    trackEvent("clinic_select", { clinic_id: options[index].analyticsId });
     setLocation(options[index].value);
     setOpen(false);
     triggerRef.current?.focus();

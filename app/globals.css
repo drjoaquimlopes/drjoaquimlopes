@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+.cookie-notice{position:fixed;z-index:1000;bottom:16px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:24px;width:min(1080px,calc(100% - 32px));max-height:75dvh;overflow:auto;padding:20px 24px;border:1px solid #ccd9df;border-radius:16px;background:#fff;box-shadow:0 12px 60px #183d5026;color:#546873}
+.cookie-notice h2{font-size:16px;font-weight:700;color:#183d50;margin-bottom:5px}
+.cookie-notice p{font-size:13px;line-height:1.7;max-width:650px}
+.cookie-notice a{color:#28566b;text-decoration:underline;text-underline-offset:3px}
+.cookie-notice-actions{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap}
+.cookie-notice button{min-height:44px;padding:10px 15px;border:1px solid #9bb0bc;border-radius:8px;font-size:13px;font-weight:600;color:#28566b;cursor:pointer;background:white}
+.cookie-notice button:hover{background:#eef3f5}
+@media(max-width:800px){.cookie-notice{flex-direction:column;align-items:stretch;gap:14px;padding:18px;bottom:max(12px,env(safe-area-inset-bottom))}.cookie-notice-actions button{flex:1}.cookie-notice p{font-size:12px}}
+
 /* ══════════════════════════════════════════
    Design tokens — paleta original do site
    ══════════════════════════════════════════ */

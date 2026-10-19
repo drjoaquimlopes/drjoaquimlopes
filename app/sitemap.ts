@@ -15,7 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${site.url}${kneePage.path}`, lastModified: new Date(kneePage.modified), changeFrequency: "monthly", priority: 0.8, images: [`${site.url}${kneePage.image}`] },
     { url: `${site.url}/especialidade`, lastModified: new Date("2026-09-25"), changeFrequency: "monthly", priority: 0.9 },
     { url: `${site.url}/pre-agendamento`, lastModified: new Date("2026-09-25"), changeFrequency: "monthly", priority: 0.9 },
-    { url: `${site.url}/politica-de-privacidade`, lastModified: new Date("2026-09-25"), changeFrequency: "yearly", priority: 0.3 },
+    { url: `${site.url}/politica-de-privacidade`, lastModified: new Date("2026-10-19"), changeFrequency: "yearly", priority: 0.3 },
     { url: `${site.url}/blog`, lastModified: newestPost, changeFrequency: "weekly", priority: 0.8 },
   ];
 

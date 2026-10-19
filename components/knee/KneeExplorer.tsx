@@ -114,7 +114,7 @@ export function KneeExplorer() {
             <span className="knee-layer-check" aria-hidden="true" style={{ borderColor: layer.color }}>{layers[layer.id] ? "✓" : ""}</span>{layer.name}
           </button>)}
         </div>
-        <button type="button" className="knee-restore" onClick={restore}><span aria-hidden="true">↺</span> Restaurar visão</button>
+        <button type="button" className="knee-restore" data-analytics-action="restore" onClick={restore}><span aria-hidden="true">↺</span> Restaurar visão</button>
       </div>
       <div className="knee-selection-strip" data-focused={focused}>
         <p>{focused ? <><span>{part.number}</span> Explorando <strong>{part.name}</strong><span className="knee-selection-explanation"> · Clique novamente para ver o conjunto</span></> : "Toque em um número para destacar uma estrutura."}</p>
@@ -148,12 +148,12 @@ export function KneeExplorer() {
           </div>
           <div className="knee-view-controls" role="group" aria-label="Ângulo de visualização">
             {([{ id: "front", label: "Frente" }, { id: "side", label: "Lateral" }, { id: "back", label: "Atrás" }] as const).map(item => (
-              <button key={item.id} type="button" aria-pressed={view === item.id} onClick={() => setView(item.id)}>{item.label}</button>
+              <button key={item.id} type="button" data-analytics-action={item.id} aria-pressed={view === item.id} onClick={() => setView(item.id)}>{item.label}</button>
             ))}
           </div>
           <p className="knee-gesture"><span aria-hidden="true">↔</span> Arraste para girar · Toque nos números para conhecer</p>
           <div className="knee-motion">
-            <button type="button" className="knee-play" disabled={status !== "ready"} aria-label={playing ? "Pausar movimento do joelho" : "Reproduzir movimento do joelho"} aria-pressed={playing} onClick={() => { if (!playing) setView("side"); setPlaying(!playing); }}>
+            <button type="button" className="knee-play" data-analytics-action={playing ? "pause" : "play"} disabled={status !== "ready"} aria-label={playing ? "Pausar movimento do joelho" : "Reproduzir movimento do joelho"} aria-pressed={playing} onClick={() => { if (!playing) setView("side"); setPlaying(!playing); }}>
               {playing ? <svg aria-hidden="true" width="14" height="16" viewBox="0 0 14 16" fill="currentColor"><path d="M2 2h3v12H2zM9 2h3v12H9z" /></svg> : <svg aria-hidden="true" width="14" height="16" viewBox="0 0 14 16" fill="currentColor"><path d="M2 1l11 7-11 7z" /></svg>}
             </button>
             <div className="knee-motion-main">
@@ -166,7 +166,7 @@ export function KneeExplorer() {
         <div className="knee-information">
           <div className="knee-parts-label">O QUE VOCÊ QUER CONHECER?</div>
           <div className="knee-parts" role="group" aria-label="Estruturas do joelho">
-            {kneeParts.map(item => <button key={item.id} type="button" aria-label={`Conhecer ${item.name}`} aria-pressed={focused && selected === item.id} aria-controls="knee-detail" onClick={() => selectPart(item.id,"panel")}>
+            {kneeParts.map(item => <button key={item.id} type="button" data-part={item.id} aria-label={`Conhecer ${item.name}`} aria-pressed={focused && selected === item.id} aria-controls="knee-detail" onClick={() => selectPart(item.id,"panel")}>
               <span className="knee-part-number" aria-hidden="true">{item.number}</span>{item.name}
             </button>)}
           </div>

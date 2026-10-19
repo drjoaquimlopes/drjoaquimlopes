@@ -3,6 +3,7 @@ import { Accent, PageHero } from "@/components/sections";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumb } from "@/lib/jsonld";
 import { site } from "@/lib/site";
+import { CookiePreferences } from "@/components/CookiePreferences";
 
 export const metadata: Metadata = {
   title: "Política de Privacidade",
@@ -70,6 +71,31 @@ export default function PoliticaDePrivacidadePage() {
             contato e as políticas dos respectivos provedores.
           </p>
 
+          <h2>Estatísticas e cookies opcionais</h2>
+          <p>
+            Com sua autorização, usamos o Google Analytics 4 para medir visitas,
+            páginas acessadas e interações como cliques em agendamento, WhatsApp,
+            artigos e no modelo educativo do joelho. O serviço pode utilizar cookies
+            e informações técnicas do navegador e dispositivo. Um clique de contato
+            não significa que uma mensagem foi enviada ou que uma consulta foi agendada.
+          </p>
+          <p>
+            A tag de estatísticas só é carregada após sua aceitação. Você pode
+            recusar ou mudar a escolha em “Preferências de cookies” no rodapé.
+            A preferência é guardada neste navegador por até 180 dias. Se retirar
+            a autorização, a coleta é desativada e os cookies de Analytics acessíveis
+            ao site são removidos.
+          </p>
+          <p>
+            Nossos eventos de clique não incluem nome, telefone, e-mail, mensagens,
+            valores digitados ou informações clínicas. Não configuramos identificação
+            por User-ID, Google Signals ou personalização publicitária. Os dados de
+            navegação são processados pelo Google e podem envolver infraestrutura
+            fora do Brasil, conforme suas políticas e os ajustes da propriedade de Analytics.
+            Consulte a <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Política de Privacidade do Google</a>.
+          </p>
+          <div className="rounded-xl bg-dark px-5 py-2"><CookiePreferences /></div>
+
           <h2>Serviços externos</h2>
           <p>
             A página de agendamento incorpora o Google Maps e o site possui links para
@@ -84,7 +110,7 @@ export default function PoliticaDePrivacidadePage() {
             {` ${site.email}`}.
           </p>
 
-          <p>Última atualização: 25 de setembro de 2026.</p>
+          <p>Última atualização: 19 de outubro de 2026.</p>
         </div>
       </article>
     </>

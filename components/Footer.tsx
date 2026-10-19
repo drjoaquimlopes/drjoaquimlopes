@@ -4,6 +4,7 @@ import { site, navLinks } from "@/lib/site";
 import { locations, locationOneLine } from "@/lib/locations";
 import { SocialLinks } from "./SocialLinks";
 import { kneePage } from "@/lib/knee-page";
+import { CookiePreferences } from "./CookiePreferences";
 
 export function Footer() {
   const year = 2026;
@@ -66,6 +67,7 @@ export function Footer() {
                   Política de privacidade
                 </Link>
               </li>
+              <li><CookiePreferences /></li>
             </ul>
           </div>
 

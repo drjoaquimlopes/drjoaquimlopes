@@ -7,6 +7,8 @@ import { FloatingActions } from "@/components/FloatingActions";
 import { JsonLd } from "@/components/JsonLd";
 import { organizationGraph } from "@/lib/jsonld";
 import { site } from "@/lib/site";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+import { getPostSlugs } from "@/lib/blog";
 
 const inter = localFont({
   src: "./fonts/inter-latin.woff2",
@@ -91,6 +93,7 @@ export default function RootLayout({
         <main id="conteudo-principal">{children}</main>
         <Footer />
         <FloatingActions />
+        <GoogleAnalytics paths={["/", "/sobre", "/especialidade", "/joelho", "/joelho/anatomia", "/pre-agendamento", "/blog", "/politica-de-privacidade", ...getPostSlugs().map(slug => `/blog/${slug}`)]} />
       </body>
     </html>
   );
