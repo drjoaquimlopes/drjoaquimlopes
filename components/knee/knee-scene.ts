@@ -78,7 +78,18 @@ export function createKneeViewer(host: HTMLDivElement, onSelect: (id: KneePartId
   const meshes: THREE.Mesh<THREE.BufferGeometry, THREE.MeshPhysicalMaterial>[] = [];
   const outlines = new Map<THREE.Mesh, THREE.Mesh>();
   let markers: ReturnType<typeof createKneeMarkers> | undefined;
-  const render = () => { if (!disposed) { renderer.render(scene, camera); markers?.update(camera,spotlight ? selected : null); } };
+  // Multiple state effects and OrbitControls changes can arrive in the same frame.
+  // Draw their final state once rather than repeating expensive WebGL work.
+  let renderFrame = 0;
+  const render = () => {
+    if (disposed || renderFrame) return;
+    renderFrame = requestAnimationFrame(() => {
+      renderFrame = 0;
+      if (disposed) return;
+      renderer.render(scene, camera);
+      markers?.update(camera, spotlight ? selected : null);
+    });
+  };
   controls.addEventListener("change", render);
   const resize = () => {
     const width = host.clientWidth, height = host.clientHeight;
@@ -170,7 +181,14 @@ export function createKneeViewer(host: HTMLDivElement, onSelect: (id: KneePartId
     const part = hit && kneeParts.find(p => (p.meshes as readonly string[]).includes(hit.object.name));
     if (part) onSelect(part.id);
   };
-  const pointermove = (event: PointerEvent) => { renderer.domElement.style.cursor = intersect(event) ? "pointer" : "grab"; };
+  let hoverFrame = 0;
+  const pointermove = (event: PointerEvent) => {
+    if (event.pointerType !== "mouse" || event.buttons || hoverFrame) return;
+    hoverFrame = requestAnimationFrame(() => {
+      hoverFrame = 0;
+      if (!disposed) renderer.domElement.style.cursor = intersect(event) ? "pointer" : "grab";
+    });
+  };
   const contextLost = (event: Event) => { event.preventDefault(); onError(); };
   renderer.domElement.addEventListener("pointerdown", pointerdown);
   renderer.domElement.addEventListener("pointerup", pointerup);
@@ -196,6 +214,7 @@ export function createKneeViewer(host: HTMLDivElement, onSelect: (id: KneePartId
     flex: degrees => { flexion = THREE.MathUtils.clamp(degrees, 0, 110); rig?.pose(flexion); contact.visible = flexion < 5; render(); },
     dispose: () => {
       disposed = true; observer.disconnect(); controls.dispose();
+      cancelAnimationFrame(renderFrame); cancelAnimationFrame(hoverFrame);
       renderer.domElement.removeEventListener("pointerdown", pointerdown);
       renderer.domElement.removeEventListener("pointerup", pointerup);
       renderer.domElement.removeEventListener("pointermove", pointermove);

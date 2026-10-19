@@ -168,6 +168,7 @@ export default async function BlogPostPage({
                 width={post.coverW}
                 height={post.coverH}
                 priority
+                fetchPriority="high"
                 sizes="(max-width: 559px) calc(100vw - 40px), 520px"
                 className="h-auto w-full"
               />

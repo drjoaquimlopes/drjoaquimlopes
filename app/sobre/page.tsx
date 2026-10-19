@@ -143,7 +143,9 @@ export default function SobrePage() {
               alt="Dr. Joaquim Lopes"
               width={560}
               height={560}
-              sizes="(min-width: 1024px) 50vw, calc(100vw - 40px)"
+              loading="eager"
+              fetchPriority="high"
+              sizes="(min-width: 1216px) 520px, (min-width: 1024px) calc((100vw - 176px) / 2), (min-width: 768px) calc(100vw - 96px), calc(100vw - 40px)"
               className="h-full w-full object-cover object-top"
             />
           </div>

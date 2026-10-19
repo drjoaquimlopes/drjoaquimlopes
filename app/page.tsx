@@ -133,7 +133,7 @@ export default function HomePage() {
           className="absolute inset-y-0 right-0 hidden w-[52%] bg-gradient-to-br from-p-muted to-[#dce4ea] [clip-path:polygon(18%_0,100%_0,100%_100%,4%_100%)] lg:block"
         />
 
-        <div className="relative z-[2] mx-auto grid w-full max-w-[1120px] items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+        <div className="relative z-[2] mx-auto grid w-full max-w-[1120px] items-center gap-10 lg:min-h-[540px] lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
           <div>
             <p className="anim-fade-up mb-5 text-xs font-bold uppercase tracking-[1.8px] text-p [animation-delay:0.05s]">
               Dr. Joaquim Lopes · Ortopedia e cirurgia do joelho
@@ -143,17 +143,20 @@ export default function HomePage() {
               Cuidado com o joelho para a vida em movimento.
             </h1>
 
-            {/* Foto mobile */}
-            <div className="anim-fade-up group mb-7 mt-7 h-[240px] overflow-hidden rounded-[20px] shadow-[0_16px_48px_rgba(86,105,122,0.2)] sm:h-[360px] lg:hidden">
-              <Image
-                src="/assets/images/dr/home-1.jpg"
-                alt="Dr. Joaquim Lopes, ortopedista em São Paulo especialista em joelho"
-                width={520}
-                height={280}
-                priority
-                sizes="(max-width: 639px) calc(100vw - 40px), (max-width: 1023px) calc(100vw - 64px), 420px"
-                className="h-full w-full object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
-              />
+            {/* Uma única imagem responsiva evita baixar a versão escondida no celular. */}
+            <div className="anim-fade-up mb-7 mt-7 lg:absolute lg:inset-y-0 lg:right-0 lg:m-0 lg:flex lg:w-[calc(47.5%_-_1.9rem)] lg:items-center lg:justify-center">
+              <div className="group h-[240px] overflow-hidden rounded-[20px] shadow-[0_16px_48px_rgba(86,105,122,0.2)] sm:h-[360px] lg:h-[540px] lg:w-[420px] lg:max-w-full lg:rounded-[32px] lg:shadow-photo lg:transition-transform lg:duration-700 lg:hover:-translate-y-1.5">
+                <Image
+                  src="/assets/images/dr/home-1.jpg"
+                  alt="Dr. Joaquim Lopes, ortopedista em São Paulo especialista em joelho"
+                  width={520}
+                  height={540}
+                  priority
+                  fetchPriority="high"
+                  sizes="(min-width: 1024px) 420px, (min-width: 640px) calc(100vw - 64px), calc(100vw - 40px)"
+                  className="h-full w-full object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
+                />
+              </div>
             </div>
 
             <p className="anim-fade-up mt-6 mb-9 max-w-[470px] text-lead text-muted [animation-delay:0.25s]">
@@ -193,21 +196,6 @@ export default function HomePage() {
             <p className="anim-fade-up mt-4 text-xs text-muted [animation-delay:0.45s]">
               {site.crmRqe}
             </p>
-          </div>
-
-          {/* Foto desktop */}
-          <div className="anim-fade-up hidden justify-center lg:flex [animation-delay:0.2s]">
-            <div className="group h-[540px] w-[420px] max-w-full overflow-hidden rounded-[32px] shadow-photo transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1.5">
-              <Image
-                src="/assets/images/dr/home-1.jpg"
-                alt="Dr. Joaquim Lopes, ortopedista em São Paulo especialista em joelho"
-                width={420}
-                height={540}
-                priority
-                sizes="420px"
-                className="h-full w-full object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
-              />
-            </div>
           </div>
         </div>
       </section>

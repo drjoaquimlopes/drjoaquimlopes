@@ -82,7 +82,7 @@ export function Nav() {
             alt="Dr. Joaquim Lopes"
             width={280}
             height={96}
-            priority
+            loading="eager"
             sizes="(min-width: 1024px) 280px, 164px"
             className={`w-auto object-contain transition-[height] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
               scrolled ? "h-11 lg:h-[60px]" : "h-[56px] lg:h-24"

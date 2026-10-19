@@ -57,13 +57,15 @@ export function KneeExplorer() {
     if (!container) return;
     let cancelled = false;
     const observer = new IntersectionObserver(entries => {
-      if (!entries.some(entry => entry.isIntersecting)) return;
+      // Wait until the visitor can see a meaningful part of the model, including
+      // short landscape viewports, before starting the WebGL setup and download.
+      if (!entries.some(entry => entry.isIntersecting && entry.intersectionRect.height >= Math.min(entry.boundingClientRect.height * 0.5, window.innerHeight * 0.35))) return;
       observer.disconnect();
       import("./knee-scene").then(({ createKneeViewer }) => {
         if (cancelled) return;
         viewer.current = createKneeViewer(container, selectPart, () => setStatus("ready"), () => setStatus("error"));
       }).catch(() => { if (!cancelled) setStatus("error"); });
-    }, { rootMargin: "150px" });
+    }, { threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 1] });
     observer.observe(container);
     return () => { cancelled = true; observer.disconnect(); viewer.current?.dispose(); viewer.current = null; };
   }, [attempt, selectPart]);
