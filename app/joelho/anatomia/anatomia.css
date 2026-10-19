@@ -12,7 +12,7 @@
 .knee-page-index a{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-underline-offset:4px}
 .knee-structure-index{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 12px;margin:22px 0}
 .knee-structure-index a{display:flex;gap:10px;align-items:center;min-height:44px;font-size:13px;color:#28566b;border-bottom:1px solid #e0e8e3}
-.knee-structure-index span{font-size:10px;font-variant-numeric:tabular-nums;color:#667d72}
+.knee-structure-index span{font-size:10px;font-variant-numeric:tabular-nums;color:#526b60}
 .knee-guide-part:target{outline:2px solid #83ada1;outline-offset:4px}
 .knee-references h2{font-size:18px;font-weight:600;color:#28566b;margin-bottom:12px;line-height:1.5}
 .knee-page-index a:focus-visible,.knee-structure-index a:focus-visible{outline:2px solid #28566b;outline-offset:4px;border-radius:3px}
@@ -47,7 +47,7 @@
 .knee-parts button[aria-pressed=true]{border-color:#28566b;background:#28566b;color:#fff}
 .knee-part-dot{width:5px;height:5px;border-radius:50%}
 .knee-detail-eyebrow{display:flex;justify-content:space-between;font-size:9px;text-transform:uppercase;letter-spacing:1.4px;color:#4c7c72;font-weight:600;margin-bottom:7px}
-.knee-detail-eyebrow>span:last-child{color:#74847e;font-weight:400}
+.knee-detail-eyebrow>span:last-child{color:#526b60;font-weight:400}
 .knee-detail h2{font-size:33px;letter-spacing:-1px;color:#203c46;line-height:1.2;font-weight:600}
 .knee-detail-summary{font-size:12px;color:#60726b;margin-top:6px;margin-bottom:24px}
 .knee-detail-block{margin-top:17px}
@@ -71,7 +71,7 @@
 .knee-guide-part:last-child{border-bottom:1px solid #dce5e0}
 .knee-guide-part summary{display:flex;align-items:center;gap:22px;list-style:none;cursor:pointer;min-height:65px;padding:18px 0}
 .knee-guide-part summary::-webkit-details-marker{display:none}
-.knee-guide-part summary>span:first-child{font-size:10px;color:#688278}
+.knee-guide-part summary>span:first-child{font-size:10px;color:#526b60}
 .knee-guide-part summary>span:last-child{margin-left:auto;color:#4a7568}
 .knee-guide-part[open] summary>span:last-child{transform:rotate(45deg)}
 .knee-guide-part h3{color:#203c46;font-size:16px;font-weight:500}

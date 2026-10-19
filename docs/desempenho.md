@@ -27,6 +27,7 @@ São medições individuais de laboratório, sujeitas a variações. Não equiva
 - A detecção de hover no modelo ocorre no máximo uma vez por frame, somente com mouse sem botão pressionado; não disputa processamento com o gesto de toque/arraste. Os frames pendentes são cancelados na desmontagem.
 - Arquivos originais de `/assets/` e `/models/knee/` recebem cache público de um dia e revalidação em segundo plano de até sete dias. Não se aplica cache imutável a nomes sem versão. Ao substituir um arquivo que precise mudar imediatamente, use novo nome ou versão na URL e atualize sua referência.
 - O GLB, as texturas, os materiais, a resolução do renderizador e a anatomia permanecem iguais.
+- A auditoria completa identificou contraste insuficiente em rótulos pequenos e números do guia. Eles recebem um verde um pouco mais escuro, preservando a paleta e a leitura.
 
 ## Comparação controlada local
 
@@ -40,6 +41,12 @@ Builds de produção antes e depois, mesma máquina, navegador, perfil Lighthous
 | Artigo sobre artroplastia, celular | 96 → 96 | 2,66 → 2,71 s | 26 → 53 ms |
 
 A transferência inicial do atlas caiu de aproximadamente 2,45 MB para 365 KB nesse perfil, pois o usuário começa lendo a introdução. O modelo de 2,09 MB continua sendo baixado ao explorar a área 3D; o custo não foi eliminado da interação. Quando o palco já aparece suficientemente na abertura de uma tela maior, ele carrega automaticamente.
+
+## Conferência do site publicado
+
+Depois da publicação, as execuções completas mantiveram acessibilidade, boas práticas e SEO da home em 100, com CLS zero. A nota de desempenho da home variou de 82 na primeira execução após o deploy (resposta inicial do documento de aproximadamente 943 ms) para 89 e 93 nas seguintes. O desktop ficou em 99. São execuções individuais, não uma promessa de nota fixa ou uma série estatística suficiente para atribuir toda diferença ao código.
+
+O atlas publicado passou de 61 no diagnóstico inicial para 85 e 92 nas verificações seguintes, com transferência inicial de aproximadamente 391 KB e CLS zero. Na segunda conferência, o bloqueio total foi de 99 ms, comparado com 3.553 ms antes. A melhoria é do carregamento inicial e da priorização do conteúdo; o custo da exploração 3D ainda depende do aparelho. Sobre permaneceu em 93, com as outras três categorias em 100. Os cabeçalhos de cache do modelo e o HTML com apenas uma foto principal foram confirmados no domínio oficial.
 
 ## Verificação e manutenção
 
