@@ -132,6 +132,12 @@ function ReviewerPhoto({ review }: { review: GoogleReview }) {
 }
 
 function ReviewText({ text }: { text: string }) {
+  // The API appends Google's translation to the original review. Keep its
+  // attribution with the translated text, revealed only by the reader.
+  const translationIndex = text.search(/\r?\n\s*\((?:Translated by Google|Traduzido pelo Google)\)/i);
+  const originalPrefix = translationIndex > 0 ? text.slice(0, translationIndex).trimEnd() : "";
+  const original = originalPrefix || text;
+  const translation = originalPrefix ? text.slice(translationIndex).trim() : null;
   const content = useRef<HTMLParagraphElement>(null);
   const id = useId();
   const [expanded, setExpanded] = useState(false);
@@ -142,6 +148,13 @@ function ReviewText({ text }: { text: string }) {
     const check = () => setClipped(element.scrollHeight > element.clientHeight + 1);
     const observer = new ResizeObserver(check); observer.observe(element); check();
     return () => observer.disconnect();
-  }, [expanded, text]);
-  return <div className="mt-3 min-h-[172px] text-sm leading-relaxed text-muted"><blockquote className="whitespace-pre-line break-words"><p ref={content} id={id} className={expanded ? "" : "line-clamp-5"}>{text}</p></blockquote>{(clipped || expanded) && <button type="button" className="mt-2 min-h-11 cursor-pointer font-semibold text-p underline underline-offset-4" aria-controls={id} aria-expanded={expanded} onClick={() => setExpanded(value => !value)}>{expanded ? "Ler menos" : "Ler avaliação completa"}</button>}</div>;
+  }, [expanded, original]);
+  return <div className="mt-3 min-h-[172px] text-sm leading-relaxed text-muted">
+    <blockquote className="whitespace-pre-line break-words"><p ref={content} id={id} className={expanded ? "" : "line-clamp-5"}>{original}</p></blockquote>
+    {(clipped || expanded) && <button type="button" className="mt-2 min-h-11 cursor-pointer font-semibold text-p underline underline-offset-4" aria-controls={id} aria-expanded={expanded} onClick={() => setExpanded(value => !value)}>{expanded ? "Ler menos" : "Ler avaliação completa"}</button>}
+    {translation && <details className="group/translation mt-2">
+      <summary className="w-fit cursor-pointer py-3 font-semibold text-p underline underline-offset-4"><span className="group-open/translation:hidden">Ver tradução do Google</span><span className="hidden group-open/translation:inline">Ocultar tradução do Google</span></summary>
+      <blockquote className="mt-2 whitespace-pre-line break-words border-l-2 border-line pl-3"><p>{translation}</p></blockquote>
+    </details>}
+  </div>;
 }
