@@ -1,3 +1,5 @@
+import { site } from "./site";
+
 export const GA_MEASUREMENT_ID = "G-TQBVF15YCN";
 const CONSENT_KEY = "joaquim.analytics-consent.v1";
 const CONSENT_EVENT = "joaquim:analytics-consent";
@@ -112,6 +114,9 @@ export function trackSiteClick(event: MouseEvent) {
   if (!(element instanceof HTMLAnchorElement)) return;
   let url: URL;
   try { url = new URL(element.href); } catch { return; }
+  if (url.href === site.googleProfileUrl) {
+    trackEvent("google_reviews_click", params); return;
+  }
   if (["wa.me", "api.whatsapp.com", "web.whatsapp.com"].includes(url.hostname)) {
     trackEvent("whatsapp_click", params); return;
   }

@@ -51,10 +51,15 @@ jobs:
 
       - name: Deploy to Vercel
         id: deploy
+        env:
+          GBP_CLIENT_ID: ${{ secrets.GBP_CLIENT_ID }}
+          GBP_CLIENT_SECRET: ${{ secrets.GBP_CLIENT_SECRET }}
+          GBP_REFRESH_TOKEN: ${{ secrets.GBP_REFRESH_TOKEN }}
+          GBP_LOCATION_NAME: ${{ secrets.GBP_LOCATION_NAME }}
         run: |
           set -euo pipefail
 
-          deploy_output="$(vercel deploy --prod --yes --archive=tgz --token=${{ secrets.VERCEL_TOKEN }})"
+          deploy_output="$(vercel deploy --prod --yes --archive=tgz --token=${{ secrets.VERCEL_TOKEN }} --env "GBP_CLIENT_ID=$GBP_CLIENT_ID" --env "GBP_CLIENT_SECRET=$GBP_CLIENT_SECRET" --env "GBP_REFRESH_TOKEN=$GBP_REFRESH_TOKEN" --env "GBP_LOCATION_NAME=$GBP_LOCATION_NAME")"
           echo "$deploy_output"
 
           deploy_url="$(printf '%s\n' "$deploy_output" | perl -pe 's/\e\[[0-9;]*[A-Za-z]//g' | tr -d '\r' | grep -Eo 'https://[^[:space:]]+' | tail -n 1 || true)"

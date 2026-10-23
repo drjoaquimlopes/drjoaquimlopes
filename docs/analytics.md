@@ -18,6 +18,7 @@ O responsável confirmou a desativação em 19/10/2026. A configuração públic
 | `whatsapp_click` | Clique que abre o WhatsApp | `placement` |
 | `appointment_click` | Clique que abre `/pre-agendamento` | `placement`, `target_path` |
 | `contact_click` | Clique em telefone ou e-mail | `placement`, `method` (`phone` ou `email`) |
+| `google_reviews_click` | Clique para abrir as avaliações no perfil do Google | `placement`, sem autor ou comentário |
 | `article_click` | Clique para um artigo do blog | `placement`, `target_path` |
 | `anatomy_open` | Clique para abrir o atlas 3D | `placement`, `target_path` |
 | `navigation_click` | Outros links internos para páginas públicas | `placement`, `target_path` |

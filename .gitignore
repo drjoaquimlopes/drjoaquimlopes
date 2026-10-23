@@ -26,6 +26,11 @@ yarn-error.log*
 .env*.local
 .env
 
+# Private Google Business Profile authorization and downloaded OAuth credentials
+/.google-business/
+client_secret*.json
+/c.json
+
 # vercel
 .vercel
 

@@ -98,6 +98,14 @@ export default function PoliticaDePrivacidadePage() {
 
           <h2>Serviços externos</h2>
           <p>
+            A página inicial exibe avaliações públicas do perfil do Dr. Joaquim no
+            Google, incluindo nome público do autor, nota, comentário e data da
+            última atualização. A consulta é feita pelo servidor do site, com
+            atualização periódica. Essa seção não carrega um widget do Google
+            no seu navegador. Ao abrir o perfil pelo link, passam a valer as
+            políticas do serviço externo.
+          </p>
+          <p>
             A página de agendamento incorpora o Google Maps e o site possui links para
             redes sociais. Esses serviços podem processar dados de navegação conforme
             suas próprias políticas de privacidade.
@@ -110,7 +118,7 @@ export default function PoliticaDePrivacidadePage() {
             {` ${site.email}`}.
           </p>
 
-          <p>Última atualização: 19 de outubro de 2026.</p>
+          <p>Última atualização: 23 de outubro de 2026.</p>
         </div>
       </article>
     </>

@@ -79,7 +79,7 @@ export function FloatingActions() {
         href={whatsappUrl()}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Falar pelo WhatsApp"
+        aria-label="Agendar pelo WhatsApp"
         className="pointer-events-auto flex h-14 items-center justify-center gap-2 rounded-full bg-[#176b45] px-4 text-white shadow-soft hover:bg-[#105335]"
       >
         <WhatsAppSolid width={26} height={26} />
