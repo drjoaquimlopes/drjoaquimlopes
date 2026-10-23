@@ -266,6 +266,13 @@ p { text-wrap: pretty; }
 select { color-scheme: light; }
 footer { padding-bottom: calc(5rem + env(safe-area-inset-bottom)); }
 
+/* Shared rows align clinic names, payment, addresses and actions without fixed heights. */
+@media (min-width: 640px) {
+  @supports (grid-template-rows: subgrid) {
+    .location-card { grid-row: span 4; grid-template-rows: subgrid; }
+  }
+}
+
 /* ══════════════════════════════════════════
    Preferência por menos movimento
    ══════════════════════════════════════════ */

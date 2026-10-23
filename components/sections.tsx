@@ -124,7 +124,7 @@ export function CtaStrip({
   href?: string;
 }) {
   return (
-    <section className="bg-p-dark px-5 py-14 md:px-12 md:py-20">
+    <section className="bg-p-dark px-5 py-14 sm:px-8 lg:px-12 md:py-20">
       <div className="mx-auto grid max-w-[1120px] items-center gap-8 lg:grid-cols-[1fr_auto] lg:gap-x-16">
         <div>
         <h2 className="reveal mb-3.5 text-h2 font-extrabold text-white">

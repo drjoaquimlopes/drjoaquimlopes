@@ -211,7 +211,7 @@ export default function HomePage() {
       {/* ══ QUANDO PROCURAR ══
           Lista com filetes em vez de quatro caixas iguais: o cabeçalho fica
           fixo à esquerda no desktop e os sinais correm ao lado. */}
-      <section id="quando-procurar" className="px-5 py-14 md:px-12 md:py-20">
+      <section id="quando-procurar" className="px-5 py-14 sm:px-8 lg:px-12 md:py-20">
         <div className="mx-auto grid max-w-[1120px] gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-20">
           <div className="lg:sticky lg:top-32 lg:self-start">
             <SectionHeading
@@ -253,7 +253,7 @@ export default function HomePage() {
 
       {/* ══ ESPECIALIDADE ══
           Sobe na página, logo depois dos sintomas: é o momento de conversão. */}
-      <section className="bg-bg-alt px-5 py-14 md:px-12 md:py-20">
+      <section className="bg-bg-alt px-5 py-14 sm:px-8 lg:px-12 md:py-20">
         <div className="mx-auto max-w-[1120px]">
           <SectionHeading
             align="left"
@@ -301,7 +301,7 @@ export default function HomePage() {
       </section>
 
       {/* ══ SOBRE ══ */}
-      <section className="px-5 py-14 md:px-12 md:py-20">
+      <section className="px-5 py-14 sm:px-8 lg:px-12 md:py-20">
         <div className="mx-auto grid max-w-[1120px] items-center gap-14 lg:grid-cols-2 lg:gap-20">
           <div className="reveal reveal-left group h-[300px] overflow-hidden rounded-[20px] shadow-hover sm:h-[440px] lg:h-[500px]">
             <Image
@@ -357,9 +357,10 @@ export default function HomePage() {
       {/* ══ LOCAIS ══
           Conteúdo de referência: peso visual reduzido de propósito, para não
           competir com as seções que carregam a decisão do paciente. */}
-      <section id="locais" className="px-5 py-14 md:px-12 md:py-20">
+      <section id="locais" className="px-5 py-14 sm:px-8 lg:px-12 md:py-20">
         <div className="mx-auto max-w-[1120px]">
           <SectionHeading
+            align="left"
             size="support"
             eyebrow="Locais de atendimento"
             title={
@@ -369,23 +370,23 @@ export default function HomePage() {
             }
             sub="Clínicas e hospitais de referência para ortopedia, traumatologia e cirurgia do joelho."
           />
-          <ul className="reveal-group grid gap-x-12 gap-y-0 sm:grid-cols-2">
+          <ul className="reveal-group grid gap-x-8 gap-y-0 sm:grid-cols-2 lg:gap-x-12">
             {locations.map((loc) => (
               <li
                 key={loc.schemaId}
-                className="reveal border-t border-line py-5 first:border-t-0 sm:[&:nth-child(2)]:border-t-0"
+                className="location-card reveal grid min-w-0 grid-rows-[auto_auto_auto_1fr] border-t border-line py-6"
               >
-                <h3 className="mb-1 flex flex-wrap items-center gap-2 text-[15px] font-bold text-dark">
+                <h3 className="mb-1 text-[15px] font-bold leading-6 text-dark">
                   {loc.name}
                   {loc.primary && (
-                    <span className="rounded-full bg-p-muted px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.8px] text-p">
+                    <span className="ml-2 inline-block rounded-full bg-p-muted px-2.5 py-0.5 align-middle text-[10px] font-bold leading-4 uppercase tracking-[0.8px] text-p">
                       Consultório
                     </span>
                   )}
                 </h3>
                 <p className="mb-2 text-sm font-semibold text-p">{loc.payment === "private" ? "Somente particular" : "Convênios · confirme seu plano"}</p>
                 {loc.addressLines ? (
-                  <p className="text-sm leading-[1.6] text-muted">
+                  <p className="text-sm leading-6 text-muted">
                     {loc.addressLines.map((line, j) => (
                       <span key={j} className="block">
                         {line}
@@ -393,14 +394,16 @@ export default function HomePage() {
                     ))}
                   </p>
                 ) : (
-                  <p className="text-sm leading-[1.6] text-muted">
+                  <p className="text-sm leading-6 text-muted">
                     {loc.city} - {loc.region}
                   </p>
                 )}
-                <div className="mt-3 flex flex-wrap gap-x-5">
+                <div className="mt-3">
                   <a href={whatsappUrl(`Olá, gostaria de consultar horários e condições para uma consulta com o Dr. Joaquim Lopes em ${loc.name}, ${loc.city}.`)} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center text-sm font-semibold text-p underline underline-offset-4">Consultar horários nesta unidade</a>
+                  <div className="flex flex-wrap gap-x-5">
                   {loc.street && <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${loc.name}, ${loc.street}, ${loc.city}`)}`} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center text-sm text-p underline underline-offset-4">Ver no mapa</a>}
                   {loc.coverageUrl && <a href={loc.coverageUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center text-sm text-p underline underline-offset-4">Consultar convênios da unidade</a>}
+                  </div>
                 </div>
               </li>
             ))}
@@ -409,7 +412,7 @@ export default function HomePage() {
       </section>
 
       {/* ══ FAQ ══ */}
-      <section className="bg-bg-alt px-5 py-14 md:px-12 md:py-20">
+      <section className="bg-bg-alt px-5 py-14 sm:px-8 lg:px-12 md:py-20">
         <div className="mx-auto max-w-[820px]">
           <SectionHeading
             eyebrow="Dúvidas frequentes"

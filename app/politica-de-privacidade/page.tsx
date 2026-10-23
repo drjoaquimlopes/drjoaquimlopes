@@ -99,10 +99,12 @@ export default function PoliticaDePrivacidadePage() {
           <h2>Serviços externos</h2>
           <p>
             A página inicial exibe avaliações públicas do perfil do Dr. Joaquim no
-            Google, incluindo nome público do autor, nota, comentário e data da
-            última atualização. A consulta é feita pelo servidor do site, com
-            atualização periódica. Essa seção não carrega um widget do Google
-            no seu navegador. Ao abrir o perfil pelo link, passam a valer as
+            Google, incluindo nome público do autor, foto pública quando disponível,
+            nota, comentário e data da última atualização. A consulta às avaliações
+            é feita pelo servidor do site, com atualização periódica. As fotos são
+            carregadas dos servidores do Google ao visualizar os relatos, sem enviar
+            o endereço da página como referência. Essa seção não carrega um widget
+            do Google no seu navegador. Ao abrir o perfil pelo link, passam a valer as
             políticas do serviço externo.
           </p>
           <p>

@@ -5,8 +5,9 @@ Integração em 23/10/2026 com a API do Perfil da Empresa, autorizada pelo admin
 ## Exibição e desempenho
 
 - A página inicial permanece estática. Um componente pequeno consulta `/api/google-reviews` ao se aproximar da seção, sem bloquear a primeira tela.
-- Nota média e quantidade total vêm do Google. Os três relatos mais recentemente atualizados seguem `updateTime desc`, sem filtragem pela quantidade de estrelas. Textos são preservados e podem ser expandidos.
-- Autoria pública, data da atualização, estrelas e origem são exibidas. As iniciais substituem fotos externas para evitar requisições adicionais do navegador. O link abre o perfil, não um permalink individual de cada avaliação.
+- Nota média e quantidade total vêm do Google. Todas as páginas da API são consultadas, com até 50 relatos por chamada, mantendo `updateTime desc` e sem filtragem pela quantidade de estrelas. Repetição de token ou falha em página intermediária não publica uma lista parcial. Registros repetidos preservam a primeira ocorrência.
+- O carrossel mostra três avaliações por vez no computador, duas no tablet e uma no celular. Setas, teclado e gesto lateral permitem percorrer toda a lista; não há rotação automática. Só os cartões atuais são montados. Textos são preservados e podem ser expandidos.
+- Autoria pública, data da atualização, estrelas e origem são exibidas. Fotos públicas disponibilizadas pelo Google são carregadas apenas nos cartões exibidos, com espaço reservado e sem referrer. URLs aceitas: HTTPS em `googleusercontent.com` ou `ggpht.com`, incluindo subdomínios. Autores anônimos, fotos ausentes ou com erro usam iniciais. O link abre o perfil, não um permalink individual de cada avaliação.
 - Não são criados dados estruturados `Review` ou `AggregateRating`, nem prometidas estrelas nos resultados de pesquisa.
 - Cache somente em memória por até uma hora em cada instância do servidor; instâncias novas podem consultar antes disso. Requisições simultâneas compartilham a mesma consulta. Não há cópia em disco, cache público/CDN ou geração estática das avaliações.
 - A seção aberta é atualizada ao vencer o período; consultas são retomadas ao voltar à aba/seção. Dados expirados não são mantidos indefinidamente caso o Google falhe. O link para o perfil continua disponível e há opção de tentar novamente.
@@ -18,7 +19,7 @@ Variáveis exclusivas do servidor: `GBP_CLIENT_ID`, `GBP_CLIENT_SECRET`, `GBP_RE
 
 O desenvolvimento usa `.env.local`, ignorado pelo Git. O workflow `deploy-main.yml` recebe quatro secrets criptografados do GitHub e os fornece ao ambiente de execução da Vercel. Reimplantações por outro caminho precisam receber a mesma configuração. Nunca inserir o JSON OAuth, tokens ou `.env.local` no repositório, tickets ou mensagens.
 
-O endpoint público retorna apenas nota, contagem, horário da consulta e os campos públicos das três avaliações. Tokens, respostas administrativas e credenciais não são devolvidos. A consulta é feita pelo servidor com tempo limite; falhas têm resposta genérica `503`, `Retry-After: 60` e nenhuma resposta bruta do Google é registrada. As respostas públicas usam `Cache-Control: no-store`.
+O endpoint público retorna apenas nota, contagem, horário da consulta e os campos públicos das avaliações, incluindo foto quando disponível. Tokens, respostas administrativas e credenciais não são devolvidos. A consulta completa tem limite de 20 segundos, com até oito segundos por requisição; falhas têm resposta genérica `503`, `Retry-After: 60` e nenhuma resposta bruta do Google é registrada. As respostas públicas usam `Cache-Control: no-store`.
 
 ## Reconectar o perfil
 
@@ -33,7 +34,11 @@ Perfil confirmado nesta configuração: Dr. Joaquim Lopes — Ortopedista, com w
 
 ## Verificação
 
-`node --experimental-strip-types --test scripts/google-reviews.test.mjs` cobre normalização sem alteração do conteúdo, anonimato, notas baixas, deduplicação, expiração, falha/recuperação e configuração ausente. Conferir também build, acessibilidade no navegador, expansão por teclado, seção em telas pequenas e resposta pública em produção.
+Os resultados abaixo registram a primeira versão, anterior ao carrossel e às fotos. A versão com carrossel foi conferida com 78 avaliações e 78 URLs de foto fornecidas pela API.
+
+Atualização do carrossel: navegador em 320, 390, 640, 768, 1024 e 1440 px; uma, duas ou três fotos/cartões conforme a largura; todas as 78 avaliações alcançadas até o último grupo, com setas, teclado e gesto lateral. Altura dos cartões, estrelas e links alinhados em todas as páginas do computador; fallback de foto conferido com bloqueio da imagem. Locais de atendimento usam linhas compartilhadas da grade, alinhando nomes, forma de atendimento, endereço e ações sem alturas fixas; navegadores sem suporte a subgrid mantêm uma grade simples. Margens da página inicial e chamadas finais padronizadas. Build e ESLint aprovados, seis testes de dados aprovados. Lighthouse local após a atualização: desempenho móvel 95; acessibilidade, boas práticas e SEO 100; nenhum pedido de avaliações ou fotos na primeira tela. Medição de laboratório, não substitui uma medição em produção ou dados reais de usuários.
+
+`node --experimental-strip-types --test scripts/google-reviews.test.mjs` cobre normalização sem alteração do conteúdo, anonimato, notas baixas, URLs de fotos, paginação completa, tokens repetidos, falha intermediária, deduplicação, expiração, falha/recuperação e configuração ausente. Conferir também build, acessibilidade no navegador, expansão por teclado, navegação até o último relato, seção em telas pequenas e resposta pública em produção.
 
 Verificação local em 23/10/2026: API real retornou nota 5,0, total 78 e três relatos. Navegador em 320, 390, 768 e 1440 px: sem rolagem lateral, expansão por teclado, carregamento adiado, recuperação após falha, link sem JavaScript e nenhum pedido externo no navegador com estatísticas recusadas. Evento de perfil conferido com coleta interceptada. Credenciais ausentes dos bundles públicos. Lighthouse local: desempenho 95 no celular e 100 no computador; acessibilidade, boas práticas e SEO 100 em ambos. São medições de laboratório, sujeitas a variação e não garantem notas idênticas em produção.
 
