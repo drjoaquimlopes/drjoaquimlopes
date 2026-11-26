@@ -14,10 +14,12 @@ import {
   Book,
 } from "@/components/icons";
 
+const hospital = site.hospitalAffiliation;
+const profileDescription = `Dr. Joaquim Lopes, ortopedista e especialista em cirurgia do joelho em São Paulo. Integra o corpo clínico do ${hospital.name}.`;
+
 export const metadata: Metadata = {
   title: "Formação e trajetória",
-  description:
-    "Conheça a formação do Dr. Joaquim Lopes em ortopedia, cirurgia do joelho e medicina esportiva. CRM-SP 171205 e RQE 113362.",
+  description: profileDescription,
   keywords: [
     "dr joaquim lopes ortopedista",
     "ortopedista vila nova conceição",
@@ -34,8 +36,7 @@ export const metadata: Metadata = {
     type: "profile",
     url: "/sobre",
     title: "Sobre o Dr. Joaquim Lopes | Ortopedista em São Paulo",
-    description:
-      "Formação em Ortopedia pela HMCC, Cirurgia do Joelho pela Santa Casa de SP e Fellow em Medicina Esportiva na Coreia do Sul.",
+    description: profileDescription,
     images: [
       {
         url: "/assets/images/dr/fellow-1.jpg",
@@ -48,8 +49,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Sobre o Dr. Joaquim Lopes | Ortopedista em São Paulo",
-    description:
-      "Formação em Ortopedia pela HMCC, Cirurgia do Joelho pela Santa Casa de SP e Fellow em Medicina Esportiva na Coreia do Sul.",
+    description: profileDescription,
     images: ["/assets/images/dr/fellow-1.jpg"],
   },
 };
@@ -176,6 +176,16 @@ export default function SobrePage() {
               constantemente atualizado com as mais modernas técnicas e protocolos da
               medicina ortopédica.
             </p>
+
+            <section id="atuacao-hospitalar" aria-labelledby="atuacao-hospitalar-titulo" className="scroll-mt-4 rounded-xl border border-line bg-bg-alt p-5 sm:p-6">
+              <h3 id="atuacao-hospitalar-titulo" className="mb-2 text-lg font-bold text-dark">Atuação hospitalar</h3>
+              <p className="text-sm leading-relaxed text-muted">
+                O Dr. Joaquim Lopes integra o corpo clínico do <strong className="font-semibold text-dark">{hospital.name}</strong>.
+              </p>
+              <a href={hospital.mapUrl} target="_blank" rel="noopener noreferrer" className="mt-1 inline-flex min-h-11 items-center text-sm font-semibold text-p underline underline-offset-4">
+                Ver unidade {hospital.unit} no Google
+              </a>
+            </section>
 
             <hr className="my-9 border-line" />
 

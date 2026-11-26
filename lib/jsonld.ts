@@ -73,6 +73,13 @@ export function organizationGraph() {
         description:
           "Ortopedista e Traumatologista especializado em Cirurgia do Joelho e Medicina Esportiva em São Paulo.",
         medicalSpecialty: ["Orthopedic", "SportsMedicine"],
+        hospitalAffiliation: {
+          "@type": "Hospital",
+          "@id": site.hospitalAffiliation.url,
+          name: `${site.hospitalAffiliation.name} ${site.hospitalAffiliation.unit}`,
+          url: site.hospitalAffiliation.url,
+          hasMap: site.hospitalAffiliation.mapUrl,
+        },
         areaServed: [
           { "@type": "City", name: "São Paulo" },
           { "@type": "City", name: "Osasco" },

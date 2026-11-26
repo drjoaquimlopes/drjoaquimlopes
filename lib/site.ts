@@ -14,6 +14,12 @@ export const site = {
   crmRqe: "CRM-SP 171205 / RQE 113362",
   email: "atendimento@drjoaquimlopes.com.br",
   googleProfileUrl: "https://share.google/jmv4oYMPU1SXn54K0",
+  hospitalAffiliation: {
+    name: "Hospital Sírio-Libanês",
+    unit: "Bela Vista",
+    url: "https://hospitalsiriolibanes.org.br/unidades/bela-vista",
+    mapUrl: "https://share.google/Uc3WQapM121UvblMO",
+  },
   phoneDisplay: "(11) 92553-8077",
   phoneE164: "+55-11-92553-8077",
   whatsappNumber: "5511925538077",

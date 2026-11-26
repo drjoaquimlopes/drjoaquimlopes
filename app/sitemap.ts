@@ -9,8 +9,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const newestPost = posts[0]?.date ? new Date(posts[0].date) : now;
 
   const staticPages: MetadataRoute.Sitemap = [
-    { url: `${site.url}/`, lastModified: new Date(kneePage.modified), changeFrequency: "monthly", priority: 1.0 },
-    { url: `${site.url}/sobre`, lastModified: new Date("2026-07-14"), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${site.url}/`, lastModified: new Date("2026-11-25"), changeFrequency: "monthly", priority: 1.0 },
+    { url: `${site.url}/sobre`, lastModified: new Date("2026-11-25"), changeFrequency: "monthly", priority: 0.8 },
     { url: `${site.url}/joelho`, lastModified: new Date(kneePage.modified), changeFrequency: "weekly", priority: 0.9 },
     { url: `${site.url}${kneePage.path}`, lastModified: new Date(kneePage.modified), changeFrequency: "monthly", priority: 0.8, images: [`${site.url}${kneePage.image}`] },
     { url: `${site.url}/especialidade`, lastModified: new Date("2026-09-25"), changeFrequency: "monthly", priority: 0.9 },

@@ -200,8 +200,16 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section aria-label="Formação e atendimento" className="border-y border-line px-5 py-8 sm:px-8 lg:px-12">
-        <dl className="mx-auto grid max-w-[1120px] gap-7 md:grid-cols-3 md:gap-10">
+      <section aria-label="Formação e atuação profissional" className="border-y border-line px-5 py-8 sm:px-8 lg:px-12">
+        <dl className="mx-auto grid max-w-[1120px] gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <dt className="font-semibold text-dark">
+              <Link href="/sobre#atuacao-hospitalar" className="underline decoration-p/30 underline-offset-4 hover:decoration-p">
+                {site.hospitalAffiliation.name}
+              </Link>
+            </dt>
+            <dd className="mt-1 text-sm text-muted">Médico do corpo clínico</dd>
+          </div>
           <div><dt className="font-semibold text-dark">Santa Casa de São Paulo</dt><dd className="mt-1 text-sm text-muted">Residência em Cirurgia do Joelho</dd></div>
           <div><dt className="font-semibold text-dark">Myongji Hospital, Coreia do Sul</dt><dd className="mt-1 text-sm text-muted">Fellow avançado em Medicina Esportiva</dd></div>
           <div><dt className="font-semibold text-dark">São Paulo e Osasco</dt><dd className="mt-1 text-sm text-muted">Escolha entre os locais de atendimento</dd></div>
